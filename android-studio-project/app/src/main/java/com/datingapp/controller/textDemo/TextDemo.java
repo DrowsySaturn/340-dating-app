@@ -1,4 +1,4 @@
-package com.datingapp.textDemo;
+package com.datingapp.controller.textDemo;
 
 /*
  * The purpose of this class is to display a text demo of SignupLoginController.
@@ -43,9 +43,11 @@ public class TextDemo {
             menu();
             input = Integer.parseInt(sc.nextLine());
             if(input == 1) {
-                signUpInterface(sc);
+//                signUpInterface(sc);
+                System.out.println("Login interface");
             } else if(input == 2) {
-                loginInterface(sc, existingAccount);
+//                loginInterface(sc, existingAccount);
+                System.out.println("Sign Up interface");
             } else if(input == 0) {
                 System.out.println("Input 0, exiting program");
             } else {
@@ -67,7 +69,7 @@ public class TextDemo {
         System.out.println(String.format("The current in session account is %s", _account.getEmail()));
     }
 
-    
+
     private static void menu() {
         System.out.println("1. Sign up a account.");
         System.out.println("2. Login in a account.");
