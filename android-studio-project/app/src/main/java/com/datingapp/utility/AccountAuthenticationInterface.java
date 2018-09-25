@@ -5,17 +5,33 @@ package com.datingapp.utility;
  */
 
 import com.datingapp.shared.datapersistence.Account;
+import com.datingapp.server.datapersistence.DataPersistence;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+import java.sql.SQLException.*;
 
 public class AccountAuthenticationInterface {
     
-    public static boolean isValidUser(String _email, String _password) throws NoSuchAlgorithmException {
-        Account existingAccount = Account.loadAccount(_email);
-        return (existingAccount.getHashedPassword().equals(AccountAuthenticationInterface.hash(_password)));
+    /**
+    * The purpose of this method is to validate the account, based on _email and _userInputPassword.
+    * @param _email: is the unique search key in account table via database.
+    * @param _userInputPassword: acquired password from the client.
+    * @return a boolean value return based on teh comparasion between existing password and input password
+    */
+    public static boolean isValidAccount(String _email, String _userInputPassword) throws NoSuchAlgorithmException, SQLException {
+        Account existingAccount = DataPersistence.loadAccount(_email);
+        final String EXISTING_HASHED_PASSWORD = existingAccount.getHashedPassword();
+        
+        return AccountAuthenticationInterface.comparePassword(EXISTING_HASHED_PASSWORD, _userInputPassword);
     }
-    
+
+    public static boolean comparePassword(String _existingHashedPassword, String _userInputPassword) throws NoSuchAlgorithmException{
+        String hashedUserInputPassword = AccountAuthenticationInterface.hash(_userInputPassword);
+        return _existingHashedPassword.equals(hashedUserInputPassword);
+    }
+
     public static String hash(String _password) throws NoSuchAlgorithmException {
         final String SALT = "*Xlk:ei;Olnb";
         MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");

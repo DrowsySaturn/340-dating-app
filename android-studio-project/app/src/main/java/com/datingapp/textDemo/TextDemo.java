@@ -8,6 +8,7 @@ package com.datingapp.textDemo;
 import com.datingapp.controller.SignupLoginController;
 import com.datingapp.shared.datapersistence.Account;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,14 +19,16 @@ public class TextDemo {
             initialize();
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(TextDemo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(SQLException e) {
+            e.printStackTrace();
         }
     }
 
-    public static void initialize() throws NoSuchAlgorithmException {
+    public static void initialize() throws NoSuchAlgorithmException, SQLException {
         run();
     }
 
-    public static void run() throws NoSuchAlgorithmException {
+    public static void run() throws NoSuchAlgorithmException, SQLException {
         Scanner sc = new Scanner(System.in);
         int input;
         do{
@@ -42,13 +45,7 @@ public class TextDemo {
                 String email = sc.nextLine();
                 System.out.println("Password:");
                 String password = sc.nextLine();
-                System.out.println("Name:");
-                String name = sc.nextLine();
-                System.out.println("Age:");
-                int age = sc.nextInt();
-                System.out.println("Say something about yourself");
-                String personalMessage = sc.nextLine();
-                SignupLoginController.signupAccount(age, name, personalMessage, email, password);
+                SignupLoginController.signupAccount(email, password);
             } else if(input == 2) {
                 System.out.println("");
                 System.out.println("");
@@ -58,7 +55,7 @@ public class TextDemo {
                 System.out.println("Login User Password:");
                 String password = sc.nextLine();
                 Account existingAccount = SignupLoginController.loginAccount(email, password);
-                System.out.println(String.format("The current in session account is %s, Hi %s", existingAccount.getEmail(), existingAccount.getName()));
+                System.out.println(String.format("The current in session account is %s", existingAccount.getEmail()));
             } else {
                 System.out.println("Incorrect input!");
             }

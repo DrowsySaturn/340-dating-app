@@ -7,7 +7,7 @@ package com.datingapp.shared.datapersistence;
 import com.datingapp.utility.AccountAuthenticationInterface;
 import java.security.NoSuchAlgorithmException;
 
-public class Account extends Profile{
+public class Account {
     private String email;
     private String password;
     private String hashedPassword;
@@ -16,11 +16,10 @@ public class Account extends Profile{
         
     }
     
-    public Account(int _age, String _name, String _personalMessage, String _email, String _password) throws NoSuchAlgorithmException {
-        super(_age,_name,_personalMessage);
+    public Account(String _email, String _password) throws NoSuchAlgorithmException {
         this.email = _email;
         this.password = _password;
-        this.hashedPassword = AccountAuthentication.hash(this.password);
+        this.hashedPassword = AccountAuthenticationInterface.hash(this.password);
     }
 
     public void createUser() {
@@ -30,12 +29,9 @@ public class Account extends Profile{
     public static Account loadAccount(String _email) throws NoSuchAlgorithmException {
         //This returns a dummy account for the moment.
         //These constant data are assumed to be the db data.
-        final int AGE = 24;
-        final String NAME = "IKE";
-        final String PERSONAL_MESSAGE = "Got nothing to say";
         final String PASSWORD = "123";
 
-        Account dummy = new Account(AGE,NAME,PERSONAL_MESSAGE,_email,PASSWORD);
+        Account dummy = new Account(_email,PASSWORD);
         
         return dummy;
     }
@@ -50,4 +46,12 @@ public class Account extends Profile{
         return this.hashedPassword;
     }
 
+    //setters field
+    public void setEmail(String _email) {
+        this.email = _email;
+    }
+
+    public void setHashedPassword(String _setHashedPassword) {
+        this.hashedPassword = _setHashedPassword;
+    }
 }

@@ -8,6 +8,7 @@ package com.datingapp.server.datapersistence;
 
 import com.datingapp.shared.datapersistence.ClassScraper;
 import com.datingapp.shared.datapersistence.Profile;
+import com.datingapp.shared.datapersistence.Account;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -100,6 +101,68 @@ public class DataPersistence {
             }
         } finally {
             connection.close();
+        }
+    }
+
+    /**
+    *The purpose of this method is to save accounts into database. Current version only saves account_email and account_password.
+    **/
+    public static void save(Account _account) throws SQLException {
+        Object object = new Object();
+        synchronized (object) {
+            Connection connection = Database.getConnection();
+            try {
+                String SQL = "INSERT INTO accounts (account_email, account_password) VALUES (?,?);";
+                PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+                try {
+                    preparedStatement.setString(1, _account.getEmail());
+                    preparedStatement.setString(2, _account.getHashedPassword());
+                    preparedStatement.execute();
+                } finally {
+                    preparedStatement.close();
+                }
+            } finally {
+                connection.close();
+            }
+        }
+    }
+
+    /**
+    *The purpose of this method is to load in an account from the data base, where account_email is the primary key to search for the 
+    *acount.
+    * @param _email: a String that can be passed into data base for searching data.
+    * @return account: return null if the account can not be found, else return existing account.
+     */
+    public static Account loadAccount(String _email) throws SQLException {
+        Object object = new Object();
+        synchronized(object) {
+            final String SQL = "SELECT * FROM accounts WHERE account_eamil=?";
+            Account account =  null;
+            Connection connection =  Database.getConnection();
+            try {
+                PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+                preparedStatement.setString(1,_email);
+                ResultSet  resultSet = preparedStatement.executeQuery();
+                try {
+                    while(resultSet.next()) {
+                        String existingEmail = resultSet.getString("account_email");
+                        String existingPassword = resultSet.getString("account_password");
+                        Account existingAccount = new Account();
+                        existingAccount.setEmail(existingEmail);
+                        existingAccount.setHashedPassword(existingPassword);
+                    }
+                } finally {
+                    resultSet.close();
+                }
+
+            } finally {
+                connection.close();
+            }
+            if(account == null) {
+                throw new SQLException("Account not found.");
+            } else {
+                return account;
+            }
         }
     }
 }

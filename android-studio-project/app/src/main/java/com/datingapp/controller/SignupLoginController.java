@@ -6,18 +6,22 @@ package com.datingapp.controller;
 import com.datingapp.shared.datapersistence.Account;
 import com.datingapp.utility.AccountAuthenticationInterface;
 import java.security.NoSuchAlgorithmException;
+import com.datingapp.server.datapersistence.DataPersistence;
+
+import java.sql.SQLException;
+import java.sql.SQLException.*;
 
 public class SignupLoginController {
     private static Account account;
-    
-    public static void signupAccount(int _age, String _name, String _personalMessage, String _email, String _password) throws IllegalArgumentException, NoSuchAlgorithmException {
-        SignupLoginController.account = new Account(_age, _name, _personalMessage, _email, _password);
-        SignupLoginController.account.createUser();
+
+    public static void signupAccount(String _email, String _password) throws IllegalArgumentException, NoSuchAlgorithmException, SQLException {
+        SignupLoginController.account = new Account(_email, _password);
+        DataPersistence.save(SignupLoginController.account);
     }
 
-    public static Account loginAccount(String _email, String _password) throws IllegalArgumentException, NoSuchAlgorithmException{
-        if(AccountAuthentication.isValidUser(_email, _password)) {
-            return SignupLoginController.account = Account.loadAccount(_email);
+    public static Account loginAccount(String _email, String _password) throws IllegalArgumentException, NoSuchAlgorithmException, SQLException{
+        if(AccountAuthenticationInterface.isValidAccount(_email, _password)) {
+            return SignupLoginController.account = DataPersistence.loadAccount(_email);
         } else {
             throw new IllegalArgumentException("Wrong password");
         }
