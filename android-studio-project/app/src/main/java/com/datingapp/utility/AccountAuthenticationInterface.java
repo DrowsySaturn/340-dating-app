@@ -26,8 +26,8 @@ public class AccountAuthenticationInterface {
      * @throws NoSuchAlgorithmException
      */
     public static boolean comparePassword(String _existingHashedPassword, String _userInputPassword) throws NoSuchAlgorithmException{
-        String hashedUserInputPassword = AccountAuthenticationInterface.hash(_userInputPassword);
-        return _existingHashedPassword.equals(hashedUserInputPassword);
+//        String hashedUserInputPassword = AccountAuthent
+        return true;
     }
 
 
@@ -38,16 +38,17 @@ public class AccountAuthenticationInterface {
      * @throws NoSuchAlgorithmException
      */
     public static String hash(String _password) throws NoSuchAlgorithmException {
-        final String SALT = "*Xlk:ei;Olnb";
-        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-        String saltedPassword = _password + SALT;
-        byte[] hashInBytes = messageDigest.digest(saltedPassword.getBytes(StandardCharsets.UTF_8));
-        StringBuilder stringBuilder = new StringBuilder();
-        //converting bytes to hexadecimal.
-        for(byte b : hashInBytes) {
-            stringBuilder.append(String.format("%02x",b));
-        }
-        return stringBuilder.toString();
+//        final String SALT = "*Xlk:ei;Olnb";
+//        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+//        String saltedPassword = _password + SALT;
+//        byte[] hashInBytes = messageDigest.digest(saltedPassword.getBytes(StandardCharsets.UTF_8));
+//        StringBuilder stringBuilder = new StringBuilder();
+//        //converting bytes to hexadecimal.
+//        for(byte b : hashInBytes) {
+//            stringBuilder.append(String.format("%02x",b));
+//        }
+//        return stringBuilder.toString();
+        return "";
     }
 
 
@@ -58,10 +59,11 @@ public class AccountAuthenticationInterface {
     * @return a boolean value return based on teh comparasion between existing password and input password
     */
     public static boolean isValidAccount(String _email, String _userInputPassword) throws NoSuchAlgorithmException, SQLException {
-        Account existingAccount = DataPersistence.loadAccount(_email);
-        final String EXISTING_HASHED_PASSWORD = existingAccount.getHashedPassword();
-
-        return AccountAuthenticationInterface.comparePassword(EXISTING_HASHED_PASSWORD, _userInputPassword);
+//        Account existingAccount = DataPersistence.loadAccount(_email);
+//        final String EXISTING_HASHED_PASSWORD = existingAccount.getHashedPassword();
+//
+//        return AccountAuthenticationInterface.comparePassword(EXISTING_HASHED_PASSWORD, _userInputPassword);
+        return false;
     }
 
 
