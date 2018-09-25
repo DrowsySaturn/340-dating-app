@@ -7,12 +7,14 @@ package com.datingapp.shared.datapersistence;
  */
 
 public class ClassScrapingException extends RuntimeException {
+
     /**
      * Constructs a generic ClassScrapingException with no message.
      */
     public ClassScrapingException() {
         super();
     }
+
 
     /**
      * Constructs a generic ClassScrapingException with a message.
@@ -21,6 +23,7 @@ public class ClassScrapingException extends RuntimeException {
     public ClassScrapingException(String _message) {
         super(_message);
     }
+
 
     /**
      * Constructs a generic ClassScrapingException with a message and a stack trace.
