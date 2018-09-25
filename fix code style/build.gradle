@@ -1,0 +1,12 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'ikestylechecker.gui.CodeStylingWindow'
+
+jar {
+  manifest {
+    attributes(
+      'Main-Class': 'ikestylechecker.gui.CodeStylingWindow'
+    )
+  }
+}
