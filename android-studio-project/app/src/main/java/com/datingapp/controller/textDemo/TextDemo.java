@@ -43,9 +43,11 @@ public class TextDemo {
             menu();
             input = Integer.parseInt(sc.nextLine());
             if(input == 1) {
-                signUpInterface(sc);
+//                signUpInterface(sc);
+                System.out.println("Login interface");
             } else if(input == 2) {
-                loginInterface(sc, existingAccount);
+//                loginInterface(sc, existingAccount);
+                System.out.println("Sign Up interface");
             } else if(input == 0) {
                 System.out.println("Input 0, exiting program");
             } else {
