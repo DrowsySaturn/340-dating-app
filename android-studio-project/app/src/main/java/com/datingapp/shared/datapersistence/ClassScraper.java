@@ -12,11 +12,21 @@ import java.lang.reflect.Field;
 
 public class ClassScraper<C> {
 
+
+    /**
+     * Type to read in.
+     */
     private Class<C> classType;
 
+
+    /**
+     * Creates a new ClassScraper
+     * @param _classType Type of the class.
+     */
     public ClassScraper(Class<C> _classType) {
         this.classType = _classType;
     }
+
 
     /**
      * Reads a private field from the current Object being "scraped".
