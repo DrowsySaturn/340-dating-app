@@ -11,15 +11,16 @@ package com.datingapp.shared.datapersistence;
 import com.datingapp.utility.AccountAuthenticationInterface;
 import java.security.NoSuchAlgorithmException;
 
-public class Account {
+public class UserAccount {
     private String email;
     private String password;
     private String hashedPassword;
+    private boolean isAdministrator;
 
-
-    public Account(String _email, String _password) throws NoSuchAlgorithmException {
+    public UserAccount(String _email, String _password) throws NoSuchAlgorithmException {
         this.email = _email;
         this.password = _password;
+        this.isAdministrator
         this.hashedPassword = AccountAuthenticationInterface.hash(this.password);
     }
 

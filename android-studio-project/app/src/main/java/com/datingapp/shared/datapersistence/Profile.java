@@ -11,9 +11,9 @@ public class Profile {
 
     public Profile()
     {
-        
+
     }
-    
+
     public Profile(int _age, String _name, String _personalMessage) {
         this(DatabasePersistenceConstants.UNASSIGNED_ID, _age, _name, _personalMessage);
     }

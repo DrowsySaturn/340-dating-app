@@ -9,7 +9,8 @@ package com.datingapp.controller.textDemo;
  */
 
 import com.datingapp.controller.SignupLoginController;
-import com.datingapp.shared.datapersistence.Account;
+import com.datingapp.shared.datapersistence.UserAccount;
+
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -38,7 +39,7 @@ public class TextDemo {
     public static void run() throws NoSuchAlgorithmException, SQLException {
         Scanner sc = new Scanner(System.in);
         int input;
-        Account existingAccount = null;
+        UserAccount existingUserAccount = null;
         do{
             menu();
             input = Integer.parseInt(sc.nextLine());
@@ -46,7 +47,7 @@ public class TextDemo {
 //                signUpInterface(sc);
                 System.out.println("Login interface");
             } else if(input == 2) {
-//                loginInterface(sc, existingAccount);
+//                loginInterface(sc, existingUserAccount);
                 System.out.println("Sign Up interface");
             } else if(input == 0) {
                 System.out.println("Input 0, exiting program");
@@ -57,7 +58,7 @@ public class TextDemo {
     }
 
 
-    private static void loginInterface(Scanner _sc, Account _account) throws NoSuchAlgorithmException, SQLException {
+    private static void loginInterface(Scanner _sc, UserAccount _User_account) throws NoSuchAlgorithmException, SQLException {
         System.out.println("");
         System.out.println("");
         System.out.println("Login interface");
@@ -65,8 +66,8 @@ public class TextDemo {
         String email = _sc.nextLine();
         System.out.println("Login User Password:");
         String password = _sc.nextLine();
-        _account = SignupLoginController.loginAccount(email, password);
-        System.out.println(String.format("The current in session account is %s", _account.getEmail()));
+        _User_account = SignupLoginController.loginAccount(email, password);
+        System.out.println(String.format("The current in session account is %s", _User_account.getEmail()));
     }
 
 

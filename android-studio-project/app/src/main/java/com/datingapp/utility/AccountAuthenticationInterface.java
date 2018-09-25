@@ -8,13 +8,13 @@ package com.datingapp.utility;
 * @Version 1: 9/25/2018
 */
 
-import com.datingapp.shared.datapersistence.Account;
+import com.datingapp.shared.datapersistence.UserAccount;
 import com.datingapp.server.datapersistence.DataPersistence;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.sql.SQLException.*;
 
 public class AccountAuthenticationInterface {
 
@@ -26,8 +26,8 @@ public class AccountAuthenticationInterface {
      * @throws NoSuchAlgorithmException
      */
     public static boolean comparePassword(String _existingHashedPassword, String _userInputPassword) throws NoSuchAlgorithmException{
-//        String hashedUserInputPassword = AccountAuthent
-        return true;
+        String hashedUserInputPassword = AccountAuthenticationInterface.hash(_userInputPassword);
+        return _existingHashedPassword.equals(hashedUserInputPassword);
     }
 
 
@@ -38,17 +38,16 @@ public class AccountAuthenticationInterface {
      * @throws NoSuchAlgorithmException
      */
     public static String hash(String _password) throws NoSuchAlgorithmException {
-//        final String SALT = "*Xlk:ei;Olnb";
-//        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-//        String saltedPassword = _password + SALT;
-//        byte[] hashInBytes = messageDigest.digest(saltedPassword.getBytes(StandardCharsets.UTF_8));
-//        StringBuilder stringBuilder = new StringBuilder();
-//        //converting bytes to hexadecimal.
-//        for(byte b : hashInBytes) {
-//            stringBuilder.append(String.format("%02x",b));
-//        }
-//        return stringBuilder.toString();
-        return "";
+        final String SALT = "*Xlk:ei;Olnb";
+        MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+        String saltedPassword = _password + SALT;
+        byte[] hashInBytes = messageDigest.digest(saltedPassword.getBytes(StandardCharsets.UTF_8));
+        StringBuilder stringBuilder = new StringBuilder();
+        //converting bytes to hexadecimal.
+        for(byte b : hashInBytes) {
+            stringBuilder.append(String.format("%02x",b));
+        }
+        return stringBuilder.toString();
     }
 
 
@@ -59,10 +58,10 @@ public class AccountAuthenticationInterface {
     * @return a boolean value return based on teh comparasion between existing password and input password
     */
     public static boolean isValidAccount(String _email, String _userInputPassword) throws NoSuchAlgorithmException, SQLException {
-//        Account existingAccount = DataPersistence.loadAccount(_email);
-//        final String EXISTING_HASHED_PASSWORD = existingAccount.getHashedPassword();
-//
-//        return AccountAuthenticationInterface.comparePassword(EXISTING_HASHED_PASSWORD, _userInputPassword);
+        UserAccount existingUserAccount = DataPersistence.loadAccount(_email);
+        final String EXISTING_HASHED_PASSWORD = existingUserAccount.getHashedPassword();
+
+        return AccountAuthenticationInterface.comparePassword(EXISTING_HASHED_PASSWORD, _userInputPassword);
         return false;
     }
 

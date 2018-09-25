@@ -8,7 +8,6 @@ package com.datingapp.server.datapersistence;
 
 import com.datingapp.shared.datapersistence.ClassScraper;
 import com.datingapp.shared.datapersistence.Profile;
-import com.datingapp.shared.datapersistence.Account;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
