@@ -18,7 +18,7 @@ import java.sql.Statement;
 import java.sql.Types;
 
 public class DataPersistence {
-    
+
     /**
      * This gets an existing profile from the database.
      *

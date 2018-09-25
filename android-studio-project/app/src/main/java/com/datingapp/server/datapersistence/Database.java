@@ -46,11 +46,13 @@ public class Database {
         dataSource.setPassword(DATABASE_MANAGER_PASSWORD);
     }
 
+
     /**
      * Disallow instances of Database.
      */
     private Database() {
     }
+
 
     /**
      * Gets a new connection from the connection pool. When close() is called on the connection it

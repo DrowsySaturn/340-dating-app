@@ -20,17 +20,18 @@ public class SignupLoginController {
 
 
     public static Account loginAccount(String _email, String _password) throws IllegalArgumentException, NoSuchAlgorithmException, SQLException{
-        if(AccountAuthenticationInterface.isValidAccount(_email, _password)) {
-            return SignupLoginController.account = DataPersistence.loadAccount(_email);
-        } else {
-            throw new IllegalArgumentException("Wrong password");
-        }
+//        if(AccountAuthenticationInterface.isValidAccount(_email, _password)) {
+//            return SignupLoginController.account = DataPersistence.loadAccount(_email);
+//        } else {
+//            throw new IllegalArgumentException("Wrong password");
+//        }
+        return null;
     }
 
 
     public static void signupAccount(String _email, String _password) throws IllegalArgumentException, NoSuchAlgorithmException, SQLException {
-        SignupLoginController.account = new Account(_email, _password);
-        DataPersistence.save(SignupLoginController.account);
+//        SignupLoginController.account = new Account(_email, _password);
+//        DataPersistence.save(SignupLoginController.account);
     }
 
 
