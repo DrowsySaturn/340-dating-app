@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="matches">Matches</string>
+    <string name="record_video">Record Video -/-</string>
+    <string name="settings">Settings</string>
+    <string name="place_holder">Place Holder</string>
+    <string name="textview">TextView</string>
+    <string name="reset">reset</string>
+    <string name="save">save</string>
+    <string name="leave">leave</string>
+</resources>
