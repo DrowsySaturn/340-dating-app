@@ -30,14 +30,6 @@ public class Profile {
      */
     private String personalMessage;
 
-<<<<<<< HEAD
-    public Profile()
-    {
-
-    }
-
-=======
-
     /**
      * Constructs a new Profile. Will be inserted into database instead of updated because of -1 id.
      * When saved the id will be updated.
@@ -45,7 +37,6 @@ public class Profile {
      * @param _name Name of the person.
      * @param _personalMessage Personal message of the person.
      */
->>>>>>> 4c7ae7108434e3ed4a0bee90f2a39f77061c2925
     public Profile(int _age, String _name, String _personalMessage) {
         this(DatabasePersistenceConstants.UNASSIGNED_ID, _age, _name, _personalMessage);
     }
