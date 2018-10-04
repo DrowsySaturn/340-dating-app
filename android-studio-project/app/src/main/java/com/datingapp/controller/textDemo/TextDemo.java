@@ -43,18 +43,18 @@ public class TextDemo {
         do{
             menu();
             input = Integer.parseInt(sc.nextLine());
-            if(input == 1) {
+            if(input == LoginSignupExecuteCommand.SIGN_UP) {
 //                signUpInterface(sc);
                 System.out.println("Login interface");
-            } else if(input == 2) {
+            } else if(input == LoginSignupExecuteCommand.LOGIN_IN) {
 //                loginInterface(sc, existingUserAccount);
                 System.out.println("Sign Up interface");
-            } else if(input == 0) {
+            } else if(input == LoginSignupExecuteCommand.EXIT) {
                 System.out.println("Input 0, exiting program");
             } else {
                 System.out.println("Invalid input, try again");
             }
-        } while (input != 0);
+        } while (input != LoginSignupExecuteCommand.EXIT);
     }
 
 
