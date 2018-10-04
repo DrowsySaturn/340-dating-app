@@ -17,8 +17,8 @@
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="architectural 2.svg"
    inkscape:export-filename="D:\MegaSync\General archives\School archives\340-dating-app\docs\architectural.png"
-   inkscape:export-xdpi="60.765499"
-   inkscape:export-ydpi="60.765499">
+   inkscape:export-xdpi="71.120003"
+   inkscape:export-ydpi="71.120003">
   <defs
      id="defs2">
     <marker
@@ -1340,7 +1340,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="857.52353"
+     inkscape:cx="499.92953"
      inkscape:cy="341.99555"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -1359,7 +1359,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
