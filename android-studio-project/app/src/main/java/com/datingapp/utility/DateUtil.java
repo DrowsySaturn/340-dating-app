@@ -10,9 +10,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateUtil {
-    public static java.util.Date getCurrentDateAndTime() {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy");
+    /**
+     * This method will generate the date, precise to
+     * @return
+     */
+    public static Date getCurrentDateAndTime() {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
         Date date = new Date();
         return date;
+    }
+
+    public static void main(String[] args) {
+        Date currentDate = DateUtil.getCurrentDateAndTime();
+        System.out.println(currentDate.toString());
     }
 }
