@@ -9,7 +9,7 @@ package com.datingapp.controller.textDemo;
  */
 
 import com.datingapp.controller.SignupLoginController;
-import com.datingapp.shared.datapersistence.UserAccount;
+import com.datingapp.shared.datapersistence.LoginInformation;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
@@ -39,7 +39,7 @@ public class TextDemo {
     public static void run() throws NoSuchAlgorithmException, SQLException {
         Scanner sc = new Scanner(System.in);
         int input;
-        UserAccount existingUserAccount = null;
+        LoginInformation existingLoginInformation = null;
         do{
             menu();
             input = Integer.parseInt(sc.nextLine());
@@ -47,7 +47,7 @@ public class TextDemo {
 //                signUpInterface(sc);
                 System.out.println("Login interface");
             } else if(input == LoginSignupExecuteCommand.LOGIN_IN) {
-//                loginInterface(sc, existingUserAccount);
+//                loginInterface(sc, existingLoginInformation);
                 System.out.println("Sign Up interface");
             } else if(input == LoginSignupExecuteCommand.EXIT) {
                 System.out.println("Input 0, exiting program");
@@ -58,7 +58,7 @@ public class TextDemo {
     }
 
 
-    private static void loginInterface(Scanner _sc, UserAccount _User_account) throws NoSuchAlgorithmException, SQLException {
+    private static void loginInterface(Scanner _sc, LoginInformation _User_account) throws NoSuchAlgorithmException, SQLException {
         System.out.println("");
         System.out.println("");
         System.out.println("Login interface");
