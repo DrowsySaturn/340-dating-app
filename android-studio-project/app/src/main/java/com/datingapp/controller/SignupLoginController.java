@@ -12,12 +12,13 @@ import com.datingapp.shared.datapersistence.LoginInformation;
 import com.datingapp.utility.LoginAuthenticationInterface;
 
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 
 public class SignupLoginController {
     private static LoginInformation loginInformation;
 
 
-    public static LoginInformation loginAccount(String _email, String _password) throws IllegalArgumentException, NoSuchAlgorithmException, SQLException{
+    public static LoginInformation loginAccount(String _email, String _password) throws IllegalArgumentException, NoSuchAlgorithmException, SQLException {
         if(LoginAuthenticationInterface.isValidLogin(_email, _password)) {
             return SignupLoginController.loginInformation = DataPersistence.loadAccount(_email);
         } else {
