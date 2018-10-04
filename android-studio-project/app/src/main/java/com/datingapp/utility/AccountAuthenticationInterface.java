@@ -58,10 +58,10 @@ public class AccountAuthenticationInterface {
     * @return a boolean value return based on teh comparasion between existing password and input password
     */
     public static boolean isValidAccount(String _email, String _userInputPassword) throws NoSuchAlgorithmException, SQLException {
-        UserAccount existingUserAccount = DataPersistence.loadAccount(_email);
-        final String EXISTING_HASHED_PASSWORD = existingUserAccount.getHashedPassword();
+        //UserAccount existingUserAccount = DataPersistence.loadAccount(_email);
+        //final String EXISTING_HASHED_PASSWORD = existingUserAccount.getHashedPassword();
 
-        return AccountAuthenticationInterface.comparePassword(EXISTING_HASHED_PASSWORD, _userInputPassword);
+       // return AccountAuthenticationInterface.comparePassword(EXISTING_HASHED_PASSWORD, _userInputPassword);
         return false;
     }
 

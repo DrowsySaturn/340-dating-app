@@ -20,7 +20,7 @@ public class UserAccount {
     public UserAccount(String _email, String _password) throws NoSuchAlgorithmException {
         this.email = _email;
         this.password = _password;
-        this.isAdministrator
+        //this.isAdministrator
         this.hashedPassword = AccountAuthenticationInterface.hash(this.password);
     }
 
