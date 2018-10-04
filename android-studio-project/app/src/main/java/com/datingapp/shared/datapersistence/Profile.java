@@ -68,8 +68,15 @@ public class Profile {
 
 
     /**
-     * Get the name of this person.
-     * @return Person's name.
+     * Get the id of this person.
+     * @return id of this person
+     */
+
+    public long getId() {return this.id; }
+
+    /**
+     * Gets the name of this person.
+     * @return The name of this person.
      */
     public String getName() {
         return this.name;
@@ -84,7 +91,6 @@ public class Profile {
         return this.personalMessage;
     }
 
-
     /**
      * Sets the age of the person.
      * @param _age New age.
@@ -93,15 +99,20 @@ public class Profile {
         this.age = _age;
     }
 
+    /**
+     * Sets the age of this person.
+     * @param _id id of this person.
+     */
+    public void setId(long _id){this.id = _id;}
 
     /**
      * Sets the name of this person.
      * @param _name Name of the person
      */
+
     public void setName(String _name) {
         this.name = _name;
     }
-
 
     /**
      * Sets the personal message of the profile.
