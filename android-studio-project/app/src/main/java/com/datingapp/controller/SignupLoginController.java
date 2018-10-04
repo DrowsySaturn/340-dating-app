@@ -19,7 +19,8 @@ import java.sql.SQLException;
 
 public class SignupLoginController {
     private static LoginInformation loginInformation;
-    
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static LoginInformation loginAccount(String _email, String _password) throws IllegalArgumentException, NoSuchAlgorithmException, SQLException {
         if(LoginAuthenticationInterface.isValidLogin(_email, _password)) {
             return SignupLoginController.loginInformation = DataPersistence.loadLogin(_email);

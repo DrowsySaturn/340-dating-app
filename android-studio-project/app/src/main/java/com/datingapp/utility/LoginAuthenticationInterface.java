@@ -65,7 +65,7 @@ public class LoginAuthenticationInterface {
     */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static boolean isValidLogin(String _email, String _userInputPassword) throws NoSuchAlgorithmException, SQLException {
-        LoginInformation existingUserAccount = DataPersistence.loadLogin();
+        LoginInformation existingUserAccount = DataPersistence.loadLogin(_email);
         final String EXISTING_HASHED_PASSWORD = existingUserAccount.getPassword();
         return LoginAuthenticationInterface.comparePassword(EXISTING_HASHED_PASSWORD, _userInputPassword);
     }
