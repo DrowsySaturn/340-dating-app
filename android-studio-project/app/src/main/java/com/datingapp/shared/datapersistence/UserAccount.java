@@ -41,11 +41,6 @@ public class UserAccount {
     public UserAccount(String _email, String _password) throws NoSuchAlgorithmException {
         this.email = _email;
         this.password = _password;
-<<<<<<< HEAD
-        //this.isAdministrator
-=======
-        this.isAdministrator =
->>>>>>> 2a8640fa73fb56e2bbcf6c3c60490241f701c3f3
         this.hashedPassword = AccountAuthenticationInterface.hash(this.password);
     }
 

@@ -7,6 +7,7 @@ package com.datingapp.server.datapersistence;
  */
 
 import com.datingapp.shared.datapersistence.ClassScraper;
+import com.datingapp.shared.datapersistence.LoginInformation;
 import com.datingapp.shared.datapersistence.Match;
 import com.datingapp.shared.datapersistence.Profile;
 import com.datingapp.utility.DateUtil;
@@ -134,6 +135,14 @@ public class DataPersistence {
                 connection.close();
             }
         }
+    }
+
+    public static void save(LoginInformation _loginInfo) {
+
+    }
+
+    public static LoginInformation loadLogin(String _email) {
+        return null;
     }
 
 }
