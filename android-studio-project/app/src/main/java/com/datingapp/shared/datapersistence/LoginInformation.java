@@ -76,6 +76,6 @@ public class LoginInformation {
      * @param _passowrd: password input.
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void setPassword(String _passowrd) { this.password = LoginAuthenticationInterface.hash(_password);}
+    public void setPassword(String _passowrd) throws NoSuchAlgorithmException { this.password = LoginAuthenticationInterface.hash(_passowrd);}
 
 }
