@@ -66,7 +66,7 @@ public class TextDemo {
 //        String email = _sc.nextLine();
 //        System.out.println("Login User Password:");
 //        String password = _sc.nextLine();
-//       // _User_account = SignupLoginController.loginAccount(email, password);
+//       // _User_account = SignupLoginController.login(email, password);
 //        System.out.println(String.format("The current in session account is %s", _User_account.getEmail()));
 //    }
 //
@@ -87,7 +87,7 @@ public class TextDemo {
 //        String email = _sc.nextLine();
 //        System.out.println("Password:");
 //        String password = _sc.nextLine();
-//        //SignupLoginController.signupAccount(email, password);
+//        //SignupLoginController.signUp(email, password);
 //    }
 
 

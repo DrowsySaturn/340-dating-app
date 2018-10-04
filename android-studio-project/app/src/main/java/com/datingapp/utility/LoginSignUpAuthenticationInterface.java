@@ -18,8 +18,9 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.HashSet;
 
-public class LoginAuthenticationInterface {
+public class LoginSignUpAuthenticationInterface {
 
     /**
      * The purpose for this method is to compare a hashed password, with the user input hashed password.
@@ -30,23 +31,23 @@ public class LoginAuthenticationInterface {
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private static boolean comparePassword(String _existingHashedPassword, String _userInputPassword) throws NoSuchAlgorithmException {
-        String hashedUserInputPassword = LoginAuthenticationInterface.hash(_userInputPassword);
+        String hashedUserInputPassword = LoginSignUpAuthenticationInterface.hash(_userInputPassword);
         return _existingHashedPassword.equals(hashedUserInputPassword);
     }
 
 
     /**
      * The purpose for this method is to take in a String value, and to hash it with the SHA-256 algorithm.
-     * @param _password
-     * @return  SHA-256 hashed form of the _password
+     * @param _input
+     * @return  SHA-256 hashed form of the _input
      * @throws NoSuchAlgorithmException
      */
     //RequiresApi helps to set up the unicode standard.
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public static String hash(String _password) throws NoSuchAlgorithmException {
+    public static String hash(String _input) throws NoSuchAlgorithmException {
         final String SALT = "*Xlk:ei;Olnb";
         MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-        String saltedPassword = _password + SALT;
+        String saltedPassword = _input + SALT;
         byte[] hashInBytes = messageDigest.digest(saltedPassword.getBytes(StandardCharsets.UTF_8));
         StringBuilder stringBuilder = new StringBuilder();
         //converting bytes to hexadecimal.
@@ -67,8 +68,19 @@ public class LoginAuthenticationInterface {
     public static boolean isValidLogin(String _email, String _userInputPassword) throws NoSuchAlgorithmException, SQLException {
         LoginInformation existingUserAccount = DataPersistence.loadLogin(_email);
         final String EXISTING_HASHED_PASSWORD = existingUserAccount.getPassword();
-        return LoginAuthenticationInterface.comparePassword(EXISTING_HASHED_PASSWORD, _userInputPassword);
+        return LoginSignUpAuthenticationInterface.comparePassword(EXISTING_HASHED_PASSWORD, _userInputPassword);
     }
 
 
+    /**
+     * This function will determine the boolean value if the current login id is a duplicate from the data base.
+     * @param _email
+     * @return
+     * @throws NoSuchAlgorithmException
+     */
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static boolean isDuplicateLoginID(String _email) throws NoSuchAlgorithmException {
+        HashSet<String> existentialLoginIDs = DataPersistence.loadAllLoginID();
+        return existentialLoginIDs.contains(LoginSignUpAuthenticationInterface.hash(_email));
+    }
 }

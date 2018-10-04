@@ -20,8 +20,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import java.time.ZonedDateTime;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class DataPersistence {
+
+    /**
+     * From Vincent Yang, make this please.
+     * This method will load in all the login ID in SHA-256 cipher text.
+     * Use [LoginSingUpAuthenticationInterface.hash(String _input)] to Encrypt each Login ID into the hash set.
+     * @return a hash set that contains all the Login ID in SHA-256 cipher text.
+     */
+    public static HashSet<String> loadAllLoginID() {
+        return null;
+    }
 
     /**
      * This gets an existing profile from the database.
