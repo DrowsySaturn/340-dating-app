@@ -7,7 +7,7 @@ package com.datingapp.server;
  */
 
 import com.datingapp.server.datapersistence.DataPersistence;
-import com.datingapp.shared.datapersistence.Profile;
+import com.datingapp.shared.dataobjects.Profile;
 
 import java.sql.SQLException;
 

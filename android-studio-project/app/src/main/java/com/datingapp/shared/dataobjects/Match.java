@@ -1,4 +1,7 @@
-package com.datingapp.shared.datapersistence;
+package com.datingapp.shared.dataobjects;
+
+import com.datingapp.shared.datapersistence.DatabasePersistenceConstants;
+
 /*
  * The purpose of this class is to handle matches between users.
  *

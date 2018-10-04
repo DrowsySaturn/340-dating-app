@@ -7,9 +7,9 @@ package com.datingapp.server.datapersistence;
  */
 
 import com.datingapp.shared.datapersistence.ClassScraper;
-import com.datingapp.shared.datapersistence.LoginInformation;
-import com.datingapp.shared.datapersistence.Match;
-import com.datingapp.shared.datapersistence.Profile;
+import com.datingapp.shared.dataobjects.LoginInformation;
+import com.datingapp.shared.dataobjects.Match;
+import com.datingapp.shared.dataobjects.Profile;
 import com.datingapp.utility.DateUtil;
 
 import java.sql.Connection;

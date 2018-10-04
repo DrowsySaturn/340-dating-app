@@ -11,7 +11,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 
 import com.datingapp.server.datapersistence.DataPersistence;
-import com.datingapp.shared.datapersistence.LoginInformation;
+import com.datingapp.shared.dataobjects.LoginInformation;
 import com.datingapp.utility.LoginAuthenticationInterface;
 
 import java.security.NoSuchAlgorithmException;

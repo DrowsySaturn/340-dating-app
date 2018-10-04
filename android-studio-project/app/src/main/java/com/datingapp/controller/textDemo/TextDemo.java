@@ -9,7 +9,7 @@ package com.datingapp.controller.textDemo;
  */
 
 import com.datingapp.controller.SignupLoginController;
-import com.datingapp.shared.datapersistence.LoginInformation;
+import com.datingapp.shared.dataobjects.LoginInformation;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;

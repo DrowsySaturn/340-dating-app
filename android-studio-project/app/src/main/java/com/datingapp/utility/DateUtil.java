@@ -24,9 +24,4 @@ public class DateUtil {
         Date date = new Date();
         return date;
     }
-
-    public static void main(String[] args) {
-        Date currentDate = DateUtil.getCurrentDateAndTime();
-        System.out.println(currentDate.toString());
-    }
 }

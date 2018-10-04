@@ -1,10 +1,12 @@
-package com.datingapp.shared.datapersistence;
+package com.datingapp.shared.dataobjects;
 /*
  * The purpose of this class is to hold relevant information about a user's profile.
  *
  * @author Jonathan Cooper
  * @version sep-25-2018
  */
+
+import com.datingapp.shared.datapersistence.DatabasePersistenceConstants;
 
 public class Profile {
     /**
