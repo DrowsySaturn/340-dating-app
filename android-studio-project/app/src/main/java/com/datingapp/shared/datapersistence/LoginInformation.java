@@ -12,6 +12,8 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 
 import com.datingapp.utility.LoginAuthenticationInterface;
+import com.datingapp.utility.LoginInConstants;
+
 import java.security.NoSuchAlgorithmException;
 
 public class LoginInformation {
@@ -35,8 +37,12 @@ public class LoginInformation {
      */
     private boolean isActive;
 
+    public LoginInformation(String _email, String _password) throws NoSuchAlgorithmException {
+        this(_email,_password,LoginInConstants.NOT_ADMIN,LoginInConstants.IS_ACTIVE);
+    }
+
     /**
-     * Two-args constructor
+     * four-args constructor constructor
      * @param _email
      * @param _password
      * @throws NoSuchAlgorithmException
