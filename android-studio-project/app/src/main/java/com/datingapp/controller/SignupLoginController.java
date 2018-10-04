@@ -54,6 +54,7 @@ public class SignupLoginController {
     public static void signUp(String _email, String _password) throws IllegalArgumentException, NoSuchAlgorithmException, SQLException {
         if(!LoginSignUpAuthenticationInterface.isDuplicateLoginID(_email)){
             SignupLoginController.loginInformation = new LoginInformation(_email, _password);
+            SignupLoginController.loginInformation.hashPassword();
             DataPersistence.save(SignupLoginController.loginInformation);
         } else {
             throw new IllegalArgumentException(String.format("Email %s is taken", _email));
