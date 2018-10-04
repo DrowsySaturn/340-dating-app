@@ -3,13 +3,16 @@ package com.datingapp.server.datapersistence;
  * The purpose of this class is to read and write to the database.
  *
  * @author Jonathan Cooper, William Buck
- * @version sep-24-2018
+ * @version oct-04-2018
  */
 
 import com.datingapp.shared.datapersistence.ClassScraper;
+import com.datingapp.shared.datapersistence.Match;
 import com.datingapp.shared.datapersistence.Profile;
+import com.datingapp.utility.DateUtil;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -104,5 +107,33 @@ public class DataPersistence {
         }
     }
 
+    /*
+     * The purpose of this class is to save a match to the database involving exactly two profiles
+     * and set it to active.
+     * @param: _profile1 and _profile2, the two profiles being matched
+     */
+
+    public static void save(Match _match) throws SQLException {
+        Object thisObj =  new Object();
+        synchronized (thisObj) {
+            Connection connection = Database.getConnection();
+            final String sql = "INSERT INTO Matched (Profile_1_ID, Profile_2_ID, Matched_Date, active) VALUE (?,?,?,?)";
+            try {
+                PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                try {
+                    statement.setLong(1, _match.getFirstProfile().getId());
+                    statement.setLong(2, _match.getSecondProfile().getId());
+                    statement.setDate(3, (Date) DateUtil.getCurrentDateAndTime());
+                    statement.setBoolean(4, true);
+                    statement.execute();
+                }
+                finally {
+                    statement.close();
+                }
+            } finally {
+                connection.close();
+            }
+        }
+    }
 
 }
