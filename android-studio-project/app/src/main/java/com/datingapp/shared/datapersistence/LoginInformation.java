@@ -47,7 +47,6 @@ public class LoginInformation {
      * @param _password
      * @throws NoSuchAlgorithmException
      */
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public LoginInformation(String _email, String _password, boolean _isAdministrator, boolean _isActive) throws NoSuchAlgorithmException {
         this.email = _email;
         this.password = LoginAuthenticationInterface.hash(_password);
