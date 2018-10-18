@@ -38,6 +38,7 @@ public class ClassScraper<C> {
         try {
             Field field = classType.getDeclaredField(_variableName);
             field.setAccessible(true);
+            field.setAccessible(true);
             if (!field.getType().equals(_variableType) || _variableType.isPrimitive()) {
                 throw new ClassScrapingException("Field is not correct type " + _variableName);
             }

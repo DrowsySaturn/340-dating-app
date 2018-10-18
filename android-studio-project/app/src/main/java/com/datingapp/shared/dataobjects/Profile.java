@@ -8,7 +8,7 @@ package com.datingapp.shared.dataobjects;
 
 import com.datingapp.shared.datapersistence.DatabasePersistenceConstants;
 
-public class Profile {
+public class  Profile {
     /**
      * Id of the profile.
      */

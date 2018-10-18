@@ -6,8 +6,13 @@ package com.datingapp.utility;
  * @version: oct-04-2018
  */
 
+import android.annotation.TargetApi;
+import android.os.Build;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
 
 
 /*
@@ -19,9 +24,9 @@ public class DateUtil {
      * This method will generate the date, precise to
      * @return
      */
-    public static Date getCurrentDateAndTime() {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-        Date date = new Date();
-        return date;
+    @TargetApi(Build.VERSION_CODES.O)
+    public static LocalDate getCurrentDateAndTime() {
+        LocalDate todayLocalDate = LocalDate.now(ZoneId.of(""));
+        return todayLocalDate;
     }
 }
