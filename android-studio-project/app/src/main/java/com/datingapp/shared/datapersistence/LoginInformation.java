@@ -11,8 +11,8 @@ package com.datingapp.shared.datapersistence;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import com.datingapp.utility.LoginSignUpAuthenticationInterface;
-import com.datingapp.utility.LoginInConstants;
+import com.datingapp.client.controllers.AuthenticationInterface;
+import com.datingapp.client.controllers.LoginInConstants;
 
 import java.security.NoSuchAlgorithmException;
 
@@ -67,13 +67,13 @@ public class LoginInformation {
 
 
     /**
-     * This method will utilize the hash() function from LoginSignUpAuthenticationInterface to hash the password with the hashing algorithm SHA-256.
+     * This method will utilize the hash() function from AuthenticationInterface to hash the password with the hashing algorithm SHA-256.
      * Only invoke this method, when a user is signing up for an account.
      * @throws NoSuchAlgorithmException
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void hashPassword() throws NoSuchAlgorithmException {
-        this.password = LoginSignUpAuthenticationInterface.hash(this.password);
+        this.password = AuthenticationInterface.hash(this.password);
     }
 
 

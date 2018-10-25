@@ -1,4 +1,4 @@
-package com.datingapp.client.controller.textdemo;
+package com.datingapp.client.controllers.textdemo;
 
 public class LoginSignupExecuteCommand {
     final public static int LOGIN_IN = 2;

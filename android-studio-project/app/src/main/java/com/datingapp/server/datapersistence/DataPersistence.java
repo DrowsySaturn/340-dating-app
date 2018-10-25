@@ -154,7 +154,7 @@ public class DataPersistence {
 
     }
 
-    public static LoginInformation loadLogin(String _email) {
+    public static LoginInformation loadLogin(String _email) throws SQLException {
         return null;
     }
 
