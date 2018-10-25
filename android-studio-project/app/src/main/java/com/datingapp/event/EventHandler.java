@@ -12,17 +12,29 @@ public class EventHandler {
     }
 
 
+    /**
+     * This method is designed for user to force fire the event immediately.
+     * DO NOT use this unless the programmer has to force fire an event at the moment.
+     * @param _event
+     */
+    public static void fireEvent(EventListener _event) {
+        _event.fireEvent();
+        EventHandler.events.remove(_event);
+    }
+
+
+    /**
+     * This method would fire the first event that came into the queue.
+     */
     public static void fireTopEvent() {
         EventHandler.events.element().fireEvent();
         EventHandler.events.remove();
     }
 
 
-    public static void fireEvent(EventListener _event) {
-        _event.fireEvent();
-        EventHandler.events.remove(_event);
-    }
-
+    /**
+     * This method would fire all the events.
+     */
     public static void fireAllEvent() {
         if(EventHandler.events.isEmpty()) {
             System.out.println("Currently No Event");
