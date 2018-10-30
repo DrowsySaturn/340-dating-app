@@ -3,6 +3,7 @@ package com.datingapp.server.servlets;
  * Creates user from json body.
  */
 
+import com.datingapp.json.Json;
 import com.datingapp.server.datapersistence.DataPersistence;
 import com.datingapp.shared.datapersistence.LoginInformation;
 import com.google.gson.Gson;
@@ -16,12 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class CreateUserServlet extends HttpServlet {
-    Gson gson;
-
-    public void init() {
-        gson = new Gson();
-    }
-
     public void doPost(HttpServletRequest _request, HttpServletResponse _response) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(_request.getInputStream()));
         String line = "";
@@ -29,7 +24,7 @@ public class CreateUserServlet extends HttpServlet {
         while ((line = reader.readLine()) != null) {
             buffer.append(line);
         }
-        LoginInformation information = gson.fromJson(buffer.toString(), LoginInformation.class);
+        LoginInformation information = Json.deserialize(buffer.toString(), LoginInformation.class);
         DataPersistence.save(information);
     }
 }

@@ -7,31 +7,24 @@ package com.datingapp.server.servlets;
  * @version oct-17-2018
  */
 
+import com.datingapp.json.Json;
 import com.datingapp.server.datapersistence.DataPersistence;
 import com.datingapp.shared.datapersistence.Profile;
-import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ProfileServlet extends HttpServlet {
-
     /**
      * The parameter that will contain the id of the profile.
      */
     private static final String REQUEST_PARAMETER = "id";
-
-    /**
-     * Object used for serializing the output profile.
-     */
-    private Gson gson = null;
 
     @Override
     /**
@@ -50,7 +43,7 @@ public class ProfileServlet extends HttpServlet {
         }
         try{
             Profile profile = DataPersistence.loadProfileById(profileId);
-            String json = gson.toJson(profile);
+            String json = Json.serialize(profile);
             PrintWriter writer = _response.getWriter();
             writer.println(json);
             writer.flush();
@@ -69,13 +62,5 @@ public class ProfileServlet extends HttpServlet {
      */
     public void doPost(HttpServletRequest _request, HttpServletResponse _response) throws ServletException, IOException {
         doGet(_request, _response);
-    }
-
-    @Override
-    /**
-     * Initializes this servlet.
-     */
-    public void init() throws ServletException {
-        gson = new Gson();
     }
 }

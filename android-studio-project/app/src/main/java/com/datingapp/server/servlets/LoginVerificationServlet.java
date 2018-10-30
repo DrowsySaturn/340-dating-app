@@ -5,6 +5,7 @@ package com.datingapp.server.servlets;
  * @version oct-30-2018
  */
 
+import com.datingapp.json.Json;
 import com.datingapp.server.datapersistence.DataPersistence;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
 import com.google.gson.Gson;
@@ -20,17 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class LoginVerificationServlet extends HttpServlet {
-
-    private Gson gson;
-
-    /**
-     * Initializes the GSON instance.
-     */
-    @Override
-    public void init() {
-        gson = new Gson();
-    }
-
     /**
      * Verifies login stuff.
      */
@@ -38,7 +28,7 @@ public class LoginVerificationServlet extends HttpServlet {
     public void doGet(HttpServletRequest _request, HttpServletResponse _response) throws ServletException, IOException {
         LoginConfirmation confirmation = DataPersistence.verifyLogin((String)_request.getAttribute("username"), (String)_request.getAttribute("password"));
         PrintWriter out = _response.getWriter();
-        out.println(gson.toJson(confirmation));
+        out.println(Json.serialize(confirmation));
         out.flush();
     }
 }
