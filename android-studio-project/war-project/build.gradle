@@ -1,0 +1,22 @@
+plugins {
+	id 'war'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
+    implementation group: 'javax', name: 'javaee-api', version:'7.0'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
+    implementation group: 'commons-digester', name: 'commons-digester', version: '2.1'
+}
+
+war {
+	from('../app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/') {
+		include '**/*.class'
+		into 'WEB-INF/classes'
+	}
+	webXml = file('custom-web.xml')
+}
