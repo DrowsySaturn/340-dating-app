@@ -20,6 +20,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 
 public class DataPersistence {
 
@@ -55,6 +56,15 @@ public class DataPersistence {
         } finally {
             connection.close();
         }
+    }
+
+    /**
+     * This method will return recent matches for a specific user.
+     * @param _username User to get matches for.
+     * @return A list of recent matches.
+     */
+    public static ArrayList<Match> loadRecentMatchees(String _username) {
+        return new ArrayList<Match>();
     }
 
 
