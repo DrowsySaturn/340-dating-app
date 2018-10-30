@@ -4,11 +4,9 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import com.datingapp.event.EventHandler;
-import com.datingapp.event.SignUpEvent;
+import com.datingapp.eventsinterfaces.eventhandlers.SignUpEventHandler;
+import com.datingapp.eventsinterfaces.events.SignUpEvent;
 import com.datingapp.shared.datapersistence.LoginInformation;
-
-import java.security.NoSuchAlgorithmException;
 
 public class SignUpController {
     private static LoginInformation loginInformation = null;
@@ -21,7 +19,7 @@ public class SignUpController {
         } else {
             SignUpController.loginInformation = new LoginInformation(_email, _userInputPassword);
             SignUpEvent event = new SignUpEvent(SignUpController.loginInformation);
-            EventHandler.addEvent(event);
+            SignUpEventHandler.getInstance().addEvent(event);
         }
     }
 }

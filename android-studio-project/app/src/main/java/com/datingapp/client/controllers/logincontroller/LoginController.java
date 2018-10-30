@@ -10,8 +10,8 @@ package com.datingapp.client.controllers.logincontroller;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import com.datingapp.event.EventHandler;
-import com.datingapp.event.LoginEvent;
+import com.datingapp.eventsinterfaces.events.LoginEvent;
+import com.datingapp.eventsinterfaces.eventhandlers.LoginEventHandler;
 import com.datingapp.shared.datapersistence.LoginInformation;
 
 import java.security.NoSuchAlgorithmException;
@@ -39,8 +39,7 @@ public class LoginController {
             throw new IllegalArgumentException("Email Or Password is incorrect");
         } else {
             LoginEvent loginEvent = new LoginEvent(LoginController.loginInformation);
-            EventHandler.addEvent(loginEvent);
+            LoginEventHandler.getInstance().addEvent(loginEvent);
         }
     }
-
 }

@@ -1,4 +1,4 @@
-package com.datingapp.event;
+package com.datingapp.eventsinterfaces.events;
 
 public interface EventListener {
     public void fireEvent();

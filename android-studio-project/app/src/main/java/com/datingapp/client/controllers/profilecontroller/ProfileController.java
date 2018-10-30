@@ -1,7 +1,7 @@
 package com.datingapp.client.controllers.profilecontroller;
 
-import com.datingapp.event.EventHandler;
-import com.datingapp.event.ProfileEvent;
+import com.datingapp.eventsinterfaces.eventhandlers.ProfileEventHandler;
+import com.datingapp.eventsinterfaces.events.ProfileEvent;
 import com.datingapp.shared.datapersistence.Profile;
 
 public class ProfileController {
@@ -12,7 +12,7 @@ public class ProfileController {
         String name = _firstName + " " + _lastName;
         ProfileController.profile = ProfileProcessor.createProfile(_age, name, _personalMessage);
         ProfileEvent event = new ProfileEvent(ProfileController.profile);
-        EventHandler.addEvent(event);
+        ProfileEventHandler.getInstance().addEvent(event);
     }
 
 
