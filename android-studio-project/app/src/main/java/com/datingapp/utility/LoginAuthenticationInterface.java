@@ -11,8 +11,8 @@ package com.datingapp.utility;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import com.datingapp.server.datapersistence.DataPersistence;
-import com.datingapp.shared.dataobjects.LoginInformation;
+import com.datingapp.server.datapersistence.DBMySQL;
+import com.datingapp.shared.dataobjects.profileattributes.LoginInformation;
 //import com.datingapp.shared.datapersistence.LoginInformation;
 
 import java.nio.charset.StandardCharsets;
@@ -66,7 +66,7 @@ public class LoginAuthenticationInterface {
     */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static boolean isValidLogin(String _email, String _userInputPassword) throws NoSuchAlgorithmException, SQLException {
-        LoginInformation existingUserAccount = DataPersistence.loadLogin(_email);
+        LoginInformation existingUserAccount = DBMySQL.loadLogin(_email);
         final String EXISTING_HASHED_PASSWORD = existingUserAccount.getPassword();
         return LoginAuthenticationInterface.comparePassword(EXISTING_HASHED_PASSWORD, _userInputPassword);
     }

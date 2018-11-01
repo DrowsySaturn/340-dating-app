@@ -8,15 +8,6 @@ package com.datingapp.controller.textDemo;
  * @Version 1:9/25/2018
  */
 
-import com.datingapp.controller.SignupLoginController;
-import com.datingapp.shared.dataobjects.LoginInformation;
-
-import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class TextDemo {
 
 //

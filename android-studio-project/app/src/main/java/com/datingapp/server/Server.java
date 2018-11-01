@@ -6,7 +6,7 @@ package com.datingapp.server;
  * @version sep-24-2018
  */
 
-import com.datingapp.server.datapersistence.DataPersistence;
+import com.datingapp.server.datapersistence.DBMySQL;
 import com.datingapp.shared.dataobjects.Profile;
 
 import java.sql.SQLException;
@@ -27,11 +27,11 @@ public class Server {
      */
     public static void persistenceDemo() {
         try {
-            Profile profile = DataPersistence.loadProfileById(1);
+            Profile profile = DBMySQL.loadProfileById(1);
             System.out.println("Current name: " + profile.getName());
 
             profile.setName(reverseName(profile.getName()));
-            DataPersistence.save(profile);
+            DBMySQL.save(profile);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

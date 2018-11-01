@@ -10,8 +10,8 @@ package com.datingapp.controller;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import com.datingapp.server.datapersistence.DataPersistence;
-import com.datingapp.shared.dataobjects.LoginInformation;
+import com.datingapp.server.datapersistence.DBMySQL;
+import com.datingapp.shared.dataobjects.profileattributes.LoginInformation;
 import com.datingapp.utility.LoginAuthenticationInterface;
 
 import java.security.NoSuchAlgorithmException;
@@ -23,7 +23,7 @@ public class SignupLoginController {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static LoginInformation loginAccount(String _email, String _password) throws IllegalArgumentException, NoSuchAlgorithmException, SQLException {
         if(LoginAuthenticationInterface.isValidLogin(_email, _password)) {
-            return SignupLoginController.loginInformation = DataPersistence.loadLogin(_email);
+            return SignupLoginController.loginInformation = DBMySQL.loadLogin(_email);
         } else {
             throw new IllegalArgumentException("Wrong password");
         }
@@ -33,7 +33,7 @@ public class SignupLoginController {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void signupAccount(String _email, String _password) throws IllegalArgumentException, NoSuchAlgorithmException, SQLException {
         SignupLoginController.loginInformation = new LoginInformation(_email, _password);
-        DataPersistence.save(SignupLoginController.loginInformation);
+        DBMySQL.save(SignupLoginController.loginInformation);
     }
 
 

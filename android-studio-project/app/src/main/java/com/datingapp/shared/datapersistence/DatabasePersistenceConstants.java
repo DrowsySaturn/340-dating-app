@@ -1,6 +1,6 @@
 package com.datingapp.shared.datapersistence;
 /*
- * The purpose of this class is to contain various constants used in the DataPersistence module.
+ * The purpose of this class is to contain various constants used in the DBMySQL module.
  *
  * @author Jonathan Cooper
  * @version sep-24-2018

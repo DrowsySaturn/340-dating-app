@@ -31,6 +31,10 @@ public class Match {
         this.isActive = _isActive;
     }
 
+    public Match(Object _obj){
+
+    }
+
     /*
      * Getters for the individual profiles involved in the match
      */

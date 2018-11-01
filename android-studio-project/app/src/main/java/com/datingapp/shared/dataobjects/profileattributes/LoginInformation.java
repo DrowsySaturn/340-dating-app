@@ -1,4 +1,4 @@
-package com.datingapp.shared.dataobjects;
+package com.datingapp.shared.dataobjects.profileattributes;
 /*
 *
 * The purpose of this class is to register or to verify online information.
@@ -37,6 +37,7 @@ public class LoginInformation {
      */
     private boolean isActive;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public LoginInformation(String _email, String _password) throws NoSuchAlgorithmException {
         this(_email,_password,LoginInConstants.NOT_ADMIN,LoginInConstants.IS_ACTIVE);
     }
