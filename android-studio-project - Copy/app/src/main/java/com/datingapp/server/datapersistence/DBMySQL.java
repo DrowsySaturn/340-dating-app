@@ -1,12 +1,13 @@
 package com.datingapp.server.datapersistence;
 /*
- * This class implements the DBInterface for MySQL.
+ * The purpose of this class is to read and write to the database.
+ * It overloads the save() method, taking any database object and using try-catch-finally clauses
+ *  to update or insert them into the database.
  *
  * @author Jonathan Cooper, William Buck
  * @version 11/1/2018
  */
 
-import com.datingapp.shared.dataobjects.DataObject;
 import com.datingapp.shared.dataobjects.profileattributes.LoginInformation;
 import com.datingapp.shared.dataobjects.Match;
 import com.datingapp.shared.dataobjects.Profile;
@@ -28,29 +29,29 @@ import static com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.S
 public class DBMySQL implements DBInterface {
 
     /**
-     * This is the name of the database to which we connect.
+     * The name of the database to open connections to.
      */
     private static final String DATABASE_NAME = "Dating_App";
 
 
     /**
-     * This is the username to use when logging into the database manager.
+     * The username to use when logging into the database manager.
      */
     private static final String DATABASE_MANAGER_USERNAME = "root";
 
 
     /**
-     * This is the password to use when logging into the database manager.
+     * The password to use when logging into the database manager.
      */
     private static final String DATABASE_MANAGER_PASSWORD = "";
 
 
     /**
-     * This is the connection pool used for retrieving new or existing connections to the database.
+     * Connection pool used for retrieving new or existing connections to the database.
      */
     private static final BasicDataSource dataSource = new BasicDataSource();
 
-    //This will be used when initializing a DB connection.
+    //This will be used when initializing a DB connection
     private static Connection connection;
 
     /**
@@ -69,25 +70,24 @@ public class DBMySQL implements DBInterface {
      */
     static {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://35.227.26.5:3306/" + DATABASE_NAME);
+        dataSource.setUrl("jdbc:mysql://localhost:3306/" + DATABASE_NAME);
         dataSource.setUsername(DATABASE_MANAGER_USERNAME);
         dataSource.setPassword(DATABASE_MANAGER_PASSWORD);
     }
 
     /**
-     *
+     * Disallow instances of DBTranslator.
      */
     public DBMySQL() {
         this.initializeConnection();
     }
 
-    //This method implements the createObject abstract method for MySQL.
-    public void createObject(DataObject _obj) {
+    public void createObject(Object _obj) {
         try {
-            if (_obj.getClass().getName().equals("Profile")) {
+            if (_obj instanceof Profile) {
                 Profile prfl = new Profile(_obj);
                 createProfile(prfl);
-            } else if (_obj.getClass().getName().equals("Match")) {
+            } else if (_obj instanceof Match) {
                 Match mtch = new Match(_obj);
                 createMatch(mtch);
             }
@@ -96,12 +96,11 @@ public class DBMySQL implements DBInterface {
         }
     }
 
-    //This method implements the readObject abstract method for MySQL.
     public Object readObject(Long _id, String _type) {
         try {
-            if (_type.equals(PROFILE)) {
+            if (_type == PROFILE) {
                 return loadProfileById(_id);
-            } else if (_type.equals(MATCH)) {
+            } else if (_type == MATCH) {
                 return loadMatchById(_id);
             } else return 0;
         } catch (SQLException e) {
@@ -110,13 +109,12 @@ public class DBMySQL implements DBInterface {
         }
     }
 
-    //This method implements the updateObject abstract method for MySQL.
-    public void updateObject(DataObject _obj) {
+    public void updateObject(Object _obj) {
         try {
-            if (_obj.getClass().getName().equals("Profile")) {
+            if (_obj instanceof Profile) {
                 Profile prfl = new Profile(_obj);
                 updateProfile(prfl);
-            } else if (_obj.getClass().getName().equals("Match")) {
+            } else if (_obj instanceof Match) {
                 Match mtch = new Match(_obj);
                 updateMatch(mtch);
             }
@@ -125,8 +123,7 @@ public class DBMySQL implements DBInterface {
         }
     }
 
-    //This method implements the deleteObject abstract method for MySQL.
-    public void deleteObject(DataObject _obj) {
+    public void deleteObject(Object _obj) {
 
     }
 
@@ -137,9 +134,10 @@ public class DBMySQL implements DBInterface {
      * @return Existing Profile or null if it could not be found.
      * @throws SQLException If there was an issue communicating with the database.
      */
-    private static Profile loadProfileById(long _id) throws SQLException {
+    public static Profile loadProfileById(long _id) throws SQLException {
+        LoadQuery queryBase = new LoadQuery();
         //generates the sql query
-        String sql = LoadQuery.loadProfileByIdQuery();
+        String sql = queryBase.loadProfileByIdQuery();
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             try {
@@ -165,9 +163,10 @@ public class DBMySQL implements DBInterface {
         }
     }
 
-    private static Profile loadProfileByName(String _name) throws SQLException {
+    public static Profile loadProfileByName(String _name) throws SQLException {
+        LoadQuery queryBase = new LoadQuery();
         //generates the sql query
-        String sql = LoadQuery.loadProfileByNameQuery();
+        String sql = queryBase.loadProfileByNameQuery();
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             try {
@@ -198,8 +197,9 @@ public class DBMySQL implements DBInterface {
      * @param _id ID of the match to load
      * @throws SQLException if there was a problem communicating with the database
      */
-    private static Match loadMatchById(long _id) throws SQLException {
-        String sql = LoadQuery.loadMatchByIdQuery();
+    public static Match loadMatchById(long _id) throws SQLException {
+        LoadQuery queryBase = new LoadQuery();
+        String sql = queryBase.loadMatchByIdQuery();
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             try {
@@ -233,8 +233,9 @@ public class DBMySQL implements DBInterface {
      * @param _match
      * @throws SQLException
      */
-    private static void updateProfile(Profile _profile) throws SQLException {
-        String sql = UpdateQuery.updateProfileQuery();
+    public static void updateProfile(Profile _profile) throws SQLException {
+        UpdateQuery queryBase = new UpdateQuery();
+        String sql = queryBase.updateProfileQuery();
         PreparedStatement statement = connection.prepareStatement(sql);
         try {
             statement.setInt(1, _profile.getAge());
@@ -253,8 +254,9 @@ public class DBMySQL implements DBInterface {
      * @param _match
      * @throws SQLException
      */
-    private static void updateMatch(Match _match) throws SQLException {
-        final String sql = UpdateQuery.updateMatchedQuery();
+    public static void updateMatch(Match _match) throws SQLException {
+        UpdateQuery queryBase = new UpdateQuery();
+        final String sql = queryBase.updateMatchedQuery();
         PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         try {
             statement.setLong(1, _match.getFirstProfile().getId());
@@ -273,8 +275,9 @@ public class DBMySQL implements DBInterface {
      * @param _profile
      * @throws SQLException
      */
-    private static void createProfile(Profile _profile) throws SQLException {
-        String sql = UpdateQuery.insertProfileQuery();
+    public static void createProfile(Profile _profile) throws SQLException {
+        UpdateQuery queryBase = new UpdateQuery();
+        String sql = queryBase.insertProfileQuery();
         PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         System.out.println(_profile.getName());
         try {
@@ -294,7 +297,8 @@ public class DBMySQL implements DBInterface {
      * @throws SQLException
      */
     private static void createMatch(Match _match) throws SQLException {
-        String sql = UpdateQuery.insertMatchedQuery();
+        UpdateQuery queryBase = new UpdateQuery();
+        String sql = queryBase.insertMatchedQuery();
         PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         try {
             statement.setLong(1, _match.getFirstProfile().getId());
