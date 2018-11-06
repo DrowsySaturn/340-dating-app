@@ -6,6 +6,8 @@ package com.datingapp.server.datapersistence;
  * @version sep-24-2018
  */
 
+import com.datingapp.shared.dataobjects.DataObject;
+
 import org.apache.commons.dbcp.BasicDataSource;
 
 import java.sql.Connection;
@@ -23,7 +25,7 @@ public  class DBTranslator {
 
     private static final DBInterface connector = new DBMySQL();
 
-    public void createObject(Object _obj){
+    public void createObject(DataObject _obj){
         connector.createObject(_obj);
     }
 
@@ -31,11 +33,11 @@ public  class DBTranslator {
         connector.readObject(_id, _table);
     }
 
-    public void updateObject(Object _obj){
+    public void updateObject(DataObject _obj){
         connector.updateObject(_obj);
     }
 
-    public void deleteObject(Object _obj){
+    public void deleteObject(DataObject _obj){
         connector.deleteObject(_obj);
     }
 }
