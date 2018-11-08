@@ -1,6 +1,7 @@
 package com.datingapp.eventsinterfaces.eventhandlers;
 
-import com.datingapp.eventsinterfaces.events.EventListener;
+import com.datingapp.eventsinterfaces.events.Event;
+import com.datingapp.eventsinterfaces.events.SignUpEvent;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -19,22 +20,34 @@ public class SignUpEventHandler implements EventHandler {
     }
 
 
-    private Queue<EventListener> events = new LinkedList<>();
+    private Queue<Event> events = new LinkedList<>();
 
 
     @Override
-    public void addEvent(EventListener _event) {
-        this.events.add(_event);
+    public void addEvent(Event _event) {
+        if(_event instanceof SignUpEvent) {
+            this.events.add(_event);
+        } else {
+            try {
+                throw new Exception("This is not an instance of SignUpEvent");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
     @Override
     public void fireAllEvents() {
         if(this.events.isEmpty()) {
-            System.out.println("The sign up events is empty");
+            try {
+                throw new Exception("The SignUp events queue is empty");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             while(!events.isEmpty()) {
-                EventListener event = this.events.remove();
+                Event event = this.events.remove();
                 event.fireEvent();
             }
         }
@@ -42,15 +55,37 @@ public class SignUpEventHandler implements EventHandler {
 
 
     @Override
-    public void fireEvent(EventListener _event) {
-        _event.fireEvent();
-        this.events.remove(_event);
+    public void fireEvent(Event _event) {
+        if(this.events.isEmpty()) {
+            try {
+                throw new Exception("The SignUp events queue is empty");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (_event instanceof SignUpEvent){
+            this.events.remove(_event);
+            _event.fireEvent();
+        } else {
+            try{
+                throw new Exception("This event is not an instance of SignUpEvent");
+            } catch (Exception  e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
     @Override
     public void fireEvent() {
-        EventListener event = events.remove();
-        event.fireEvent();
+        if(this.events.isEmpty()) {
+            try {
+                throw new Exception("The SignUp event queue is empty");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            Event event = events.remove();
+            event.fireEvent();
+        }
     }
 }

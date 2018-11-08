@@ -1,9 +1,8 @@
 package com.datingapp.eventsinterfaces.events;
 
-import com.datingapp.eventsinterfaces.events.EventListener;
 import com.datingapp.shared.datapersistence.Profile;
 
-public class ProfileEvent implements EventListener {
+public class ProfileEvent implements Event {
     private Profile profile;
 
 
