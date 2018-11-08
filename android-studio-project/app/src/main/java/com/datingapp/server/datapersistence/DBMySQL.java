@@ -3,7 +3,7 @@ package com.datingapp.server.datapersistence;
  * This class implements the DBInterface for MySQL.
  *
  * @author Jonathan Cooper, William Buck
- * @version 11/1/2018
+ * @version 11/8/2018
  */
 
 import com.datingapp.shared.dataobjects.DataObject;
@@ -21,6 +21,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+
+import java.lang.reflect.*;
 
 import static com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.SQLNameConstants.*;
 
@@ -75,7 +77,7 @@ public class DBMySQL implements DBInterface {
     }
 
     /**
-     *
+     * This creates the connection.
      */
     public DBMySQL() {
         this.initializeConnection();
@@ -96,21 +98,27 @@ public class DBMySQL implements DBInterface {
         }
     }
 
-    //This method implements the readObject abstract method for MySQL.
-    public Object readObject(Long _id, String _type) {
+    /*
+     * This method implements the readObject abstract method for MySQL.
+     */
+    public DataObject readObject(Long _id, String _type) {
         try {
             if (_type.equals(PROFILE)) {
                 return loadProfileById(_id);
             } else if (_type.equals(MATCH)) {
                 return loadMatchById(_id);
-            } else return 0;
+            } else {
+                return null;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            return 0;
+            return null;
         }
     }
 
-    //This method implements the updateObject abstract method for MySQL.
+    /*
+     * This method implements the updateObject abstract method for MySQL.
+     */
     public void updateObject(DataObject _obj) {
         try {
             if (_obj.getClass().getName().equals("Profile")) {
@@ -125,7 +133,9 @@ public class DBMySQL implements DBInterface {
         }
     }
 
-    //This method implements the deleteObject abstract method for MySQL.
+    /*
+     * This method implements the deleteObject abstract method for MySQL.
+     */
     public void deleteObject(DataObject _obj) {
 
     }
@@ -309,6 +319,9 @@ public class DBMySQL implements DBInterface {
         }
     }
 
+    /*
+     * This method attempts to connect to the external database and throws an error if it fails.
+     */
     private void initializeConnection() {
         try {
             this.connection = getConnection();

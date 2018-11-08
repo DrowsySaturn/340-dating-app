@@ -1,9 +1,10 @@
 package com.datingapp.server.datapersistence;
 /*
- * The purpose of this class is to provide access to the dating app's database.
+ * The purpose of this class is to provide access to the dating app's database. Models will call
+ * the CRUD operations from this class, which connects to the database that has been implemented.
  *
- * @author Jonathan Cooper
- * @version sep-24-2018
+ * @author William Buck
+ * @version 11/8/2018
  */
 
 import com.datingapp.shared.dataobjects.DataObject;
@@ -24,6 +25,10 @@ import java.util.logging.Logger;
 public  class DBTranslator {
 
     private static final DBInterface connector = new DBMySQL();
+
+    /*
+     * These are the basic CRUD operations that will be called by models.
+     */
 
     public void createObject(DataObject _obj){
         connector.createObject(_obj);
