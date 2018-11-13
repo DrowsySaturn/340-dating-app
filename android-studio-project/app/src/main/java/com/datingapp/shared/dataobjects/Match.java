@@ -47,7 +47,7 @@ public class Match extends DataObject {
 
     public void setIsActive(boolean _isActive){this.isActive = _isActive;}
 
-    public void setId(Long _id) {this.id = _id;}
+    public void setId(long _id) {this.id = _id;}
 
-    public Long getId(){return id;}
+    public long getId(){return this.id;}
 }
