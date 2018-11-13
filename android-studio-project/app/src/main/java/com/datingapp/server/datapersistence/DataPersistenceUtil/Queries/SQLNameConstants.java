@@ -1,7 +1,7 @@
 package com.datingapp.server.datapersistence.DataPersistenceUtil.Queries;
 /*
  * @author William Buck
- * @version 11/1/2018
+ * @version 11/13/2018
  */
 
 public class SQLNameConstants {

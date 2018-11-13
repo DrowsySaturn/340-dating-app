@@ -2,29 +2,29 @@ package com.datingapp.server.datapersistence.DataPersistenceUtil.Queries;
 /*
  * This class contains callable sql queries for loading objects to be used by the DB interface DBMySQL
  * @author William Buck
- * @version 11/1/2018
+ * @version 11/13/2018
  */
 public class LoadQuery {
 
     //load queries for Profile objects
     public static String loadProfileByIdQuery(){
-        String sql = "SELECT * FROM Profiles WHERE Profile_ID=?";
+        String sql = "SELECT * FROM " + SQLNameConstants.TABLE_NAME_PROFILE + "WHERE Profile_ID=?";
         return sql;
     }
 
     public static String loadProfileByNameQuery(){
-        String sql = "SELECT * FROM Profiles WHERE Profile_Name=?";
+        String sql = "SELECT * FROM " + SQLNameConstants.TABLE_NAME_PROFILE + "WHERE Profile_Name=?";
         return sql;
     }
 
     public static String loadProfileByAgeQuery(){
-        String sql = "SELECT * FROM Profiles WHERE Profile_Age=?";
+        String sql = "SELECT * FROM " + SQLNameConstants.TABLE_NAME_PROFILE +  "WHERE Profile_Age=?";
         return sql;
     }
 
     //load queries for Match Objects
     public static String loadMatchByIdQuery(){
-        String sql = "SELECT * FROM Matched WHERE Matched_ID=?";
+        String sql = "SELECT * FROM " + SQLNameConstants.TABLE_NAME_MATCHED + "WHERE Matched_ID=?";
         return sql;
     }
 }

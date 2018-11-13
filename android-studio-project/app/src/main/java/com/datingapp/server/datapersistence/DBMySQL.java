@@ -26,7 +26,7 @@ import static com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.S
 public class DBMySQL implements DBInterface {
 
      //This is the name of the database to which we connect
-    private static final String DATABASE_NAME = "";
+    private static final String DATABASE_NAME = "dating_app";
 
      //This is the username to use when logging into the database manager.
     private static final String DATABASE_MANAGER_USERNAME = "root";
@@ -37,31 +37,10 @@ public class DBMySQL implements DBInterface {
     //This is the driver.
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     //This is the host of the database.
-    private static final String HOST = "jdbc:mysql://35.localhost:3306/" + DATABASE_NAME;
+    private static final String HOST = "jdbc:mysql://localhost:3306/" + DATABASE_NAME;
 
     //This will be used when initializing a DB connection.
     private static Connection connection;
-
-    /**
-     * Gets a new connection from the connection pool. When close() is called on the connection it
-     * will be returned to the pool.
-     *
-     * @return Connection to use for communication with the database.
-     * @throws SQLException If there was an error getting a new connection to the database.
-     */
-//    public static Connection getConnection() throws SQLException {
-//        return dataSource.getConnection();
-//    }
-
-    /**
-     * Setup the connection pool.
-     */
-//    static {
-//        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-//        dataSource.setUrl("jdbc:mysql://35.227.26.5:3306/" + DATABASE_NAME);
-//        dataSource.setUsername(DATABASE_MANAGER_USERNAME);
-//        dataSource.setPassword(DATABASE_MANAGER_PASSWORD);
-//    }
 
     /**
      * This creates the connection.
@@ -70,7 +49,9 @@ public class DBMySQL implements DBInterface {
         this.initializeConnection();
     }
 
-    //This method implements the createObject abstract method for MySQL.
+    /*
+     * This method implements the createObject abstract method for MySQL.
+     */
     public void createObject(DataObject _obj) {
         try {
             if (_obj.getClass().getName().equals("Profile")) {
