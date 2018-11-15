@@ -12,6 +12,8 @@ import com.datingapp.shared.dataobjects.Profile;
 import com.datingapp.utility.DateUtil;
 import com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.*;
 
+import org.apache.commons.dbcp.BasicDataSource;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,6 +21,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.util.Iterator;
 
 import static com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.SQLNameConstants.*;
 
@@ -26,7 +29,7 @@ import static com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.S
 public class DBMySQL implements DBInterface {
 
      //This is the name of the database to which we connect
-    private static final String DATABASE_NAME = "dating_app";
+    private static final String DATABASE_NAME = "Dating_App";
 
      //This is the username to use when logging into the database manager.
     private static final String DATABASE_MANAGER_USERNAME = "root";
@@ -34,16 +37,21 @@ public class DBMySQL implements DBInterface {
      //This is the password to use when logging into the database manager.
     private static final String DATABASE_MANAGER_PASSWORD = "";
 
-    //This is the driver.
-    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    //This is the host of the database.
-    private static final String HOST = "jdbc:mysql://localhost:3306/" + DATABASE_NAME;
+    //This is the connection pool used for retrieving new or existing connections to the database.
+    private static final BasicDataSource dataSource = new BasicDataSource();
 
     //This will be used when initializing a DB connection.
     private static Connection connection;
 
+    static {
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/" + DATABASE_NAME);
+        dataSource.setUsername(DATABASE_MANAGER_USERNAME);
+        dataSource.setPassword(DATABASE_MANAGER_PASSWORD);
+    }
+
     /**
-     * This creates the connection.
+     * This constructor creates the connection.
      */
     public DBMySQL() {
         this.initializeConnection();
@@ -54,10 +62,10 @@ public class DBMySQL implements DBInterface {
      */
     public void createObject(DataObject _obj) {
         try {
-            if (_obj.getClass().getName().equals("Profile")) {
+            if (_obj.getClass().getName().equals(PROFILE)) {
                 Profile prfl = new Profile(_obj);
                 createProfile(prfl);
-            } else if (_obj.getClass().getName().equals("Match")) {
+            } else if (_obj.getClass().getName().equals(MATCH)) {
                 Match mtch = new Match(_obj);
                 createMatch(mtch);
             }
@@ -89,10 +97,10 @@ public class DBMySQL implements DBInterface {
      */
     public void updateObject(DataObject _obj) {
         try {
-            if (_obj.getClass().getName().equals("Profile")) {
+            if (_obj.getClass().getName().equals(SQLNameConstants.PROFILE)) {
                 Profile prfl = new Profile(_obj);
                 updateProfile(prfl);
-            } else if (_obj.getClass().getName().equals("Match")) {
+            } else if (_obj.getClass().getName().equals(SQLNameConstants.MATCH)) {
                 Match mtch = new Match(_obj);
                 updateMatch(mtch);
             }
@@ -301,9 +309,21 @@ public class DBMySQL implements DBInterface {
      */
     private void initializeConnection() {
         try {
-            this.connection = DriverManager.getConnection(this.HOST,this.DATABASE_MANAGER_USERNAME,this.DATABASE_MANAGER_PASSWORD);
+            this.connection = dataSource.getConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+    public static void main(String args[]) throws SQLException {
+        DBMySQL db = new DBMySQL();
+        Profile prf0 = new Profile(19, "Dennis", "Howdy");
+
+            createProfile(prf0);
+            System.out.println("profile created");
+
+        Profile prfl1 = loadProfileById(25);
+        System.out.println(prfl1.getName());
+    }
+
 }

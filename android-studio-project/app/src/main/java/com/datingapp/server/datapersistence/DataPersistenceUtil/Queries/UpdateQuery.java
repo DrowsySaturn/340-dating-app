@@ -9,23 +9,23 @@ import com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.SQLNameC
 public class UpdateQuery {
     //update queries for Profile objects
     public static String updateProfileQuery(){
-        String sql = "UPDATE " + SQLNameConstants.PROFILE +  "SET Profile_Age=?, Profile_Name=?, Profile_Message=?, IntroVideo_ID=? WHERE Profile_ID=?";
+        String sql = "UPDATE " + SQLNameConstants.PROFILE +  " SET Profile_Age=?, Profile_Name=?, Profile_Message=?, IntroVideo_ID=? WHERE Profile_ID=?";
         return sql;
     }
 
     public static String insertProfileQuery(){
-        String sql = "INSERT INTO " + SQLNameConstants.TABLE_NAME_PROFILE + "Profiles (Profile_Age, Profile_Name, Profile_Message, IntroVideo_ID) VALUES (?, ?, ?, ?);";
+        String sql = "INSERT INTO " + SQLNameConstants.TABLE_NAME_PROFILE + " (Profile_Age, Profile_Name, Profile_Message, IntroVideo_ID) VALUES (?, ?, ?, ?);";
         return sql;
     }
 
     //update queries for Match objects
     public static String updateMatchedQuery(){
-        final String sql = "UPDATE " +SQLNameConstants.MATCH + "(Profile_1_ID, Profile_2_ID, Matched_Date, active) VALUE (?,?,?,?) WHERE Matched_ID=?;";
+        final String sql = "UPDATE " +SQLNameConstants.MATCH + " (Profile_1_ID, Profile_2_ID, Matched_Date, active) VALUE (?,?,?,?) WHERE Matched_ID=?;";
         return sql;
     }
 
     public static String insertMatchedQuery(){
-        String sql = "INSERT INTO " +SQLNameConstants.TABLE_NAME_MATCHED + "(Profile_1_ID, Profile_2_ID, Matched_Date, active) VALUE (?,?,?,?)";
+        String sql = "INSERT INTO " +SQLNameConstants.TABLE_NAME_MATCHED + " (Profile_1_ID, Profile_2_ID, Matched_Date, active) VALUE (?,?,?,?)";
         return sql;
     }
 }

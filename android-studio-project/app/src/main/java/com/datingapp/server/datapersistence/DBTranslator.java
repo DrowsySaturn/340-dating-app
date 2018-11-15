@@ -8,6 +8,7 @@ package com.datingapp.server.datapersistence;
  */
 
 import com.datingapp.shared.dataobjects.DataObject;
+import com.datingapp.shared.dataobjects.Profile;
 
 import org.apache.commons.dbcp.BasicDataSource;
 
@@ -22,27 +23,26 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public  class DBTranslator {
+public class DBTranslator {
 
     private static final DBInterface connector = new DBMySQL();
 
     /*
      * These are the basic CRUD operations that will be called by models.
      */
-
-    public void createObject(DataObject _obj){
+    public void createObject(DataObject _obj) {
         connector.createObject(_obj);
     }
 
-    public void readObject(long _id, String _table) {
-        connector.readObject(_id, _table);
+    public DataObject readObject(long _id, String _table) {
+        return connector.readObject(_id, _table);
     }
 
-    public void updateObject(DataObject _obj){
+    public void updateObject(DataObject _obj) {
         connector.updateObject(_obj);
     }
 
-    public void deleteObject(DataObject _obj){
+    public void deleteObject(DataObject _obj) {
         connector.deleteObject(_obj);
     }
 }

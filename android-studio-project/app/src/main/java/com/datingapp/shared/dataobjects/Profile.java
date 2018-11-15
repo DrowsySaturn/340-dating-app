@@ -6,8 +6,6 @@ package com.datingapp.shared.dataobjects;
  * @version 11/1/2018
  */
 
-import android.provider.ContactsContract;
-
 import com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.SQLNameConstants;
 import com.datingapp.shared.datapersistence.DatabasePersistenceConstants;
 
@@ -32,7 +30,7 @@ public class Profile extends DataObject {
 
 
     /**
-     * Constructs a new profile.
+     * Constructs a new profile. This constructor is to be used when the ID of the profile is known.
      */
     public Profile(long _id, int _age, String _name, String _personalMessage) {
         this.id = _id;
