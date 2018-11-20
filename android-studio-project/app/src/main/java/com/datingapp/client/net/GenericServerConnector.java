@@ -12,7 +12,9 @@ import com.datingapp.shared.datapersistence.LoginConfirmation;
  */
 
 public abstract class GenericServerConnector {
-    public abstract Profile loadProfileById(int _profileId) throws DatingNetworkException;
+    public abstract Profile loadProfileById(long _profileId) throws DatingNetworkException;
+
+    public abstract void likeProfile(long _profileId) throws DatingNetworkException;
 
     public abstract LoginConfirmation validateLogin(String _email, String _password) throws DatingNetworkException;
 }

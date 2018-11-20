@@ -13,6 +13,8 @@ import android.support.annotation.RequiresApi;
 import com.datingapp.shared.dataobjects.DataObject;
 import com.datingapp.shared.dataobjects.LoginInformation;
 import com.datingapp.shared.dataobjects.Profile;
+import com.datingapp.shared.datapersistence.LoginConfirmation;
+import com.datingapp.utility.PasswordHash;
 
 public class DBTranslator {
 
@@ -65,5 +67,21 @@ public class DBTranslator {
             randomProfiles[i] = new Profile(1, 21, "John Smith", "I like eggs");
         }
         return randomProfiles;
+    }
+
+    public void like(long likerProfileId, long likedProfileId, String username, String session) {
+        if (isValidSession(username, session)) {
+            // TODO: Insert like if the liker is the same as username.
+        }
+    }
+
+    /**
+     * Checks if the session information given is valid or has been falsified.
+     *
+     * @return This returns true if the information is valid, and returns false if it is incorrect.
+     */
+    public boolean isValidSession(String _username, String _sessionKey) {
+        // TODO: Check if the session associated with this user is valid or has been tampered with.
+        return true;
     }
 }
