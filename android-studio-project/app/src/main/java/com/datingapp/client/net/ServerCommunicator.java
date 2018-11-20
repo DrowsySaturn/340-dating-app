@@ -28,6 +28,10 @@ public class ServerCommunicator {
         return ServerCommunicator.serverConnector.loadProfileById(_id);
     }
 
+    public static Profile loadProfileByUsername(String _username) throws DatingNetworkException {
+        // TODO: Jonathan load profile by username
+    }
+
     public static void likeProfile(long _likerId, long _likedId, String _username, String _sessionKey) throws DatingNetworkException {
         ServerCommunicator.serverConnector.likeProfile(_likerId, _likedId, _username, _sessionKey);
     }

@@ -1,5 +1,5 @@
 package com.datingapp.client.controllers.logincontroller;
-/**
+/*
  *
  */
 
@@ -8,7 +8,6 @@ import android.support.annotation.RequiresApi;
 import com.datingapp.client.net.DatingNetworkException;
 import com.datingapp.client.net.ServerCommunicator;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
-import java.sql.SQLException;
 
 public class LoginProcessor {
     private static LoginConfirmation loginConfirmation = null;
@@ -28,7 +27,7 @@ public class LoginProcessor {
 
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public static LoginConfirmation processLogin(String _email, String _userInputPassword) throws SQLException {
+    public static LoginConfirmation processLogin(String _email, String _userInputPassword) {
         boolean validLogin = processEmailAndPassword(_email, _userInputPassword);
         if(validLogin) {
             return LoginProcessor.loginConfirmation;
