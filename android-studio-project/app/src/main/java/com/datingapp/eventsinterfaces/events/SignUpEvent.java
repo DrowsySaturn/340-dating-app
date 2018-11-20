@@ -1,9 +1,8 @@
 package com.datingapp.eventsinterfaces.events;
 
-import com.datingapp.eventsinterfaces.events.EventListener;
 import com.datingapp.shared.datapersistence.LoginInformation;
 
-public class SignUpEvent implements EventListener {
+public class SignUpEvent implements Event {
 
     private LoginInformation loginInformation;
 

@@ -1,6 +1,6 @@
 package com.datingapp.eventsinterfaces.events;
 
-public interface EventListener {
+public interface Event {
     public void fireEvent();
     public String getName();
 }
