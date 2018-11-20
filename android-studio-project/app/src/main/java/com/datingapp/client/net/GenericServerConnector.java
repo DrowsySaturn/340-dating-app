@@ -11,6 +11,8 @@ import com.datingapp.shared.dataobjects.LoginInformation;
 import com.datingapp.shared.dataobjects.Profile;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
 
+import java.io.InputStream;
+
 public abstract class GenericServerConnector {
     public abstract Profile loadProfileById(long _profileId) throws DatingNetworkException;
 
@@ -21,4 +23,6 @@ public abstract class GenericServerConnector {
     public abstract Profile[] getMatches(String _username, String _sessionKey) throws DatingNetworkException;
 
     public abstract void registerProfile(LoginInformation _loginInformation) throws DatingNetworkException;
+
+    public abstract void uploadProfilePicture(InputStream _input, String _username, String _sessionKey) throws DatingNetworkException;
 }

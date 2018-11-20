@@ -1,4 +1,10 @@
 package com.datingapp.client.net;
+/**
+ * Connects to the server over HTTP.
+ *
+ * @author Jonathan Cooper
+ * @version nov-20-2018
+ */
 
 import com.datingapp.shared.dataobjects.LoginInformation;
 import com.datingapp.shared.dataobjects.MatchesResultSet;
@@ -9,6 +15,7 @@ import com.google.gson.Gson;
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 public class HttpServerConnector extends GenericServerConnector {
     /**
@@ -76,6 +83,19 @@ public class HttpServerConnector extends GenericServerConnector {
             Jsoup.connect(this.HOST + this.WRITE_API_PREFIX + "register")
                     .data("username", _loginInformation.getUsername())
                     .data("passwordhash", _loginInformation.getPasswordHash())
+                    .post();
+        } catch (IOException io) {
+            throw new DatingNetworkException(io);
+        }
+    }
+
+    @Override
+    public void uploadProfilePicture(InputStream _input, String _username, String _sessionKey) throws DatingNetworkException {
+        try {
+            Jsoup.connect(this.HOST + this.WRITE_API_PREFIX + "profile")
+                    .data("username", _username)
+                    .data("session", _sessionKey)
+                    .data("picture", "picture.jpg", _input)
                     .post();
         } catch (IOException io) {
             throw new DatingNetworkException(io);

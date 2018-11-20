@@ -10,26 +10,33 @@ import com.datingapp.shared.dataobjects.LoginInformation;
 import com.datingapp.shared.dataobjects.Profile;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
 
+import java.io.File;
+import java.io.InputStream;
+
 public class ServerCommunicator {
-    private GenericServerConnector serverConnector = new HttpServerConnector();
+    private static GenericServerConnector serverConnector = new HttpServerConnector();
 
-    public void registerProfile(LoginInformation _registrationData) throws DatingNetworkException {
-        this.serverConnector.registerProfile(_registrationData);
+    public static void uploadProfilePicture(InputStream _inputStream, String _username, String _sessionKey) throws DatingNetworkException {
+        ServerCommunicator.serverConnector.uploadProfilePicture(_inputStream, _username, _sessionKey);
     }
 
-    public Profile loadProfileById(long _id) throws DatingNetworkException {
-        return this.serverConnector.loadProfileById(_id);
+    public static void registerProfile(LoginInformation _registrationData) throws DatingNetworkException {
+        ServerCommunicator.serverConnector.registerProfile(_registrationData);
     }
 
-    public void likeProfile(long _likerId, long _likedId, String _username, String _sessionKey) throws DatingNetworkException {
-        this.serverConnector.likeProfile(_likerId, _likedId, _username, _sessionKey);
+    public static Profile loadProfileById(long _id) throws DatingNetworkException {
+        return ServerCommunicator.serverConnector.loadProfileById(_id);
     }
 
-    public LoginConfirmation validateLogin(String _email, String _password) throws DatingNetworkException {
-        return this.serverConnector.validateLogin(_email, _password);
+    public static void likeProfile(long _likerId, long _likedId, String _username, String _sessionKey) throws DatingNetworkException {
+        ServerCommunicator.serverConnector.likeProfile(_likerId, _likedId, _username, _sessionKey);
     }
 
-    public Profile[] getMatches(String _username, String _sessionKey) throws DatingNetworkException {
-        return this.serverConnector.getMatches(_username, _sessionKey);
+    public static LoginConfirmation validateLogin(String _email, String _password) throws DatingNetworkException {
+        return ServerCommunicator.serverConnector.validateLogin(_email, _password);
+    }
+
+    public static Profile[] getMatches(String _username, String _sessionKey) throws DatingNetworkException {
+        return ServerCommunicator.serverConnector.getMatches(_username, _sessionKey);
     }
 }
