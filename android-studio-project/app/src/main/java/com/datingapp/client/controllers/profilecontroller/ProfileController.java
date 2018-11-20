@@ -17,6 +17,6 @@ public class ProfileController {
 
 
     public void updateprofile(long _id, int _age, String _name, String _personalMessage) {
-
+        ProfileController.profile = ProfileProcessor.loadProfile(_age, _name, _personalMessage);
     }
 }

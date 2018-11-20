@@ -11,5 +11,7 @@ public class ProfileProcessor {
         return ProfileProcessor.profile;
     }
 
-
+    public static Profile loadProfile(int _age, String _name, String _personalMessage) {
+        ProfileProcessor.profile =
+    }
 }
