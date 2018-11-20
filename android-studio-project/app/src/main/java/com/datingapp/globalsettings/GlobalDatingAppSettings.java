@@ -23,6 +23,8 @@ public class GlobalDatingAppSettings {
      */
     private static final String SERVER_SETTINGS_FILE = "server.json";
 
+    private static final String LANGUAGE_SETTINGS_FILE = "language.json";
+
     /**
      * Shared settings instance.
      */
@@ -33,16 +35,25 @@ public class GlobalDatingAppSettings {
      */
     private static ServerSettings serverSettings = null;
 
+    private static LanguageSettings languageSettings = null;
+
     /**
      * Gets the shared settings object.
      * @return Returns the shared settings object.
-     * @throws IOException If there was an issue loading the settings.
+     * @throws IOException Throws exception when the settings file could not be loaded.
      */
     public static SharedSettings getSharedSettings() throws IOException {
         if (GlobalDatingAppSettings.sharedSettings == null) {
             GlobalDatingAppSettings.sharedSettings = GlobalDatingAppSettings.loadSettings(SHARED_SETTINGS_FILE, SharedSettings.class);
         }
         return GlobalDatingAppSettings.sharedSettings;
+    }
+
+    public static LanguageSettings getLanguageSettings() throws IOException {
+        if (GlobalDatingAppSettings.languageSettings == null) {
+            GlobalDatingAppSettings.languageSettings = GlobalDatingAppSettings.loadSettings(LANGUAGE_SETTINGS_FILE, LanguageSettings.class);
+        }
+        return GlobalDatingAppSettings.languageSettings;
     }
 
     /**
@@ -54,7 +65,7 @@ public class GlobalDatingAppSettings {
         if (GlobalDatingAppSettings.serverSettings == null) {
             GlobalDatingAppSettings.serverSettings = GlobalDatingAppSettings.loadSettings(SERVER_SETTINGS_FILE, ServerSettings.class);
         }
-        return null;
+        return GlobalDatingAppSettings.serverSettings;
     }
 
     /**
