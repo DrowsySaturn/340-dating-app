@@ -1,11 +1,4 @@
 package com.datingapp.client.net;
-/**
- * The purpose of the ServerConnector is to download or upload JSON with the intent of communicating
- * with the database or the server. All communication with the server goes through this object.
- *
- * @author Jonathan Cooper
- * @version oct-18-2018
- */
 
 import com.datingapp.shared.datapersistence.LoginConfirmation;
 import com.datingapp.shared.datapersistence.Profile;
@@ -17,7 +10,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-public class ServerConnector {
+public class HttpServerConnector extends GenericServerConnector {
     /**
      * The suffix to all library servlets that read from the database.
      */
@@ -41,7 +34,7 @@ public class ServerConnector {
     /**
      * Initializes a new server connector.
      */
-    public ServerConnector() {
+    public HttpServerConnector() {
         gson = new Gson();
     }
 
@@ -77,20 +70,24 @@ public class ServerConnector {
      * @return Profile with the given id.
      * @throws IOException If there was an issue connecting to the server.
      */
-    public Profile loadProfileById(int _profileId) throws IOException {
-        String urlString = this.HOST + this.READ_API_PREFIX + "profile?id=" + _profileId;
-        String profileJson = loadHttpResource(urlString);
-        Profile result = this.gson.fromJson(profileJson, Profile.class);
-        return result;
+    public Profile loadProfileById(int _profileId) throws DatingNetworkException {
+        try {
+            String urlString = this.HOST + this.READ_API_PREFIX + "profile?id=" + _profileId;
+            String profileJson = loadHttpResource(urlString);
+            Profile result = this.gson.fromJson(profileJson, Profile.class);
+            return result;
+        } catch (IOException io) {
+            throw new DatingNetworkException(io);
+        }
     }
 
     /**
      * Verifies the login information is correct.
-     * @param email Email associated with the account.
-     * @param password Password associated with the account.
+     * @param _email Email associated with the account.
+     * @param _password Password associated with the account.
      * @return Information about the login status.
      */
-    public LoginConfirmation validateLogin(String email, String password) {
+    public LoginConfirmation validateLogin(String _email, String _password) {
         // TODO: Validate login
         throw new UnsupportedOperationException();
     }

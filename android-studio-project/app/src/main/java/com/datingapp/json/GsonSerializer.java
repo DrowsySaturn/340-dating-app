@@ -1,14 +1,22 @@
 package com.datingapp.json;
 
+import com.google.gson.Gson;
+
 public class GsonSerializer extends JsonSerializer {
+
+    private Gson gson;
+
+    public GsonSerializer() {
+        gson = new Gson();
+    }
 
     @Override
     public <T> String serialize(T _object) {
-        return null;
+        return gson.toJson(_object);
     }
 
     @Override
     public <T> T deserialize(String _json, Class<T> _classType) {
-        return null;
+        return gson.fromJson(_json, _classType);
     }
 }
