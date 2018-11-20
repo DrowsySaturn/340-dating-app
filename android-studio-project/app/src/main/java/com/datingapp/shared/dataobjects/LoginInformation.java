@@ -13,7 +13,7 @@ import com.datingapp.utility.PasswordHash;
 
 import java.io.IOException;
 
-public class LoginInformation {
+public class LoginInformation extends DataObject {
 
     /**
      * This is the username to login with.
@@ -34,5 +34,13 @@ public class LoginInformation {
             // In case settings are misconfigured or some other error, use normal password as backup hash.
             this.passwordHash = _password;
         }
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public String getPasswordHash() {
+        return this.passwordHash;
     }
 }

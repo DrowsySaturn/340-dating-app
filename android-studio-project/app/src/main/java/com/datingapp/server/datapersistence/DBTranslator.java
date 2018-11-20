@@ -7,21 +7,12 @@ package com.datingapp.server.datapersistence;
  * @version 11/8/2018
  */
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 import com.datingapp.shared.dataobjects.DataObject;
+import com.datingapp.shared.dataobjects.LoginInformation;
 import com.datingapp.shared.dataobjects.Profile;
-
-import org.apache.commons.dbcp.BasicDataSource;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class DBTranslator {
 
@@ -44,5 +35,35 @@ public class DBTranslator {
 
     public void deleteObject(DataObject _obj) {
         connector.deleteObject(_obj);
+    }
+
+    /**
+     * This loads a users login information from the database. This is useful for checking a user's
+     * password.
+     *
+     * @param _username This is the username to load login information for.
+     *
+     * @return This returns the login information object associated with the specified username.
+     */
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public LoginInformation loginInformationFromUsername(String _username) {
+        // TODO: Load the password from the database instead of returning a static password.
+        return new LoginInformation(_username, "PASSWORD");
+    }
+
+    /**
+     * This loads a bunch of random profiles to show to a person using the app.
+     *
+     * @param _count This is the number of random profiles to load.
+     *
+     * @return This returns a bunch of random profiles.
+     */
+    public Profile[] loadRandomProfiles(int _count) {
+        Profile[] randomProfiles = new Profile[_count];
+        for (int i = 0; i < _count; i++) {
+            // TODO: Load a random profile instead of returning a static one.
+            randomProfiles[i] = new Profile(1, 21, "John Smith", "I like eggs");
+        }
+        return randomProfiles;
     }
 }

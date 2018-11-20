@@ -1,12 +1,13 @@
 package com.datingapp.server.servlets;
-/*
- * Creates user from json body.
+/**
+ * Creates user from the json included in the incoming http data.
+ *
+ * @author Jonathan Cooper
  */
 
 import com.datingapp.json.Json;
-import com.datingapp.server.datapersistence.DataPersistence;
-import com.datingapp.shared.datapersistence.LoginInformation;
-import com.google.gson.Gson;
+import com.datingapp.server.datapersistence.DBTranslator;
+import com.datingapp.shared.dataobjects.LoginInformation;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,6 +26,6 @@ public class CreateUserServlet extends HttpServlet {
             buffer.append(line);
         }
         LoginInformation information = Json.deserialize(buffer.toString(), LoginInformation.class);
-        DataPersistence.save(information);
+        new DBTranslator().createObject(information);
     }
 }

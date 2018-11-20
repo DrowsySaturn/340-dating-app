@@ -1,11 +1,14 @@
 package com.datingapp.shared.datapersistence;
-/*
+/**
  * This class is used for responding to a client's login attempt. Included is the success status,
  * the error message, and the session key.
  *
  * @author Jonathan Cooper
  * @version oct-18-2018
  */
+
+import com.datingapp.shared.dataobjects.Session;
+
 public class LoginConfirmation {
 
     /**
@@ -16,7 +19,7 @@ public class LoginConfirmation {
     /**
      * The hexidecimal encoded session key. Will be empty string if login was unsuccessful.
      */
-    private String sessionKey;
+    private Session session;
 
     /**
      * Determines if the login was a success.
@@ -27,14 +30,14 @@ public class LoginConfirmation {
      * Creates a new login confirmation response instance.
      * @param _wasSuccess True if the user was authenticated.
      * @param _errorMessage The error message if the user was not authenticated.
-     * @param _sessionKey The string that represents a unique key for maintaining a user's identity.
+     * @param _session The session that represents a unique key for maintaining a user's identity.
      */
-    public LoginConfirmation(boolean _wasSuccess, String _errorMessage, String _sessionKey) {
+    public LoginConfirmation(boolean _wasSuccess, String _errorMessage, Session _session) {
         this.wasSuccess = _wasSuccess;
         // Makes sure no error message is present when login was a success.
         this.errorMessage = _wasSuccess ? "" : _errorMessage;
         // Makes sure no session key is present when the login was a failure.
-        this.sessionKey = _wasSuccess ? _sessionKey : "";
+        this.session = _wasSuccess ? _session : null;
     }
 
     /**
@@ -45,10 +48,10 @@ public class LoginConfirmation {
     }
 
     /**
-     * @return The string for maintaining a user's identity. Empty if login was a failure.
+     * @return The session for maintaining a user's identity. This is null if login was a failure.
      */
-    public String getSessionKey() {
-        return this.sessionKey;
+    public Session getSession() {
+        return this.session;
     }
 
     /**
