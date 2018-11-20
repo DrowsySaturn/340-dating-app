@@ -12,7 +12,8 @@ import android.support.annotation.RequiresApi;
 
 import com.datingapp.eventsinterfaces.events.LoginEvent;
 import com.datingapp.eventsinterfaces.eventhandlers.LoginEventHandler;
-import com.datingapp.shared.datapersistence.LoginInformation;
+import com.datingapp.shared.dataobjects.LoginInformation;
+import com.datingapp.shared.datapersistence.LoginConfirmation;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
@@ -21,7 +22,7 @@ public class LoginController {
     /**
      * This is a LoginInformation variable to preserve user information.
      */
-    private static LoginInformation loginInformation;
+    private static LoginConfirmation loginConfirmation;
 
     /**
      * This method will acquire the login information from the user and add it as an event.
@@ -34,11 +35,11 @@ public class LoginController {
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void login(String _email, String _userInputPassword) throws IllegalArgumentException, NoSuchAlgorithmException, SQLException {
-        loginInformation = LoginProcessor.processLogin(_email, _userInputPassword);
-        if(loginInformation == null) {
+        LoginController.loginConfirmation = LoginProcessor.processLogin(_email, _userInputPassword);
+        if(LoginController.loginConfirmation == null) {
             throw new IllegalArgumentException("Email Or Password is incorrect");
         } else {
-            LoginEvent loginEvent = new LoginEvent(LoginController.loginInformation);
+            LoginEvent loginEvent = new LoginEvent(LoginController.loginConfirmation);
             LoginEventHandler.getInstance().addEvent(loginEvent);
         }
     }

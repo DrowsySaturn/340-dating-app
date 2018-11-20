@@ -1,6 +1,6 @@
 package com.datingapp.client.controllers.profilecontroller;
 
-import com.datingapp.shared.datapersistence.Profile;
+import com.datingapp.shared.dataobjects.Profile;
 
 public class ProfileProcessor {
     private static Profile profile = null;

@@ -1,17 +1,19 @@
 package com.datingapp.eventsinterfaces.events;
 
-import com.datingapp.shared.datapersistence.LoginInformation;
+import com.datingapp.shared.dataobjects.LoginInformation;
+import com.datingapp.shared.dataobjects.LoginInformation;
+import com.datingapp.shared.datapersistence.LoginConfirmation;
 
 public class LoginEvent implements Event {
-    private LoginInformation loginInformation;
+    private LoginConfirmation loginConfirmation;
 
-    public LoginEvent(LoginInformation _loginInformation) {
-        this.loginInformation = _loginInformation;
+    public LoginEvent(LoginConfirmation _loginConformation) {
+        this.loginConfirmation = _loginConformation;
     }
 
     @Override
     public void fireEvent() {
-        System.out.println(String.format("User %s is logged in", this.loginInformation.getEmail()));
+        System.out.println(String.format("User %s is logged in", this.loginConfirmation.getSession()));
     }
 
     @Override

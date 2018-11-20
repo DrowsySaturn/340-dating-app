@@ -1,6 +1,6 @@
 package com.datingapp.eventsinterfaces.events;
 
-import com.datingapp.shared.datapersistence.Match;
+import com.datingapp.shared.dataobjects.Match;
 
 public class HasMatchedEvent implements Event {
     private Match match;
