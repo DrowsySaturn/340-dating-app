@@ -3,10 +3,11 @@ package com.datingapp.eventsinterfaces.eventhandlers;
 import com.datingapp.eventsinterfaces.events.Event;
 import com.datingapp.eventsinterfaces.events.LoginEvent;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class LoginEventHandler implements EventHandler {
+public class LoginEventHandler implements EventHandler<Boolean> {
     private static LoginEventHandler instance = null;
 
 
@@ -36,7 +37,8 @@ public class LoginEventHandler implements EventHandler {
 
 
     @Override
-    public void fireAllEvents() {
+    public ArrayList<Boolean> fireAllEvents() {
+        ArrayList<Boolean> eventListArrayList = new ArrayList<>();
         if(events.isEmpty()) {
             try {
                 throw new Exception("The Login events queue is empty");
@@ -46,28 +48,33 @@ public class LoginEventHandler implements EventHandler {
         } else {
             while(!events.isEmpty()) {
                 Event eventListener = events.remove();
-                eventListener.fireEvent();
+                eventListArrayList.add((Boolean) eventListener.fireEvent());
             }
         }
+        return eventListArrayList;
     }
 
 
     @Override
-    public void fireEvent(Event _event) {
+    public Boolean fireEvent(Event _event) {
         if(this.events.isEmpty()) {
             try {
                 throw new Exception("The Login events queue is empty");
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                return new Boolean(false);
             }
         } else if(_event instanceof LoginEvent) {
             this.events.remove(_event);
-            _event.fireEvent();
+            return new Boolean((boolean) _event.fireEvent());
         } else {
             try {
                 throw new Exception("The event is not an instance of LoginEvent");
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                return new Boolean(false);
             }
         }
     }
@@ -75,8 +82,18 @@ public class LoginEventHandler implements EventHandler {
 
 
     @Override
-    public void fireEvent() {
-        Event event = events.remove();
-        event.fireEvent();
+    public Boolean fireEvent() {
+        if(events.isEmpty()) {
+            try {
+                throw new Exception("Empty queue");
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                return new Boolean(false);
+            }
+        } else {
+            Event event = events.remove();
+            return new Boolean((boolean) event.fireEvent());
+        }
     }
 }

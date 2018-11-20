@@ -3,7 +3,6 @@ package com.datingapp.client.controllers.signupcontroller;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-
 import com.datingapp.eventsinterfaces.eventhandlers.SignUpEventHandler;
 import com.datingapp.eventsinterfaces.events.SignUpEvent;
 import com.datingapp.shared.dataobjects.LoginInformation;

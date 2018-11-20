@@ -1,11 +1,9 @@
 package com.datingapp.eventsinterfaces.events;
 
-import com.datingapp.client.net.DatingNetworkException;
-import com.datingapp.client.net.ServerCommunicator;
 import com.datingapp.shared.dataobjects.LoginInformation;
-import com.datingapp.shared.datapersistence.LoginConfirmation;
 
-public class SignUpEvent implements Event {
+
+public class SignUpEvent implements Event<LoginInformation> {
 
     private LoginInformation loginInformation;
 
@@ -14,12 +12,8 @@ public class SignUpEvent implements Event {
     }
 
     @Override
-    public void fireEvent() {
-        try {
-            ServerCommunicator.registerProfile(this.loginInformation);
-        } catch (DatingNetworkException e) {
-            e.printStackTrace();
-        }
+    public LoginInformation fireEvent() {
+        return this.loginInformation;
     }
 
     @Override
