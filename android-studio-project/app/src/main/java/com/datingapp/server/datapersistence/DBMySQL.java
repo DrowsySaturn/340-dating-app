@@ -6,6 +6,7 @@ package com.datingapp.server.datapersistence;
  * @version 11/13/2018
  */
 
+import com.datingapp.globalsettings.GlobalDatingAppSettings;
 import com.datingapp.shared.dataobjects.DataObject;
 import com.datingapp.shared.dataobjects.Match;
 import com.datingapp.shared.dataobjects.Profile;
@@ -14,6 +15,7 @@ import com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.*;
 
 import org.apache.commons.dbcp.BasicDataSource;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -31,12 +33,6 @@ public class DBMySQL implements DBInterface {
      //This is the name of the database to which we connect
     private static final String DATABASE_NAME = "Dating_App";
 
-     //This is the username to use when logging into the database manager.
-    private static final String DATABASE_MANAGER_USERNAME = "root";
-
-     //This is the password to use when logging into the database manager.
-    private static final String DATABASE_MANAGER_PASSWORD = "";
-
     //This is the connection pool used for retrieving new or existing connections to the database.
     private static final BasicDataSource dataSource = new BasicDataSource();
 
@@ -44,10 +40,18 @@ public class DBMySQL implements DBInterface {
     private static Connection connection;
 
     static {
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/" + DATABASE_NAME);
-        dataSource.setUsername(DATABASE_MANAGER_USERNAME);
-        dataSource.setPassword(DATABASE_MANAGER_PASSWORD);
+        try {
+            String username = GlobalDatingAppSettings.getServerSettings().getDatabaseUsername();
+            String port = GlobalDatingAppSettings.getServerSettings().getDatabasePort();
+            String hostName = GlobalDatingAppSettings.getServerSettings().getDatabaseHostName();
+            String password = GlobalDatingAppSettings.getServerSettings().getDatabasePassword();
+            dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+            dataSource.setUrl("jdbc:mysql://" + hostName +":" + port +"/" + DATABASE_NAME);
+            dataSource.setUsername(username);
+            dataSource.setPassword(password);
+        } catch (IOException io) {
+            throw new RuntimeException("Failed to startup database. Closing application.", io);
+        }
     }
 
     /**
