@@ -6,16 +6,13 @@ package com.datingapp.server;
  * @version sep-24-2018
  */
 
-import com.datingapp.server.datapersistence.DBInterface;
-import com.datingapp.server.datapersistence.DBTranslator;
+import com.datingapp.server.datapersistence.DBMySQL;
 import com.datingapp.shared.dataobjects.Profile;
 
 import java.sql.SQLException;
 
 public class Server {
 
-
-    private static DBTranslator database = new DBTranslator();
     /**
      * Currently this does a test for the Data Persistence module.
      */
@@ -29,8 +26,15 @@ public class Server {
      * and then saved to the database.
      */
     public static void persistenceDemo() {
-        Profile profile = new Profile(0000001, 22, "Dennis", "I am just a test.");
-        database.createObject(profile);
+        try {
+            Profile profile = DBMySQL.loadProfileById(1);
+            System.out.println("Current name: " + profile.getName());
+
+            profile.setName(reverseName(profile.getName()));
+            DBMySQL.save(profile);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
 

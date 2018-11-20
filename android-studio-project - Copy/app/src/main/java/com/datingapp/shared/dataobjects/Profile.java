@@ -1,12 +1,15 @@
-package com.datingapp.shared.datapersistence;
+package com.datingapp.shared.dataobjects;
 /*
  * The purpose of this class is to hold relevant information about a user's profile.
  *
- * @author Jonathan Cooper
- * @version sep-25-2018
+ * @author Jonathan Cooper, William Buck
+ * @version 11/1/2018
  */
 
-public class Profile {
+import com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.SQLNameConstants;
+import com.datingapp.shared.datapersistence.DatabasePersistenceConstants;
+
+public class  Profile {
     /**
      * Id of the profile.
      */
@@ -29,6 +32,8 @@ public class Profile {
      * Personal message of the person.
      */
     private String personalMessage;
+
+    private String tableName = SQLNameConstants.TABLE_NAME_PROFILE;
 
     /**
      * Constructs a new Profile. Will be inserted into database instead of updated because of -1 id.
@@ -57,6 +62,9 @@ public class Profile {
         this.personalMessage = _personalMessage;
     }
 
+    public Profile(Object _obj){
+
+    }
 
     /**
      * Gets the age of this person.
@@ -95,6 +103,13 @@ public class Profile {
      * Sets the age of the person.
      * @param _age New age.
      */
+
+    /**
+     * returns name of the object's SQL table
+     * @return tableName name of the SQL table for the object
+     */
+    public String getTableName(){ return this.tableName; }
+
     public void setAge(int _age) {
         this.age = _age;
     }
@@ -121,4 +136,10 @@ public class Profile {
     public void setPersonalMessage(String _personalMessage) {
         this.personalMessage = _personalMessage;
     }
+
+    /**
+     * sets SQL table name for object (not properly implemented)
+     * @param _tableName
+     */
+    public void setTableName(String _tableName) { this.tableName = _tableName;}
 }
