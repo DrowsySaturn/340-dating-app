@@ -1,7 +1,6 @@
 package com.datingapp.eventsinterfaces.events;
 
-import com.datingapp.shared.dataobjects.LoginInformation;
-import com.datingapp.shared.dataobjects.LoginInformation;
+import com.datingapp.shared.dataobjects.Session;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
 
 public class LoginEvent implements Event {
@@ -13,8 +12,10 @@ public class LoginEvent implements Event {
 
     @Override
     public void fireEvent() {
-        System.out.println(String.format("User %s is logged in", this.loginConfirmation.getSession()));
+        //TODO: List the profile view.
+        System.out.println("User has logged in!");
     }
+
 
     @Override
     public String getName() {

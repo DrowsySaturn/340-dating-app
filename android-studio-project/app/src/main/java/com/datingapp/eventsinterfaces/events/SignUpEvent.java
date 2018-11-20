@@ -1,6 +1,9 @@
 package com.datingapp.eventsinterfaces.events;
 
+import com.datingapp.client.net.DatingNetworkException;
+import com.datingapp.client.net.ServerCommunicator;
 import com.datingapp.shared.dataobjects.LoginInformation;
+import com.datingapp.shared.datapersistence.LoginConfirmation;
 
 public class SignUpEvent implements Event {
 
@@ -12,7 +15,11 @@ public class SignUpEvent implements Event {
 
     @Override
     public void fireEvent() {
-        System.out.println(String.format("User %s Password %s has signed up", loginInformation.getUsername(), loginInformation.getPasswordHash()));
+        try {
+            ServerCommunicator.registerProfile(this.loginInformation);
+        } catch (DatingNetworkException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

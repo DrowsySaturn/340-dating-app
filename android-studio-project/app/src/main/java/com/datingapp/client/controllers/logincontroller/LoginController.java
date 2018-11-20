@@ -12,7 +12,6 @@ import android.support.annotation.RequiresApi;
 
 import com.datingapp.eventsinterfaces.events.LoginEvent;
 import com.datingapp.eventsinterfaces.eventhandlers.LoginEventHandler;
-import com.datingapp.shared.dataobjects.LoginInformation;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
 
 import java.security.NoSuchAlgorithmException;
