@@ -1,7 +1,7 @@
 package com.datingapp.client.net;
 
+import com.datingapp.shared.dataobjects.Profile;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
-import com.datingapp.shared.datapersistence.Profile;
 
 /**
  * The purpose of the ServerConnector is to download or upload JSON with the intent of communicating
