@@ -12,10 +12,24 @@ public class ServerSettings {
      */
     private String databaseUsername;
 
+
     /**
      * The password to the database.
      */
     private String databasePassword;
+
+
+    /**
+     * The host name for the database.
+     */
+    private String databaseHostName;
+
+
+    /**
+     * The port the database is running on;
+     */
+    private String databasePort;
+
 
     /**
      * Retrieves the username to the database.
@@ -25,11 +39,30 @@ public class ServerSettings {
         return this.databaseUsername;
     }
 
+
     /**
      * Retrieves the password for the database.
      * @return Returns the password to the database.
      */
     public String getDatabasePassword() {
         return this.databasePassword;
+    }
+
+
+    /**
+     * This retrieves the database host name.
+     * @return Returns the host name the database is hosted at.
+     */
+    public String getDatabaseHostName() {
+        return this.databaseHostName;
+    }
+
+
+    /**
+     * This retrieves the port the database is listening on.
+     * @return This returns the port the database is listening on.
+     */
+    public String getDatabasePort() {
+        return this.databasePort;
     }
 }
