@@ -1,6 +1,6 @@
 package com.datingapp.client.controllers.logincontroller;
 /*
-* The purpose of this class is to controll loginInformation sign up and log in.
+* The purpose of this class is to control loginInformation sign up and log in.
 *
 * @Author: Vincent Yang
 *
@@ -27,7 +27,7 @@ public class LoginController {
      * This method will acquire the login information from the user and add it as an event.
      * @param _email
      * @param _userInputPassword
-     * @return
+     * @return void
      * @throws IllegalArgumentException
      * @throws NoSuchAlgorithmException
      * @throws SQLException
