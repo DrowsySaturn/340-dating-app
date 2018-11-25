@@ -2,7 +2,8 @@ package com.datingapp.eventsinterfaces.eventhandlers;
 
 import com.datingapp.eventsinterfaces.events.Event;
 import com.datingapp.eventsinterfaces.events.SignUpEvent;
-
+import com.datingapp.shared.dataobjects.LoginInformation;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -38,7 +39,8 @@ public class SignUpEventHandler implements EventHandler {
 
 
     @Override
-    public void fireAllEvents() {
+    public ArrayList<LoginInformation> fireAllEvents() {
+        ArrayList<LoginInformation> eventArrayList = new ArrayList<>();
         if(this.events.isEmpty()) {
             try {
                 throw new Exception("The SignUp events queue is empty");
@@ -48,14 +50,15 @@ public class SignUpEventHandler implements EventHandler {
         } else {
             while(!events.isEmpty()) {
                 Event event = this.events.remove();
-                event.fireEvent();
+                eventArrayList.add((LoginInformation)event.fireEvent());
             }
         }
+        return eventArrayList;
     }
 
 
     @Override
-    public void fireEvent(Event _event) {
+    public LoginInformation fireEvent(Event _event) {
         if(this.events.isEmpty()) {
             try {
                 throw new Exception("The SignUp events queue is empty");
@@ -64,7 +67,7 @@ public class SignUpEventHandler implements EventHandler {
             }
         } else if (_event instanceof SignUpEvent){
             this.events.remove(_event);
-            _event.fireEvent();
+            return (LoginInformation)_event.fireEvent();
         } else {
             try{
                 throw new Exception("This event is not an instance of SignUpEvent");
@@ -72,11 +75,12 @@ public class SignUpEventHandler implements EventHandler {
                 e.printStackTrace();
             }
         }
+        return null;
     }
 
 
     @Override
-    public void fireEvent() {
+    public LoginInformation fireEvent() {
         if(this.events.isEmpty()) {
             try {
                 throw new Exception("The SignUp event queue is empty");
@@ -85,7 +89,8 @@ public class SignUpEventHandler implements EventHandler {
             }
         } else {
             Event event = events.remove();
-            event.fireEvent();
+            return (LoginInformation) event.fireEvent();
         }
+        return null;
     }
 }

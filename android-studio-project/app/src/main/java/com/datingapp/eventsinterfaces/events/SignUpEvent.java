@@ -1,8 +1,9 @@
 package com.datingapp.eventsinterfaces.events;
 
-import com.datingapp.shared.datapersistence.LoginInformation;
+import com.datingapp.shared.dataobjects.LoginInformation;
 
-public class SignUpEvent implements Event {
+
+public class SignUpEvent implements Event<LoginInformation> {
 
     private LoginInformation loginInformation;
 
@@ -11,12 +12,7 @@ public class SignUpEvent implements Event {
     }
 
     @Override
-    public void fireEvent() {
-        System.out.println(String.format("User %s Password %s has signed up", loginInformation.getEmail(), loginInformation.getPassword()));
-    }
-
-    @Override
-    public String getName() {
-        return "Sign Up Event";
+    public LoginInformation fireEvent() {
+        return this.loginInformation;
     }
 }

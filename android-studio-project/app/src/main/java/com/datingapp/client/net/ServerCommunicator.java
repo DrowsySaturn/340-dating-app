@@ -20,12 +20,18 @@ public class ServerCommunicator {
         ServerCommunicator.serverConnector.uploadProfilePicture(_inputStream, _username, _sessionKey);
     }
 
-    public static void registerProfile(LoginInformation _registrationData) throws DatingNetworkException {
+    public static void registerProfile(LoginInformation _registrationData, Profile _profile) throws DatingNetworkException {
+        // TODO: Jonathan save profile data too.
         ServerCommunicator.serverConnector.registerProfile(_registrationData);
     }
 
     public static Profile loadProfileById(long _id) throws DatingNetworkException {
         return ServerCommunicator.serverConnector.loadProfileById(_id);
+    }
+
+    public static Profile loadProfileByUsername(String _username) throws DatingNetworkException {
+        // TODO: Jonathan load profile by username
+        return null;
     }
 
     public static void likeProfile(long _likerId, long _likedId, String _username, String _sessionKey) throws DatingNetworkException {
@@ -39,4 +45,6 @@ public class ServerCommunicator {
     public static Profile[] getMatches(String _username, String _sessionKey) throws DatingNetworkException {
         return ServerCommunicator.serverConnector.getMatches(_username, _sessionKey);
     }
+
+    //TODO need update method for profile. need method to delete profile.
 }

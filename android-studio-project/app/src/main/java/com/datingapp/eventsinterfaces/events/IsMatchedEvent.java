@@ -15,7 +15,7 @@ public class IsMatchedEvent implements Event {
     }
 
     @Override
-    public String getName() {
+    public T getName() {
         return "Match Event";
     }
 }
