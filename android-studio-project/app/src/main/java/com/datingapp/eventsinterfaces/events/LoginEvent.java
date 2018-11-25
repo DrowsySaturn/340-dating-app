@@ -1,21 +1,23 @@
 package com.datingapp.eventsinterfaces.events;
 
-import com.datingapp.shared.datapersistence.LoginInformation;
+import com.datingapp.shared.datapersistence.LoginConfirmation;
 
-public class LoginEvent implements Event {
-    private LoginInformation loginInformation;
+public class LoginEvent implements Event<Boolean> {
+    private LoginConfirmation loginConfirmation;
 
-    public LoginEvent(LoginInformation _loginInformation) {
-        this.loginInformation = _loginInformation;
+    public LoginEvent(LoginConfirmation _loginConformation) {
+        this.loginConfirmation = _loginConformation;
     }
 
     @Override
-    public void fireEvent() {
-        System.out.println(String.format("User %s is logged in", this.loginInformation.getEmail()));
+    public Boolean fireEvent() {
+        //TODO: List the profile view.
+        System.out.println("User has logged in!");
+        return new Boolean(loginConfirmation.isSuccess());
     }
 
-    @Override
-    public String getName() {
-        return "Log In Event";
+
+    public LoginConfirmation getLoginConfirmation() {
+        return this.loginConfirmation;
     }
 }

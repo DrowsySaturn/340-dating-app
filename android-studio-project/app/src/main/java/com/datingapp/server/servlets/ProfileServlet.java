@@ -8,8 +8,9 @@ package com.datingapp.server.servlets;
  */
 
 import com.datingapp.json.Json;
-import com.datingapp.server.datapersistence.DataPersistence;
-import com.datingapp.shared.datapersistence.Profile;
+import com.datingapp.server.datapersistence.DBTranslator;
+import com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.SQLNameConstants;
+import com.datingapp.shared.dataobjects.Profile;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -41,15 +42,11 @@ public class ProfileServlet extends HttpServlet {
         } catch (Exception ex) {
             throw new ServletException("Failed to read profile id param",ex);
         }
-        try{
-            Profile profile = DataPersistence.loadProfileById(profileId);
-            String json = Json.serialize(profile);
-            PrintWriter writer = _response.getWriter();
-            writer.println(json);
-            writer.flush();
-        } catch (SQLException ex) {
-            throw new ServletException("Failed to retrieve profile from database", ex);
-        }
+        Profile profile = (Profile)new DBTranslator().readObject(profileId, SQLNameConstants.TABLE_NAME_PROFILE);
+        String json = Json.serialize(profile);
+        PrintWriter writer = _response.getWriter();
+        writer.println(json);
+        writer.flush();
     }
 
     @Override

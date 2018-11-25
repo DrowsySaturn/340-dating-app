@@ -2,11 +2,13 @@ package com.datingapp.eventsinterfaces.eventhandlers;
 
 import com.datingapp.eventsinterfaces.events.Event;
 import com.datingapp.eventsinterfaces.events.ProfileEvent;
+import com.datingapp.shared.dataobjects.Profile;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class ProfileEventHandler implements EventHandler {
+public class ProfileEventHandler implements EventHandler<Profile> {
 
     private static ProfileEventHandler instance = null;
 
@@ -38,50 +40,58 @@ public class ProfileEventHandler implements EventHandler {
 
 
     @Override
-    public void fireEvent(Event _event) {
+    public Profile fireEvent(Event _event) {
         if(this.events.isEmpty()) {
             try {
-
+                throw new Exception("The profile queue is empty");
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                return null;
             }
         } else if(_event instanceof  ProfileEvent) {
             this.events.remove(_event);
-            _event.fireEvent();
+            return (Profile) _event.fireEvent();
         } else {
             try {
                 throw new Exception("This is not an instance of ProfileEvent");
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                return null;
             }
         }
     }
 
 
     @Override
-    public void fireEvent() {
+    public Profile fireEvent() {
         if(this.events.isEmpty()) {
             try {
                 throw new Exception("The Profile events queue is empty");
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                return null;
             }
         } else {
             Event event = events.remove();
-            event.fireEvent();
+            return (Profile)event.fireEvent();
         }
     }
 
 
     @Override
-    public void fireAllEvents() {
+    public ArrayList<Profile> fireAllEvents() {
+        ArrayList<Profile> profiles = new ArrayList<>();
         if(events.isEmpty()) {
             System.out.println("The profile events is empty");
         } else {
             while(!events.isEmpty()) {
                 Event event = events.remove();
-                event.fireEvent();
+                profiles.add(((ProfileEvent) event).fireEvent());
             }
         }
+        return profiles;
     }
 }

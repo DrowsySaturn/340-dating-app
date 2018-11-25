@@ -1,14 +1,21 @@
 package com.datingapp.client.net;
+/**
+ * Connects to the server over HTTP.
+ *
+ * @author Jonathan Cooper
+ * @version nov-20-2018
+ */
 
+import com.datingapp.shared.dataobjects.LoginInformation;
+import com.datingapp.shared.dataobjects.MatchesResultSet;
+import com.datingapp.shared.dataobjects.Profile;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
-import com.datingapp.shared.datapersistence.Profile;
 import com.google.gson.Gson;
 
-import java.io.BufferedReader;
+import org.jsoup.Jsoup;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
 
 public class HttpServerConnector extends GenericServerConnector {
     /**
@@ -39,43 +46,70 @@ public class HttpServerConnector extends GenericServerConnector {
     }
 
     /**
-     * Downloads a string from the given url.
-     * @param _urlString Url to download from.
-     * @return String of the responses body.
-     * @throws IOException If there was an issue downloading the given url.
-     */
-    private String loadHttpResource(String _urlString) throws IOException {
-        URL url = new URL(_urlString);
-        InputStream inputStream = url.openStream();
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            try {
-                String line;
-                StringBuilder jsonBuffer = new StringBuilder();
-                while ((line = bufferedReader.readLine()) != null) {
-                    jsonBuffer = jsonBuffer.append(line);
-                }
-                return jsonBuffer.toString();
-            } finally {
-                bufferedReader.close();
-            }
-        } finally {
-            inputStream.close();
-        }
-    }
-
-    /**
      * Downloads a profile from the server given an id.
      * @param _profileId Profile id to download.
      * @return Profile with the given id.
      * @throws IOException If there was an issue connecting to the server.
      */
-    public Profile loadProfileById(int _profileId) throws DatingNetworkException {
+    public Profile loadProfileById(long _profileId) throws DatingNetworkException {
         try {
-            String urlString = this.HOST + this.READ_API_PREFIX + "profile?id=" + _profileId;
-            String profileJson = loadHttpResource(urlString);
+            String profileJson = Jsoup.connect(this.HOST + this.READ_API_PREFIX + "profile")
+                    .data("id", Long.toString(_profileId))
+                    .get().outerHtml();
             Profile result = this.gson.fromJson(profileJson, Profile.class);
             return result;
+        } catch (IOException io) {
+            throw new DatingNetworkException(io);
+        }
+    }
+
+    @Override
+    public Profile[] getMatches(String _username, String _sessionKey) throws DatingNetworkException {
+        try {
+            String matchesJson = Jsoup.connect(this.HOST + this.READ_API_PREFIX + "getmatches")
+                    .data("username", _username)
+                    .data("session", _sessionKey)
+                    .post().outerHtml();
+            MatchesResultSet matches = this.gson.fromJson(matchesJson, MatchesResultSet.class);
+            return matches.getResults();
+        } catch (IOException io) {
+            throw new DatingNetworkException(io);
+        }
+    }
+
+    @Override
+    public void registerProfile(LoginInformation _loginInformation) throws DatingNetworkException {
+        try {
+            Jsoup.connect(this.HOST + this.WRITE_API_PREFIX + "register")
+                    .data("username", _loginInformation.getUsername())
+                    .data("passwordhash", _loginInformation.getPasswordHash())
+                    .post();
+        } catch (IOException io) {
+            throw new DatingNetworkException(io);
+        }
+    }
+
+    @Override
+    public void uploadProfilePicture(InputStream _input, String _username, String _sessionKey) throws DatingNetworkException {
+        try {
+            Jsoup.connect(this.HOST + this.WRITE_API_PREFIX + "profile")
+                    .data("username", _username)
+                    .data("session", _sessionKey)
+                    .data("picture", "picture.jpg", _input)
+                    .post();
+        } catch (IOException io) {
+            throw new DatingNetworkException(io);
+        }
+    }
+
+    public void likeProfile(long _likerId, long _likedId, String _username, String _sessionKey) throws DatingNetworkException {
+        try {
+            Jsoup.connect(this.HOST + this.WRITE_API_PREFIX + "like")
+                    .data("liker", Long.toString(_likerId))
+                    .data("liked", Long.toString(_likedId))
+                    .data("username", _username)
+                    .data("session", _sessionKey)
+                    .post();
         } catch (IOException io) {
             throw new DatingNetworkException(io);
         }
