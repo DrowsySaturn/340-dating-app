@@ -45,4 +45,6 @@ public class ServerCommunicator {
     public static Profile[] getMatches(String _username, String _sessionKey) throws DatingNetworkException {
         return ServerCommunicator.serverConnector.getMatches(_username, _sessionKey);
     }
+
+    //TODO need update method for profile. need method to delete profile.
 }

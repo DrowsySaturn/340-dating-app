@@ -40,6 +40,7 @@ public class LoginController {
         } else {
             LoginEvent loginEvent = new LoginEvent(LoginController.loginConfirmation);
             LoginEventHandler.getInstance().addEvent(loginEvent);
+
         }
     }
 }

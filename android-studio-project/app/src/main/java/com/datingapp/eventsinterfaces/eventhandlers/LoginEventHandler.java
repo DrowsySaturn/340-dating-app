@@ -1,5 +1,6 @@
 package com.datingapp.eventsinterfaces.eventhandlers;
 
+import com.datingapp.client.cachelibrary.LoginConfirmationCache;
 import com.datingapp.eventsinterfaces.events.Event;
 import com.datingapp.eventsinterfaces.events.LoginEvent;
 
@@ -67,6 +68,8 @@ public class LoginEventHandler implements EventHandler<Boolean> {
             }
         } else if(_event instanceof LoginEvent) {
             this.events.remove(_event);
+            //important, user's session is being cached here.
+            LoginConfirmationCache.getInstance().recordSession(((LoginEvent) _event).getLoginConfirmation());
             return new Boolean((boolean) _event.fireEvent());
         } else {
             try {
@@ -92,7 +95,9 @@ public class LoginEventHandler implements EventHandler<Boolean> {
                 return new Boolean(false);
             }
         } else {
-            Event event = events.remove();
+            LoginEvent event = (LoginEvent) events.remove();
+            //important, user's session is being cached here.
+            LoginConfirmationCache.getInstance().recordSession(event.getLoginConfirmation());
             return new Boolean((boolean) event.fireEvent());
         }
     }

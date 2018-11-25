@@ -1,6 +1,5 @@
 package com.datingapp.eventsinterfaces.events;
 
-import com.datingapp.shared.dataobjects.Session;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
 
 public class LoginEvent implements Event<Boolean> {
@@ -18,8 +17,7 @@ public class LoginEvent implements Event<Boolean> {
     }
 
 
-    @Override
-    public String getName() {
-        return "Log In Event";
+    public LoginConfirmation getLoginConfirmation() {
+        return this.loginConfirmation;
     }
 }

@@ -15,10 +15,4 @@ public class HasMatchedEvent implements Event {
     public void fireEvent() {
         System.out.println(String.format("%s has a match with %s", this.match.getFirstProfile().getName(), this.match.getSecondProfile().getName()));
     }
-
-
-    @Override
-    public String getName() {
-        return "This is a has matched event";
-    }
 }

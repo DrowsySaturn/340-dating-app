@@ -2,7 +2,7 @@ package com.datingapp.eventsinterfaces.events;
 
 import com.datingapp.shared.dataobjects.Profile;
 
-public class ProfileEvent implements Event {
+public class ProfileEvent implements Event<Profile> {
     private Profile profile;
 
 
@@ -12,13 +12,7 @@ public class ProfileEvent implements Event {
 
 
     @Override
-    public void fireEvent() {
-        System.out.println(String.format("Profile event, ", profile.getName()));
-    }
-
-
-    @Override
-    public String getName() {
-        return "profile event";
+    public Profile fireEvent() {
+        return this.profile;
     }
 }

@@ -15,9 +15,4 @@ public class SignUpEvent implements Event<LoginInformation> {
     public LoginInformation fireEvent() {
         return this.loginInformation;
     }
-
-    @Override
-    public String getName() {
-        return "Sign Up Event";
-    }
 }
