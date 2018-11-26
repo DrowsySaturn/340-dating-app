@@ -2,22 +2,7 @@ package com.datingapp.client.controllers.actionprocessors;
 
 import com.datingapp.eventsinterfaces.eventhandlers.LoginEventHandler;
 
-public class LoginProcessor implements ActionProcessor {
-    private static LoginProcessor instance = null;
-
-
-    /**
-     * This returns the instance of LoginProcess
-     * @return instance
-     */
-    public static LoginProcessor getInstance() {
-        if(LoginProcessor.instance == null ) {
-            LoginProcessor.instance = new LoginProcessor();
-        }
-        return LoginProcessor.instance;
-    }
-
-    @Override
+public class LoginProcessor {
     /**
      * This processes the Login event
      *

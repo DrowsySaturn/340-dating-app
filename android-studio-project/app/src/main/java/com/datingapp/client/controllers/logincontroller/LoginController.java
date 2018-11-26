@@ -34,7 +34,7 @@ public class LoginController {
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void login(String _email, String _userInputPassword) throws IllegalArgumentException, NoSuchAlgorithmException, SQLException {
-        LoginController.loginConfirmation = LoginProcessor.processLogin(_email, _userInputPassword);
+        LoginController.loginConfirmation = LoginServerCommunicator.validateLogin(_email, _userInputPassword);
         if(LoginController.loginConfirmation == null) {
             throw new IllegalArgumentException("Email Or Password is incorrect");
         } else {

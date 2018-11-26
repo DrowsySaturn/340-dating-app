@@ -34,17 +34,13 @@ public class ProfileController {
     }
 
 
-<<<<<<< HEAD
-    public void updateprofile(long _id, int _age, String _name, String _personalMessage) {
-        ProfileController.profile = ProfileProcessor.loadProfile(_age, _name, _personalMessage);
-=======
     /**
      * This method will put the current profile inactive.
      */
     public static void deteleProfile() {
 
->>>>>>> vincent
     }
+
 
     /**
      * This method will return the current user profile.

@@ -49,6 +49,8 @@ public class LoginInformationCache {
      * @return cahcedLoginInformation.
      */
     public LoginInformation getCachedLoginInformation() {
-        return this.cachedLoginInformation;
+        LoginInformation currentInfo = this.cachedLoginInformation;
+        this.cachedLoginInformation = null;
+        return currentInfo;
     }
 }

@@ -21,6 +21,6 @@ public class SignUpController {
         SignUpController.loginInformation = new LoginInformation(_email, _userInputPassword);
         SignUpEvent event = new SignUpEvent(SignUpController.loginInformation);
         SignUpEventHandler.getInstance().addEvent(event);
-        SignUpProcessor.getInstance().process();
+        SignUpProcessor.process();
     }
 }
