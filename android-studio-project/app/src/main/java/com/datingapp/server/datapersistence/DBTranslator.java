@@ -45,4 +45,8 @@ public class DBTranslator {
     public void deleteObject(DataObject _obj) {
         connector.deleteObject(_obj);
     }
+
+    public static DBInterface getDBMySQL() {
+        return connector;
+    }
 }
