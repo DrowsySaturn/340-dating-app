@@ -9,14 +9,10 @@ package com.datingapp.client.controllers.logincontroller;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-
 import com.datingapp.client.controllers.actionprocessors.LoginProcessor;
 import com.datingapp.eventsinterfaces.events.LoginEvent;
 import com.datingapp.eventsinterfaces.eventhandlers.LoginEventHandler;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
-
-import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
 
 public class LoginController {
     /**
