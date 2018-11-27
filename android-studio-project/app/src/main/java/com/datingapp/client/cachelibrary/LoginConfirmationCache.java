@@ -1,4 +1,9 @@
 package com.datingapp.client.cachelibrary;
+/**
+ * @Author: Vincent Yang
+ *
+ * @Date: 11/27/2018
+ */
 
 import com.datingapp.shared.datapersistence.LoginConfirmation;
 
