@@ -10,6 +10,7 @@ package com.datingapp.client.controllers.logincontroller;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import com.datingapp.client.controllers.actionprocessors.LoginProcessor;
 import com.datingapp.eventsinterfaces.events.LoginEvent;
 import com.datingapp.eventsinterfaces.eventhandlers.LoginEventHandler;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
@@ -29,18 +30,16 @@ public class LoginController {
      * @param _userInputPassword
      * @return void
      * @throws IllegalArgumentException
-     * @throws NoSuchAlgorithmException
-     * @throws SQLException
      */
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public static void login(String _email, String _userInputPassword) throws IllegalArgumentException, NoSuchAlgorithmException, SQLException {
+    public static void login(String _email, String _userInputPassword) throws IllegalArgumentException{
         LoginController.loginConfirmation = LoginServerCommunicator.validateLogin(_email, _userInputPassword);
         if(LoginController.loginConfirmation == null) {
             throw new IllegalArgumentException("Email Or Password is incorrect");
         } else {
             LoginEvent loginEvent = new LoginEvent(LoginController.loginConfirmation);
             LoginEventHandler.getInstance().addEvent(loginEvent);
-
+            LoginProcessor.process();
         }
     }
 }

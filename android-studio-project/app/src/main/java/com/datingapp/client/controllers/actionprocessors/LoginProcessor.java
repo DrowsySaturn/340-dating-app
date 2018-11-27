@@ -7,7 +7,7 @@ public class LoginProcessor {
      * This processes the Login event
      *
      */
-    public void process() {
+    public static void process() {
         boolean canLogin = LoginEventHandler.getInstance().fireEvent();
         if(canLogin) {
             //TODO go to show profile page
