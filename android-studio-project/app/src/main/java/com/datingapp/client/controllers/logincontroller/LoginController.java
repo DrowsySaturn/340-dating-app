@@ -10,6 +10,7 @@ package com.datingapp.client.controllers.logincontroller;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import com.datingapp.client.controllers.actionprocessors.LoginProcessor;
 import com.datingapp.eventsinterfaces.events.LoginEvent;
 import com.datingapp.eventsinterfaces.eventhandlers.LoginEventHandler;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
@@ -24,7 +25,7 @@ public class LoginController {
     private static LoginConfirmation loginConfirmation;
 
     /**
-     * This method will acquire the login information from the user and add it as an event.
+     * This method will acquire the login information from the user and add it as an event. Then it processes the validation of the user's login.
      * @param _email
      * @param _userInputPassword
      * @return void
@@ -40,7 +41,7 @@ public class LoginController {
         } else {
             LoginEvent loginEvent = new LoginEvent(LoginController.loginConfirmation);
             LoginEventHandler.getInstance().addEvent(loginEvent);
-
+            LoginProcessor.process();
         }
     }
 }

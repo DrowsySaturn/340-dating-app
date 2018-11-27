@@ -31,6 +31,15 @@ public class LoginConfirmationCache {
 
 
     /**
+     * This return the session key
+     * @return:sessionKey
+     */
+    public String getSessionKey() {
+        return this.getSessionKey();
+    }
+
+
+    /**
      * This will cache in the LoginConfirmation session.
      */
     public void recordSession(LoginConfirmation _session) {

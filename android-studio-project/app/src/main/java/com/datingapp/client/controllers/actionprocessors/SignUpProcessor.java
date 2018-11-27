@@ -4,7 +4,7 @@ import com.datingapp.client.cachelibrary.LoginInformationCache;
 import com.datingapp.eventsinterfaces.eventhandlers.SignUpEventHandler;
 import com.datingapp.shared.dataobjects.LoginInformation;
 
-public class SignUpProcessor implements {
+public class SignUpProcessor {
 
     /**
      * Process information from the event
