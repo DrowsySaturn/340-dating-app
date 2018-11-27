@@ -30,7 +30,7 @@ public class ProfileController {
         ProfileController.profile = ProfileFactory.createProfile(_age, name, _personalMessage);
         ProfileEvent event = new ProfileEvent(ProfileController.profile);
         ProfileEventHandler.getInstance().addEvent(event);
-        CreateProfileProcessor.getInstance().process();
+        CreateProfileProcessor.process();
     }
 
 
@@ -63,6 +63,6 @@ public class ProfileController {
         ProfileController.profile = ProfileFactory.createProfile(_age, _name, _personalMessage);
         ProfileEvent event = new ProfileEvent(ProfileController.profile);
         ProfileEventHandler.getInstance().addEvent(event);
-        UpdateProfileProcessor.getInstance().process();
+        UpdateProfileProcessor.process();
     }
 }

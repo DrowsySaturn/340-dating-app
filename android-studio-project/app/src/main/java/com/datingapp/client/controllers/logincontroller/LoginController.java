@@ -25,7 +25,7 @@ public class LoginController {
     private static LoginConfirmation loginConfirmation;
 
     /**
-     * This method will acquire the login information from the user and add it as an event.
+     * This method will acquire the login information from the user and add it as an event. Then it processes the validation of the user's login.
      * @param _email
      * @param _userInputPassword
      * @return void

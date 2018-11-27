@@ -9,7 +9,7 @@ public class UpdateProfileProcessor {
     /**
      * This method process the update profile.
      */
-    public void process() {
+    public static void process() {
         Profile updatedProfile = ProfileEventHandler.getInstance().fireEvent();
         ProfileCache.getInstance().setSelfProfile(updatedProfile);
         //TODO utilize database to update profile.
