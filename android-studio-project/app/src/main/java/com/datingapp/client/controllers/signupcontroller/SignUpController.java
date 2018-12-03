@@ -1,4 +1,9 @@
 package com.datingapp.client.controllers.signupcontroller;
+/**
+ * This is the controller to control user's sign up.
+ * @Author:VincentYang
+ * @Date:12/3/2018
+ */
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -10,6 +15,9 @@ import com.datingapp.eventsinterfaces.events.SignUpEvent;
 import com.datingapp.shared.dataobjects.LoginInformation;
 
 public class SignUpController {
+    /**
+     * This holds an static reference of login information.
+     */
     private static LoginInformation loginInformation = null;
 
     @TargetApi(Build.VERSION_CODES.KITKAT)

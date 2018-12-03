@@ -1,6 +1,7 @@
 package com.datingapp.client.controllers.profilecontroller;
 
 /**
+ * This is the controller of controlling profile traffics.
  * @Author:Vincent
  *
  * @Date:11/24/2018
@@ -15,6 +16,9 @@ import com.datingapp.shared.dataobjects.Profile;
 
 
 public class ProfileController {
+    /**
+     * This contains a static Profile object reference.
+     */
     private static Profile profile;
 
 

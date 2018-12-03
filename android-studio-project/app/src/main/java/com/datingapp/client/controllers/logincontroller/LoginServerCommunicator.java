@@ -1,4 +1,9 @@
 package com.datingapp.client.controllers.logincontroller;
+/**
+ * This class utility ServerCommunication to validate the user's login.
+ * @Author:VincentYang
+ * @Date:12/3/2018
+ */
 
 import com.datingapp.client.net.DatingNetworkException;
 import com.datingapp.client.net.ServerCommunicator;

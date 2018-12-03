@@ -1,6 +1,6 @@
 package com.datingapp.client.controllers.logincontroller;
-/*
-* The purpose of this class is to control loginInformation sign up and log in.
+/**
+* The purpose of this class is to control loginInformation log in.
 *
 * @Author: Vincent Yang
 *
