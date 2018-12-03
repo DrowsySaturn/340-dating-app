@@ -102,6 +102,7 @@ public class HttpServerConnector extends GenericServerConnector {
         }
     }
 
+    @Override
     public void likeProfile(long _likerId, long _likedId, String _username, String _sessionKey) throws DatingNetworkException {
         try {
             Jsoup.connect(this.HOST + this.WRITE_API_PREFIX + "like")
@@ -125,6 +126,7 @@ public class HttpServerConnector extends GenericServerConnector {
         }
     }
 
+    @Override
     public Profile loadProfileByUsername(String _username) throws DatingNetworkException {
         long id = Long.parseLong(loadProfileIdByUsername(_username));
         if (id == -1) {
@@ -146,6 +148,7 @@ public class HttpServerConnector extends GenericServerConnector {
         }
     }
 
+    @Override
     public Profile[] getStrangers(String _username, String _sessionKey) throws DatingNetworkException {
         try {
             String matchesJson = Jsoup.connect(this.HOST + this.READ_API_PREFIX + "getmatches")
@@ -154,6 +157,18 @@ public class HttpServerConnector extends GenericServerConnector {
                     .post().outerHtml();
             ProfileResultSet strangers = this.gson.fromJson(matchesJson, ProfileResultSet.class);
             return strangers.getResults();
+        } catch (IOException io) {
+            throw new DatingNetworkException(io);
+        }
+    }
+
+    @Override
+    public void eraseProfile(String _username, String _sessionKey) throws DatingNetworkException {
+        try {
+            Jsoup.connect(this.HOST + this.WRITE_API_PREFIX + "eraseprofile")
+                    .data("username", _username)
+                    .data("session", _sessionKey)
+                    .post();
         } catch (IOException io) {
             throw new DatingNetworkException(io);
         }

@@ -53,4 +53,8 @@ public class ServerCommunicator {
     public static void updateProfile(String _username, String _sessionKey, Profile _profile) throws DatingNetworkException {
         ServerCommunicator.serverConnector.updateProfile(_username, _sessionKey, _profile);
     }
+
+    public static void eraseProfile(String _username, String _sessionKey) throws DatingNetworkException {
+        ServerCommunicator.serverConnector.eraseProfile(_username, _sessionKey);
+    }
 }
