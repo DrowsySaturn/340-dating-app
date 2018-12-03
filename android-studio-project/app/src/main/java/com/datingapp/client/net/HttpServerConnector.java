@@ -7,8 +7,8 @@ package com.datingapp.client.net;
  */
 
 import com.datingapp.shared.dataobjects.LoginInformation;
-import com.datingapp.shared.dataobjects.MatchesResultSet;
 import com.datingapp.shared.dataobjects.Profile;
+import com.datingapp.shared.dataobjects.ProfileResultSet;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
 import com.google.gson.Gson;
 
@@ -70,7 +70,7 @@ public class HttpServerConnector extends GenericServerConnector {
                     .data("username", _username)
                     .data("session", _sessionKey)
                     .post().outerHtml();
-            MatchesResultSet matches = this.gson.fromJson(matchesJson, MatchesResultSet.class);
+            ProfileResultSet matches = this.gson.fromJson(matchesJson, ProfileResultSet.class);
             return matches.getResults();
         } catch (IOException io) {
             throw new DatingNetworkException(io);
@@ -110,6 +110,50 @@ public class HttpServerConnector extends GenericServerConnector {
                     .data("username", _username)
                     .data("session", _sessionKey)
                     .post();
+        } catch (IOException io) {
+            throw new DatingNetworkException(io);
+        }
+    }
+
+    private String loadProfileIdByUsername(String _username) throws DatingNetworkException {
+        try {
+            return Jsoup.connect(this.HOST + this.READ_API_PREFIX + "idfromusername")
+                    .data("username", _username)
+                    .post().outerHtml().trim();
+        } catch (IOException io) {
+            throw new DatingNetworkException(io);
+        }
+    }
+
+    public Profile loadProfileByUsername(String _username) throws DatingNetworkException {
+        long id = Long.parseLong(loadProfileIdByUsername(_username));
+        if (id == -1) {
+            throw new DatingNetworkException("No such username.");
+        } else {
+            return loadProfileById(id);
+        }
+    }
+
+    @Override
+    public void updateProfile(String _username, String _sessionKey, Profile _profile) throws DatingNetworkException {
+        try {
+            Jsoup.connect(this.HOST + this.WRITE_API_PREFIX + "updateprofile")
+                    .data("username", _username)
+                    .data("session", _sessionKey)
+                    .post();
+        } catch(IOException io) {
+            throw new DatingNetworkException(io);
+        }
+    }
+
+    public Profile[] getStrangers(String _username, String _sessionKey) throws DatingNetworkException {
+        try {
+            String matchesJson = Jsoup.connect(this.HOST + this.READ_API_PREFIX + "getmatches")
+                    .data("username", _username)
+                    .data("session", _sessionKey)
+                    .post().outerHtml();
+            ProfileResultSet strangers = this.gson.fromJson(matchesJson, ProfileResultSet.class);
+            return strangers.getResults();
         } catch (IOException io) {
             throw new DatingNetworkException(io);
         }

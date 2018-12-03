@@ -6,6 +6,7 @@ package com.datingapp.client.net;
  * @version nov-20-2018
  */
 
+import com.datingapp.server.Server;
 import com.datingapp.shared.dataobjects.LoginInformation;
 import com.datingapp.shared.dataobjects.Profile;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
@@ -30,8 +31,7 @@ public class ServerCommunicator {
     }
 
     public static Profile loadProfileByUsername(String _username) throws DatingNetworkException {
-        // TODO: Jonathan load profile by username
-        return null;
+        return ServerCommunicator.serverConnector.loadProfileByUsername(_username);
     }
 
     public static void likeProfile(long _likerId, long _likedId, String _username, String _sessionKey) throws DatingNetworkException {
@@ -46,9 +46,11 @@ public class ServerCommunicator {
         return ServerCommunicator.serverConnector.getMatches(_username, _sessionKey);
     }
 
-    //TODO CUCK MAKE THIS
     public static Profile[] getStrangers(String _username, String _sessionkey) throws DatingNetworkException {
-        return null;
+        return ServerCommunicator.serverConnector.getStrangers(_username, _sessionkey);
     }
-    //TODO need update method for profile. need method to delete profile.
+
+    public static void updateProfile(String _username, String _sessionKey, Profile _profile) throws DatingNetworkException {
+        ServerCommunicator.serverConnector.updateProfile(_username, _sessionKey, _profile);
+    }
 }
