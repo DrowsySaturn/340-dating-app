@@ -115,6 +115,25 @@ public class HttpServerConnector extends GenericServerConnector {
         }
     }
 
+    private String loadProfileIdByUsername(String _username) throws DatingNetworkException {
+        try {
+            return Jsoup.connect(this.HOST + this.READ_API_PREFIX + "idfromusername")
+                    .data("username", _username)
+                    .post().outerHtml().trim();
+        } catch (IOException io) {
+            throw new DatingNetworkException(io);
+        }
+    }
+
+    public Profile loadProfileByUsername(String _username) throws DatingNetworkException {
+        long id = Long.parseLong(loadProfileIdByUsername(_username));
+        if (id == -1) {
+            throw new DatingNetworkException("No such username.");
+        } else {
+            return loadProfileById(id);
+        }
+    }
+
     /**
      * Verifies the login information is correct.
      * @param _email Email associated with the account.

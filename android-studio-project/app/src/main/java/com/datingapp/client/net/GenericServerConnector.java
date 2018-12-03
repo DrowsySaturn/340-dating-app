@@ -25,4 +25,8 @@ public abstract class GenericServerConnector {
     public abstract void registerProfile(LoginInformation _loginInformation) throws DatingNetworkException;
 
     public abstract void uploadProfilePicture(InputStream _input, String _username, String _sessionKey) throws DatingNetworkException;
+
+    public abstract Profile[] getStrangers(String _username, String _sessionKey) throws DatingNetworkException;
+
+    public abstract Profile loadProfileByUsername(String _username) throws DatingNetworkException;
 }
