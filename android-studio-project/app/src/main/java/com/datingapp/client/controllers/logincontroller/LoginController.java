@@ -35,7 +35,12 @@ public class LoginController {
         } else {
             LoginEvent loginEvent = new LoginEvent(LoginController.loginConfirmation);
             LoginEventHandler.getInstance().addEvent(loginEvent);
-            LoginProcessor.process();
+            boolean isValid = LoginProcessor.process();
+            if(isValid) {
+                //go to the profile page
+            } else {
+                //let them know it's an invalid log in.
+            }
         }
     }
 }

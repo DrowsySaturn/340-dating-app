@@ -8,6 +8,8 @@ package com.datingapp.client.controllers.matchingcontroller;
 import com.datingapp.client.cachelibrary.LoginConfirmationCache;
 import com.datingapp.client.net.DatingNetworkException;
 import com.datingapp.client.net.ServerCommunicator;
+import com.datingapp.eventsinterfaces.eventhandlers.MatchEventHandler;
+import com.datingapp.eventsinterfaces.events.MatchEvent;
 import com.datingapp.shared.dataobjects.Match;
 import com.datingapp.shared.dataobjects.Profile;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
@@ -25,5 +27,12 @@ public class MatchController {
      */
     public static ArrayList<Profile> loadRandomProfiles(String _email, String _sexuality) {
         return StrangerProfilesGenerator.generateRandomProfiles(_email,_sexuality);
+    }
+
+
+    public static void likeProfile(Profile _userProfile, Profile _likedProfile) {
+        Match match = GenerateMatch.matching(_userProfile,_likedProfile);
+        MatchEventHandler.getInstance().addEvent(new MatchEvent(match));
+
     }
 }
