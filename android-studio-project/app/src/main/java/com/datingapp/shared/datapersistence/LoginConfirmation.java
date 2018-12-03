@@ -26,18 +26,25 @@ public class LoginConfirmation {
      */
     private boolean wasSuccess;
 
+    private String username;
+
     /**
      * Creates a new login confirmation response instance.
      * @param _wasSuccess True if the user was authenticated.
      * @param _errorMessage The error message if the user was not authenticated.
      * @param _session The session that represents a unique key for maintaining a user's identity.
      */
-    public LoginConfirmation(boolean _wasSuccess, String _errorMessage, Session _session) {
+    public LoginConfirmation(boolean _wasSuccess, String _errorMessage, Session _session, String _username) {
         this.wasSuccess = _wasSuccess;
         // Makes sure no error message is present when login was a success.
         this.errorMessage = _wasSuccess ? "" : _errorMessage;
         // Makes sure no session key is present when the login was a failure.
         this.session = _wasSuccess ? _session : null;
+        this.username = _username;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     /**
