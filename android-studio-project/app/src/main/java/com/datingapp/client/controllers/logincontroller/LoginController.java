@@ -9,9 +9,13 @@ package com.datingapp.client.controllers.logincontroller;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+
+import com.datingapp.client.cachelibrary.LoginConfirmationCache;
 import com.datingapp.client.controllers.actionprocessors.LoginProcessor;
+import com.datingapp.client.net.ServerCommunicator;
 import com.datingapp.eventsinterfaces.events.LoginEvent;
 import com.datingapp.eventsinterfaces.eventhandlers.LoginEventHandler;
+import com.datingapp.shared.dataobjects.Profile;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
 
 public class LoginController {
@@ -37,7 +41,7 @@ public class LoginController {
             LoginEventHandler.getInstance().addEvent(loginEvent);
             boolean isValid = LoginProcessor.process();
             if(isValid) {
-                //go to the profile page
+                Profile personalProfile = ServerCommunicator.loadProfileByUsername(LoginConfirmationCache.getInstance().getSession().)
             } else {
                 //let them know it's an invalid log in.
             }

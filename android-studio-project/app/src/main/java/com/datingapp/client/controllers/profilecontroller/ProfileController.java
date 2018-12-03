@@ -68,5 +68,6 @@ public class ProfileController {
         ProfileEvent event = new ProfileEvent(ProfileController.profile);
         ProfileEventHandler.getInstance().addEvent(event);
         UpdateProfileProcessor.process();
+        //TODO shows that user's profile has been updated.
     }
 }
