@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Dating App</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="orientation_array">
+        <item>Men</item>
+        <item>Women</item>
+        <item>Both</item>
+    </string-array>
 </resources>

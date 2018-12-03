@@ -1,0 +1,26 @@
+On branch master
+Your branch is behind 'origin/master' by 8 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   .idea/caches/build_file_checksums.ser
+	modified:   .idea/misc.xml
+	modified:   app/build.gradle
+	modified:   app/src/main/java/com/datingapp/server/datapersistence/DataPersistence.java
+	new file:   app/src/main/java/com/datingapp/server/servlets/CreateUserServlet.java
+	new file:   app/src/main/java/com/datingapp/server/servlets/LoginVerificationServlet.java
+	new file:   app/src/main/java/com/datingapp/server/servlets/MatchServlet.java
+	new file:   app/src/main/res/values/attr.xml
+	new file:   war-project/build.gradle
+	new file:   war-project/build/libs/war-project.war
+	new file:   war-project/build/tmp/war/MANIFEST.MF
+	new file:   war-project/custom-web.xml
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	../.vs/
+	lol.txt
+

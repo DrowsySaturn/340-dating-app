@@ -17,23 +17,23 @@ public class LoadQuery {
     }
     //load queries for Profile objects
     public static String loadProfileByIdQuery(){
-        String sql = "SELECT * FROM " + SQLNameConstants.TABLE_NAME_PROFILE + "WHERE Profile_ID=?";
+        String sql = "SELECT * FROM " + SQLNameConstants.TABLE_NAME_PROFILE + " WHERE Profile_ID=?";
         return sql;
     }
 
     public static String loadProfileByNameQuery(){
-        String sql = "SELECT * FROM " + SQLNameConstants.TABLE_NAME_PROFILE + "WHERE Profile_Name=?";
+        String sql = "SELECT * FROM " + SQLNameConstants.TABLE_NAME_PROFILE + " WHERE Profile_Name=?";
         return sql;
     }
 
     public static String loadProfileByAgeQuery(){
-        String sql = "SELECT * FROM " + SQLNameConstants.TABLE_NAME_PROFILE +  "WHERE Profile_Age=?";
+        String sql = "SELECT * FROM " + SQLNameConstants.TABLE_NAME_PROFILE +  " WHERE Profile_Age=?";
         return sql;
     }
 
     //load queries for Match Objects
     public static String loadMatchByIdQuery(){
-        String sql = "SELECT * FROM " + SQLNameConstants.TABLE_NAME_MATCHED + "WHERE Matched_ID=?";
+        String sql = "SELECT * FROM " + SQLNameConstants.TABLE_NAME_MATCHED + " WHERE Matched_ID=?";
         return sql;
     }
 }
