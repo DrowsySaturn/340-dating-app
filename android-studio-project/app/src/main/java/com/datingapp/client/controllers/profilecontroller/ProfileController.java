@@ -1,6 +1,7 @@
 package com.datingapp.client.controllers.profilecontroller;
 
 /**
+ * This is the controller of controlling profile traffics.
  * @Author:Vincent
  *
  * @Date:11/24/2018
@@ -15,6 +16,9 @@ import com.datingapp.shared.dataobjects.Profile;
 
 
 public class ProfileController {
+    /**
+     * This contains a static Profile object reference.
+     */
     private static Profile profile;
 
 
@@ -30,21 +34,17 @@ public class ProfileController {
         ProfileController.profile = ProfileFactory.createProfile(_age, name, _personalMessage);
         ProfileEvent event = new ProfileEvent(ProfileController.profile);
         ProfileEventHandler.getInstance().addEvent(event);
-        CreateProfileProcessor.getInstance().process();
+        CreateProfileProcessor.process();
     }
 
 
-<<<<<<< HEAD
-    public void updateprofile(long _id, int _age, String _name, String _personalMessage) {
-        ProfileController.profile = ProfileProcessor.loadProfile(_age, _name, _personalMessage);
-=======
     /**
      * This method will put the current profile inactive.
      */
     public static void deteleProfile() {
 
->>>>>>> vincent
     }
+
 
     /**
      * This method will return the current user profile.
@@ -67,6 +67,6 @@ public class ProfileController {
         ProfileController.profile = ProfileFactory.createProfile(_age, _name, _personalMessage);
         ProfileEvent event = new ProfileEvent(ProfileController.profile);
         ProfileEventHandler.getInstance().addEvent(event);
-        UpdateProfileProcessor.getInstance().process();
+        UpdateProfileProcessor.process();
     }
 }

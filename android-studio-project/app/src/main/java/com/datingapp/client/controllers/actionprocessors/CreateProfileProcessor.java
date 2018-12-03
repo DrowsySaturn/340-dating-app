@@ -1,5 +1,6 @@
 package com.datingapp.client.controllers.actionprocessors;
 /**
+ * This class will create the profile
  * Author: Vincent Yang
  *
  * Date: 11/24/2018
@@ -13,28 +14,11 @@ import com.datingapp.eventsinterfaces.eventhandlers.ProfileEventHandler;
 import com.datingapp.shared.dataobjects.LoginInformation;
 import com.datingapp.shared.dataobjects.Profile;
 
-public class CreateProfileProcessor implements ActionProcessor{
-    //instance variable
-    private static CreateProfileProcessor instance = null;
-
-
-    /**
-     * This returns an instance.
-     * return: instance.
-     */
-    public static CreateProfileProcessor getInstance() {
-        if(CreateProfileProcessor.instance == null) {
-            CreateProfileProcessor.instance = new CreateProfileProcessor();
-        }
-        return CreateProfileProcessor.instance;
-    }
-
-
-    @Override
+public class CreateProfileProcessor {
     /**
      * This process the information, will write in the profile information.
      */
-    public void process() {
+    public static void process() {
         Profile profile  = ProfileEventHandler.getInstance().fireEvent();
         ProfileCache.getInstance().setSelfProfile(profile);
         LoginInformation loginInformation = LoginInformationCache.getInstance().getCachedLoginInformation();

@@ -1,4 +1,9 @@
 package com.datingapp.client.cachelibrary;
+/**
+ * @Author: Vincent Yang
+ *
+ * @Date: 11/27/2018
+ */
 
 import com.datingapp.shared.datapersistence.LoginConfirmation;
 
@@ -27,6 +32,15 @@ public class LoginConfirmationCache {
      */
     public LoginConfirmation getSession() {
         return this.session;
+    }
+
+
+    /**
+     * This return the session key
+     * @return:sessionKey
+     */
+    public String getSessionKey() {
+        return this.getSessionKey();
     }
 
 

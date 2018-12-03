@@ -1,4 +1,9 @@
 package com.datingapp.client.cachelibrary;
+/**
+ * @Author: Vincent Yang
+ *
+ * @Date: 11/27/2018
+ */
 
 import com.datingapp.shared.dataobjects.DataObject;
 import com.datingapp.shared.dataobjects.LoginInformation;
@@ -49,6 +54,8 @@ public class LoginInformationCache {
      * @return cahcedLoginInformation.
      */
     public LoginInformation getCachedLoginInformation() {
-        return this.cachedLoginInformation;
+        LoginInformation currentInfo = this.cachedLoginInformation;
+        this.cachedLoginInformation = null;
+        return currentInfo;
     }
 }
