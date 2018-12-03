@@ -36,7 +36,7 @@ public class Login {
         DBTranslator dbTranslator = new DBTranslator();
         LoginInformation databaseLoginInfo = dbTranslator.loginInformationFromUsername(loginInformation.getUsername());
         if (databaseLoginInfo.getPasswordHash().equals(loginInformation.getPasswordHash())) {
-            return new LoginConfirmation(true, "", generateSessionKey(loginInformation.getUsername()));
+            return new LoginConfirmation(true, "", generateSessionKey(loginInformation.getUsername()), loginInformation.getUsername());
         } else {
             // Return empty messsage when unable to load language settings.
             String invalidPasswordMessage = "";
@@ -45,7 +45,7 @@ public class Login {
             } catch (IOException ex) {
                 // Leave error message blank when language error occurs.
             }
-            return new LoginConfirmation(false, invalidPasswordMessage, null);
+            return new LoginConfirmation(false, invalidPasswordMessage, null, loginInformation.getUsername());
         }
     }
 

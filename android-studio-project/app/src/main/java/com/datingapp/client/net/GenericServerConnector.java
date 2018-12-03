@@ -31,4 +31,6 @@ public abstract class GenericServerConnector {
     public abstract Profile loadProfileByUsername(String _username) throws DatingNetworkException;
 
     public abstract void updateProfile(String _username, String _sessionKey, Profile _profile) throws DatingNetworkException;
+
+    public abstract void eraseProfile(String _username, String _sessionKey) throws DatingNetworkException;
 }
