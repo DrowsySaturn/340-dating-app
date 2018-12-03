@@ -5,7 +5,7 @@ import java.sql.SQLException;
 /*
  * This class contains callable sql queries for loading objects to be used by the DB interface DBMySQL
  * @author William Buck
- * @version 11/13/2018
+ * @version 11/27/2018
  */
 public class LoadQuery {
 

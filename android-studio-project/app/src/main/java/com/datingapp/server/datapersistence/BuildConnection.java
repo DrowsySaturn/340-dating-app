@@ -21,7 +21,7 @@ public class BuildConnection {
     //This will be used when initializing a DB connection.
     private static Connection connection;
 
-    public static Connection BuildConnection() {
+    static {
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/" + DATABASE_NAME);
         dataSource.setUsername(DATABASE_MANAGER_USERNAME);
@@ -32,7 +32,9 @@ public class BuildConnection {
         } catch (SQLException e){
             e.printStackTrace();
         }
+    }
 
+    public static Connection getConnection() {
         return connection;
     }
 }

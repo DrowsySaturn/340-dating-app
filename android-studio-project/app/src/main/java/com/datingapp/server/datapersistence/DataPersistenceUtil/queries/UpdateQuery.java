@@ -2,7 +2,7 @@ package com.datingapp.server.datapersistence.DataPersistenceUtil.queries;
 /*
  * This class contains callable sql queries for updating DB entries to be used by the DB interface DBMySQL
  * @author William Buck
- * @version 11/13/2018
+ * @version 11/27/2018
  */
 import com.datingapp.server.datapersistence.DBInterface;
 import com.datingapp.server.datapersistence.DBMySQL;
