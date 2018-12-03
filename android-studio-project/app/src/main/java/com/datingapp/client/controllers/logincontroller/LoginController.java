@@ -11,7 +11,9 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 
 import com.datingapp.client.cachelibrary.LoginConfirmationCache;
+import com.datingapp.client.cachelibrary.ProfileCache;
 import com.datingapp.client.controllers.actionprocessors.LoginProcessor;
+import com.datingapp.client.net.DatingNetworkException;
 import com.datingapp.client.net.ServerCommunicator;
 import com.datingapp.eventsinterfaces.events.LoginEvent;
 import com.datingapp.eventsinterfaces.eventhandlers.LoginEventHandler;
@@ -41,7 +43,15 @@ public class LoginController {
             LoginEventHandler.getInstance().addEvent(loginEvent);
             boolean isValid = LoginProcessor.process();
             if(isValid) {
-                Profile personalProfile = ServerCommunicator.loadProfileByUsername(LoginConfirmationCache.getInstance().getSession().)
+                Profile personalProfile = null;
+                try {
+                    personalProfile = ServerCommunicator.loadProfileByUsername(LoginConfirmationCache.getInstance().getSession().getUsername());
+                } catch (DatingNetworkException e) {
+                    e.printStackTrace();
+                }
+                if(personalProfile == null) {
+                    ProfileCache.getInstance().setSelfProfile(personalProfile);
+                }
             } else {
                 //let them know it's an invalid log in.
             }
