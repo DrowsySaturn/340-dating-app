@@ -144,19 +144,19 @@ public class DBMySQL implements DBInterface {
         try {
             switch (_obj.getClass().getName()) {
                 case SQLNameConstants.PROFILE:
-                    Profile prfl = new Profile(_obj);
+                    Profile prfl = (Profile)_obj;
                     updateProfile(prfl);
                     break;
                 case SQLNameConstants.MATCH:
-                    Match mtch = new Match(_obj);
+                    Match mtch = (Match)_obj;
                     updateMatch(mtch);
                     break;
                 case SQLNameConstants.PHOTO:
-                    Photo phto = new Photo(_obj);
+                    Photo phto = (Photo)_obj;
                     updatePhoto(phto);
                     break;
                 case SQLNameConstants.LIKE:
-                    Like lke = new Like(_obj);
+                    Like lke = (Like)_obj;
                     updateLike(lke);
                     break;
             }
