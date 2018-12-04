@@ -13,9 +13,9 @@ public class ProfileFactory {
 
     /**
      * This a factory design, return a brand new reference of a new profile.
-     * @param _age
-     * @param _name
-     * @param _personalMessage
+     * @param _age this is the person's age.
+     * @param _name this is the person's name.
+     * @param _personalMessage this is the person's personal message.
      * @return profile.
      */
     public static Profile createProfile(int _age, String _name, String _personalMessage) {

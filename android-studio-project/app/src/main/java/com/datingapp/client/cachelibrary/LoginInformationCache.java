@@ -21,7 +21,7 @@ public class LoginInformationCache {
 
     /**
      * Return an instance of this class
-     * @return: instance
+     * @return: instance this is the instance of the class.
      */
     public static LoginInformationCache getInstance() {
         if(LoginInformationCache.instance == null) {
@@ -39,7 +39,7 @@ public class LoginInformationCache {
 
     /**
      * This will clear out the cached loginInformation.
-     * @return boolean.
+     * @return boolean. boolean value if the cache is cleared.
      */
     public boolean clear() {
         if(this.cachedLoginInformation != null) {
@@ -49,8 +49,8 @@ public class LoginInformationCache {
     }
 
     /**
-     * This method cache in the
-     * @param _dataObject
+     * This method cache in the login information.
+     * @param _dataObject this is the login information.
      */
     public void recordLoginInformation(DataObject _dataObject) {
         if(cachedLoginInformation == null && _dataObject instanceof LoginInformation) {

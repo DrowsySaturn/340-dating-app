@@ -1,4 +1,9 @@
 package com.datingapp.client.controllers.actionprocessors;
+/**
+ * This will update the profile using profile event queue.
+ * @Author:VincentYang
+ * @Date:12/3/2018
+ */
 
 import com.datingapp.client.cachelibrary.LoginConfirmationCache;
 import com.datingapp.client.cachelibrary.ProfileCache;
@@ -14,7 +19,6 @@ public class UpdateProfileProcessor {
     public static void process() {
         Profile updatedProfile = ProfileEventHandler.getInstance().fireEvent();
         ProfileCache.getInstance().setSelfProfile(updatedProfile);
-        //TODO utilize database to update profile.
         try {
             String name = updatedProfile.getName();
             String sessionKey = LoginConfirmationCache.getInstance().getSessionKey();

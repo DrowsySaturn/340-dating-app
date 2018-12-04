@@ -1,5 +1,6 @@
 package com.datingapp.client.controllers.matchingcontroller;
 /**
+ * This is a matching controller.
  * @Author: Vincent Yang
  *
  * @Date:11/26/2018
@@ -15,17 +16,10 @@ import com.datingapp.shared.dataobjects.Profile;
 import java.util.ArrayList;
 
 public class MatchController {
-    private static Profile currentUserProfile;
-
     /**
-     * This method will return a list of Random Profiles
-     * @param _email
-     * @param _sexuality
-     * @return
+     * This is a static variable to hold current user profile.
      */
-    public static ArrayList<Profile> loadRandomProfiles(String _email, String _sexuality) {
-        return StrangerProfilesGenerator.generateRandomProfiles(_email,_sexuality);
-    }
+    private static Profile currentUserProfile;
 
 
     /**
@@ -37,6 +31,17 @@ public class MatchController {
         MatchingGenerator.matching(_userProfile,_likedProfile);
         MatchingProcessor.process();
         //TODO display confirmation of current user liking other user.
+    }
+
+
+    /**
+     * This method will return a list of Random Profiles
+     * @param _email
+     * @param _sexuality
+     * @return
+     */
+    public static ArrayList<Profile> loadRandomProfiles(String _email, String _sexuality) {
+        return StrangerProfilesGenerator.generateRandomProfiles(_email,_sexuality);
     }
 
 

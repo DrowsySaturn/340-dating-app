@@ -11,6 +11,8 @@ import com.datingapp.client.cachelibrary.ProfileCache;
 import com.datingapp.client.controllers.actionprocessors.DeleteProfileProcessor;
 
 public class DeleteProfileActuator {
+
+
     /**
      * This method will invoke the DeleteProfileProcessor to in active the current profile. During the process it will clear up all the cached values.
      */
