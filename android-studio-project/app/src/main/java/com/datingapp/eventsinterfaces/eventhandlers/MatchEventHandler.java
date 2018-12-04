@@ -1,5 +1,6 @@
 package com.datingapp.eventsinterfaces.eventhandlers;
 /**
+ * This is an instance of match event handler, it stores in the match events.
  * @Author:Vincent
  *
  * @Date:11/25/2018
@@ -14,6 +15,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class MatchEventHandler implements EventHandler<Match> {
+    /**
+     * This is an example of singleton design pattern. It returns an instance of MatchEventHandler.
+     */
+    /////////////////////////////////////////////////////////////////////
     private static MatchEventHandler instance = null;
 
 
@@ -23,11 +28,19 @@ public class MatchEventHandler implements EventHandler<Match> {
         }
         return MatchEventHandler.instance;
     }
+    /////////////////////////////////////////////////////////////////////
 
 
+    /**
+     * This is an event queue, it holds the event object of MatchEvent.
+     */
     private Queue<Event> events = new LinkedList<>();
 
 
+    /**
+     * This method checks if the passed in event is an instance of MatchEvent. Then stores the event into the queue.
+     * @param _event
+     */
     @Override
     public void addEvent(Event _event) {
         if(_event instanceof MatchEvent) {
@@ -42,6 +55,10 @@ public class MatchEventHandler implements EventHandler<Match> {
     }
 
 
+    /**
+     * This method will empty the queue, and perform fireEvent action on every single event objects.
+     * @return ArraList<Match>
+     */
     @Override
     public ArrayList<Match> fireAllEvents() {
         ArrayList<Match> matchesRecord = new ArrayList<>();
@@ -61,6 +78,11 @@ public class MatchEventHandler implements EventHandler<Match> {
     }
 
 
+    /**
+     * This method will force fire a selected event. DO NOT USE, IF NOT NECESSARY.
+     * @param _event
+     * @return Match.
+     */
     @Override
     public Match fireEvent(Event _event) {
         if(events.isEmpty()) {
@@ -78,6 +100,10 @@ public class MatchEventHandler implements EventHandler<Match> {
     }
 
 
+    /**
+     * This method will remove the first event object on top of the queue and perform fireEvent action from that event object.
+     * @return Match.
+     */
     @Override
     public Match fireEvent() {
         if(events.isEmpty()) {

@@ -1,5 +1,6 @@
 package com.datingapp.client.cachelibrary;
 /**
+ * This will cache in the log in session.
  * @Author: Vincent Yang
  *
  * @Date: 11/27/2018
@@ -8,12 +9,16 @@ package com.datingapp.client.cachelibrary;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
 
 public class LoginConfirmationCache {
+    /**
+     * This is a singleton design pattern.
+     */
+    ////////////////////////////////////////////////////////////////////////////////
     private static LoginConfirmationCache instance = null;
 
 
     /**
      * This returns instance.
-     * @return instance
+     * @return instance this is the instance of the class.
      */
     public static LoginConfirmationCache getInstance() {
         if(LoginConfirmationCache.instance == null) {
@@ -21,10 +26,23 @@ public class LoginConfirmationCache {
         }
         return LoginConfirmationCache.instance;
     }
-
-
+    ////////////////////////////////////////////////////////////////////////////////
+    /**
+     * This cache in the loginConfirmation.
+     */
     private LoginConfirmation session;
 
+
+    /**
+     * This will clear out the session.
+     * @return boolean result if the cache is cleared.
+     */
+    public boolean clear() {
+        if(this.session != null) {
+           this.session = null;
+        }
+        return this.session==null;
+    }
 
     /**
      * This will return the LoginConfirmation session
@@ -37,7 +55,7 @@ public class LoginConfirmationCache {
 
     /**
      * This return the session key
-     * @return:sessionKey
+     * @return:sessionKey this is the session key.
      */
     public String getSessionKey() {
         return this.getSessionKey();

@@ -1,5 +1,6 @@
 package com.datingapp.client.cachelibrary;
 /**
+ * This will cache in the personal profile.
  * @Author: Vincent Yang
  *
  * @Date: 11/24/2018
@@ -12,12 +13,16 @@ import com.datingapp.shared.datapersistence.LoginConfirmation;
 import java.util.HashMap;
 
 public class ProfileCache {
+    /**
+     * This is a singleton design pattern.
+     */
+    ///////////////////////////////////////////////////////
     private static ProfileCache instance = null;
 
 
     /**
      * This method gives the instance of ProfileCache
-     * @return instance
+     * @return instance this is the instance of the class.
      */
     public static ProfileCache getInstance() {
         if(ProfileCache.instance == null) {
@@ -25,23 +30,30 @@ public class ProfileCache {
         }
         return ProfileCache.instance;
     }
+    ////////////////////////////////////////////////////////
 
-
-    private Profile selfProfile = null;
-    private HashMap<String, Profile> matchedProfiles = new HashMap<>();
 
     /**
-     * getter is for matchedProfiles
-     * @return matcheProfiles
+     * This cache in the self profile.
      */
-    public HashMap<String, Profile> getMatchedProfiles() {
-        return this.matchedProfiles;
+    private Profile selfProfile = null;
+
+
+    /**
+     * This will clear up the cached value.
+     * @return boolean.
+     */
+    public boolean clear() {
+        if(this.selfProfile != null) {
+            this.selfProfile = null;
+        }
+        return this.selfProfile == null;
     }
 
 
     /**
      * Getter for self profile
-     * @return selfProfile
+     * @return selfProfile this returns the personal profile.
      */
     public Profile getSelfProfile() {
         return this.selfProfile;
@@ -49,26 +61,8 @@ public class ProfileCache {
 
 
     /**
-     * This method will load in all the matches that user has.
-     * @throws DatingNetworkException
-     */
-    public void LoadAllMatches() throws DatingNetworkException {
-        if(this.selfProfile == null) {
-            System.out.println("Lost session something is wrong");
-        } else {
-            LoginConfirmation session = LoginConfirmationCache.getInstance().getSession();
-            Profile[] matches = ServerCommunicator.getMatches(this.selfProfile.getName(), session.getSession().getSessionKey());
-            for(int i = 0; i < matches.length; i++) {
-                matchedProfiles.put(matches[i].getName(), matches[i]);
-            }
-            System.out.println("Matches loaded");
-        }
-    }
-
-
-    /**
      * Setter for self profile.
-     * @param _selfProfile
+     * @param _selfProfile this is the personal profile.
      */
     public void setSelfProfile(Profile _selfProfile) {
         this.selfProfile = _selfProfile;

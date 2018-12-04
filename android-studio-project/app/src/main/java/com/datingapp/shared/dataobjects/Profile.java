@@ -10,13 +10,30 @@ import com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.SQLNameC
 import com.datingapp.shared.datapersistence.DatabasePersistenceConstants;
 
 public class Profile extends DataObject {
-
+    /**
+     * This is the age of the profile.
+     */
     private int age;
+
+
+    /**
+     * This is the name of the person in this profile.
+     */
     private String name;
+
+
+    /**
+     * This is the personal message of the profile.
+     */
     private String personalMessage;
 
+
+    /**
+     * This is the table name to load profiles from.
+     */
     private String tableName = SQLNameConstants.TABLE_NAME_PROFILE;
 
+    
     /**
      * Constructs a new Profile. Will be inserted into database instead of updated because of -1 id.
      * When saved the id will be updated.
@@ -31,6 +48,11 @@ public class Profile extends DataObject {
 
     /**
      * Constructs a new profile. This constructor is to be used when the ID of the profile is known.
+     *
+     * @param _id is the ID of the profile.
+     * @param _age is the age of the user.
+     * @param _name is the name of the user.
+     * @param _personalMessage is the user's personal message.
      */
     public Profile(long _id, int _age, String _name, String _personalMessage) {
         this.id = _id;
@@ -39,6 +61,10 @@ public class Profile extends DataObject {
         this.personalMessage = _personalMessage;
     }
 
+    /**
+     * The empty constructor is called in DBMySQL when updating a Profile _obj.
+     * @param _obj
+     */
     public Profile(DataObject _obj){
 
     }

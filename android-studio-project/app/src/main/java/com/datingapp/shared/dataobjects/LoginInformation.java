@@ -36,10 +36,32 @@ public class LoginInformation extends DataObject {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public LoginInformation(String _username, String _password, boolean _passwordAlreadyHashed) {
+        this.username = _username;
+        try {
+            if (_passwordAlreadyHashed) {
+                this.passwordHash = _password;
+            } else {
+                this.passwordHash = PasswordHash.hash(_password);
+            }
+        } catch (IOException ex) {
+            this.passwordHash = _password;
+        }
+    }
+
+    /**
+     * This gets the username associated with this login information.
+     * @return This is the username associated with this login information.
+     */
     public String getUsername() {
         return this.username;
     }
 
+    /**
+     * This gets the password hash associated with this login information.
+     * @return This is the password hash associated with this login information.
+     */
     public String getPasswordHash() {
         return this.passwordHash;
     }

@@ -52,7 +52,8 @@ public class FileRequest {
 
     /**
      * This handles file upload by calling the callback when a file is encountered in the parameter
-     * map and saves the value to the parameter map if it is not a file.
+     * map and saves the value to the parameter map if it is not a file. Non file params are parsed
+     * first.
      * @throws IOException IOException occurs when a file was unable to be uploaded.
      */
     private void handleFileUpload() throws IOException {
@@ -62,10 +63,15 @@ public class FileRequest {
             ServletFileUpload upload = new ServletFileUpload(factory);
             upload.setSizeMax(MAX_FILE_SIZE_BEFORE_SAVING_TO_FILE);
             List<FileItem> items = upload.parseRequest(this.request);
+            // Handle form fields first.
             for (FileItem fileItem : items) {
                 if (fileItem.isFormField()) {
                     parameters.put(fileItem.getFieldName(), fileItem.getString());
-                } else {
+                }
+            }
+            // Handle file uploads.
+            for (FileItem fileItem : items) {
+                if (!fileItem.isFormField()) {
                     requestCallback.onFileUploaded(fileItem.getFieldName(), fileItem.getInputStream());
                 }
             }

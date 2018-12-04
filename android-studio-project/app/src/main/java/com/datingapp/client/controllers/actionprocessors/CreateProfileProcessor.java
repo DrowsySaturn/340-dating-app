@@ -1,5 +1,6 @@
 package com.datingapp.client.controllers.actionprocessors;
 /**
+ * This class will create the profile
  * Author: Vincent Yang
  *
  * Date: 11/24/2018
@@ -26,6 +27,7 @@ public class CreateProfileProcessor {
         } catch (DatingNetworkException e) {
             e.printStackTrace();
         }
+        System.out.println("Profile created");
         //TODO return confirmation that user has inserted the profile data. Basically a callback function. @ Brandon
     }
 }

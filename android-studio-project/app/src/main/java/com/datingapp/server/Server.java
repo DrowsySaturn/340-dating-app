@@ -1,6 +1,8 @@
 package com.datingapp.server;
 /*
- * The purpose of this class is to startup the server.
+ * The purpose of this class is to test the server startup. The actual starting point for the
+ * server is the Tomcat server. It will startup all of the servlet objects and use those as
+ * individual entry points.
  *
  * @author Jonathan Cooper
  * @version sep-24-2018
