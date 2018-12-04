@@ -39,6 +39,8 @@ public class DBTranslator {
         connector.deleteObject(_obj);
     }
 
+    public static DBInterface getDBMySQL() {
+        return connector;
     /**
      * This loads a users login information from the database. This is useful for checking a user's
      * password.

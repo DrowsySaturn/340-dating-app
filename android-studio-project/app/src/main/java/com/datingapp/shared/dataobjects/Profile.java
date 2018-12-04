@@ -6,7 +6,7 @@ package com.datingapp.shared.dataobjects;
  * @version 11/1/2018
  */
 
-import com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.SQLNameConstants;
+import com.datingapp.server.datapersistence.DataPersistenceUtil.queries.SQLNameConstants;
 import com.datingapp.shared.datapersistence.DatabasePersistenceConstants;
 
 public class Profile extends DataObject {
