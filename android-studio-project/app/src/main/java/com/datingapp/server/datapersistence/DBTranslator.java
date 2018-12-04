@@ -13,8 +13,6 @@ import android.support.annotation.RequiresApi;
 import com.datingapp.shared.dataobjects.DataObject;
 import com.datingapp.shared.dataobjects.LoginInformation;
 import com.datingapp.shared.dataobjects.Profile;
-import com.datingapp.shared.datapersistence.LoginConfirmation;
-import com.datingapp.utility.PasswordHash;
 
 public class DBTranslator {
 
