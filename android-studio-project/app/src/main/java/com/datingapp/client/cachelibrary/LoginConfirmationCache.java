@@ -18,7 +18,7 @@ public class LoginConfirmationCache {
 
     /**
      * This returns instance.
-     * @return instance
+     * @return instance this is the instance of the class.
      */
     public static LoginConfirmationCache getInstance() {
         if(LoginConfirmationCache.instance == null) {
@@ -35,7 +35,7 @@ public class LoginConfirmationCache {
 
     /**
      * This will clear out the session.
-     * @return
+     * @return boolean result if the cache is cleared.
      */
     public boolean clear() {
         if(this.session != null) {
@@ -55,7 +55,7 @@ public class LoginConfirmationCache {
 
     /**
      * This return the session key
-     * @return:sessionKey
+     * @return:sessionKey this is the session key.
      */
     public String getSessionKey() {
         return this.getSessionKey();

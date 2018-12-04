@@ -12,7 +12,7 @@ import com.datingapp.shared.datapersistence.LoginConfirmation;
 public class LoginServerCommunicator {
     /**
      * This method uses the ServerCommunicator to validate the user's login.
-     * @param _email
+     * @param _email this is the p
      * @param _password
      * @return
      */

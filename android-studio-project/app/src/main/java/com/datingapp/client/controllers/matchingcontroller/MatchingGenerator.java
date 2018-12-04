@@ -25,21 +25,6 @@ public class MatchingGenerator {
 
 
     /**
-     * This will generate a match.
-     * @param _userProfile
-     * @param _likedProfile
-     * @return match.
-     */
-    public static void matching(Profile _userProfile, Profile _likedProfile) {
-        LocalDate date = DateUtil.getCurrentDateAndTime();
-        boolean matchIsActive = true;
-        Match match = new Match(_userProfile,_likedProfile,date,matchIsActive);
-        MatchEvent event = new MatchEvent(match);
-        MatchEventHandler.getInstance().addEvent(event);
-    }
-
-
-    /**
      * This will returns the current user's matches.
      * @return ArrayList.
      */
@@ -55,5 +40,20 @@ public class MatchingGenerator {
             ProfileEventHandler.getInstance().addEvent(event);
         }
         return ProfileEventHandler.getInstance().fireAllEvents();
+    }
+
+
+    /**
+     * This will generate a match.
+     * @param _userProfile
+     * @param _likedProfile
+     * @return match.
+     */
+    public static void matching(Profile _userProfile, Profile _likedProfile) {
+        LocalDate date = DateUtil.getCurrentDateAndTime();
+        boolean matchIsActive = true;
+        Match match = new Match(_userProfile,_likedProfile,date,matchIsActive);
+        MatchEvent event = new MatchEvent(match);
+        MatchEventHandler.getInstance().addEvent(event);
     }
 }

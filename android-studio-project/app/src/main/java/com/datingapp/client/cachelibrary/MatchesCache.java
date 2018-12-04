@@ -21,7 +21,7 @@ public class MatchesCache {
 
     /**
      * This returns an instance.
-     * @return
+     * @return instance. this is the instance of the class.
      */
     public static MatchesCache getInstance() {
         if(MatchesCache.instance == null) {

@@ -19,9 +19,9 @@ import java.util.ArrayList;
 public class StrangerProfilesGenerator {
     /**
      * This method generates a list of random profiles.
-     * @param _email
+     * @param _email the person's email.
      * @param _sexuality
-     * @return ArrayList.
+     * @return ArrayList. this will return an arraylist that has an instance of profile.
      */
     public static ArrayList<Profile> generateRandomProfiles(String _email, String _sexuality) {
         Profile currentProfile = null;

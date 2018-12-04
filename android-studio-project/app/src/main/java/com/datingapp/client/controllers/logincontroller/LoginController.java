@@ -26,6 +26,19 @@ public class LoginController {
      */
     private static LoginConfirmation loginConfirmation;
 
+
+    /**
+     * This will let the user know if he or she logs in.
+     * @return boolean.
+     */
+    public static boolean ifUserIsLoggedin() {
+        if(LoginConfirmationCache.getInstance().getSession() == null) {
+            return false;
+        }
+        return LoginConfirmationCache.getInstance().getSession().isSuccess();
+    }
+
+
     /**
      * This method will acquire the login information from the user and add it as an event. Then it processes the validation of the user's login.
      * @param _email
@@ -54,17 +67,5 @@ public class LoginController {
                 //TODO: Invalid login.
             }
         }
-    }
-
-
-    /**
-     * This will let the user know if he or she logs in.
-     * @return boolean.
-     */
-    public static boolean ifUserIsLoggedin() {
-        if(LoginConfirmationCache.getInstance().getSession() == null) {
-            return false;
-        }
-        return LoginConfirmationCache.getInstance().getSession().isSuccess();
     }
 }

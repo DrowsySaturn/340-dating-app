@@ -16,6 +16,7 @@ import com.datingapp.shared.dataobjects.LoginInformation;
 
 public class SignUpController {
 
+
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     /**
