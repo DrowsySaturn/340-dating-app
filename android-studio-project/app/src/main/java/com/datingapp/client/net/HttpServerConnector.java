@@ -1,4 +1,4 @@
-package com.datingapp.client.net;
+package client.net;
 /**
  * Connects to the server over HTTP.
  *

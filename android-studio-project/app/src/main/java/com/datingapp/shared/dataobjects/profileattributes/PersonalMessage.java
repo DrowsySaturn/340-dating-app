@@ -1,4 +1,4 @@
-package com.datingapp.shared.dataobjects.profileattributes;
+package shared.dataobjects.profileattributes;
 /*
  *
  */

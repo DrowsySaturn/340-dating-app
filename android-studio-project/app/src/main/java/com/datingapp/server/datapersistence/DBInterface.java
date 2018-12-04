@@ -1,4 +1,4 @@
-package com.datingapp.server.datapersistence;
+package server.datapersistence;
 
 /*
  * This is the basic interface to be implemented by database classes.

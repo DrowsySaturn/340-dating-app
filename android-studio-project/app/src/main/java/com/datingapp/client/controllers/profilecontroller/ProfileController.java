@@ -1,4 +1,4 @@
-package com.datingapp.client.controllers.profilecontroller;
+package client.controllers.profilecontroller;
 
 /**
  * This is the controller of controlling profile traffics.

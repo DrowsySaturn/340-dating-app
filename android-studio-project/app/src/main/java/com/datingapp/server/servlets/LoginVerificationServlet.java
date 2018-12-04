@@ -1,4 +1,4 @@
-package com.datingapp.server.servlets;
+package server.servlets;
 /*
  * The purpose of this class is to verify login information.
  * @author Jonathan Cooper

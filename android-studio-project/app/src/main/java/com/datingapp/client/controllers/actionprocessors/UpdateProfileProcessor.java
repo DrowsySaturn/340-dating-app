@@ -1,4 +1,4 @@
-package com.datingapp.client.controllers.actionprocessors;
+package client.controllers.actionprocessors;
 
 import com.datingapp.client.cachelibrary.ProfileCache;
 import com.datingapp.client.net.ServerCommunicator;

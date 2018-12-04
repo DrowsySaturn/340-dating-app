@@ -1,4 +1,4 @@
-package com.datingapp.shared.dataobjects;
+package shared.dataobjects;
 
 /**
  * The purpose of this class is to wrap an array of Profiles for the JSON loader.

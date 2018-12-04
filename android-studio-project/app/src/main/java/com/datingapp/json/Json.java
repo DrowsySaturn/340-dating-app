@@ -1,4 +1,4 @@
-package com.datingapp.json;
+package json;
 /*
  * Serializes and deserializes objects from Json.
  *

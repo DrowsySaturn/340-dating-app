@@ -1,4 +1,4 @@
-package com.datingapp.client.net;
+package client.net;
 /**
  * The purpose of this class is to create an exception for use in the client.net package.
  *

@@ -1,4 +1,4 @@
-package com.datingapp.eventsinterfaces.events;
+package eventsinterfaces.events;
 /**
  * This class is an instance of Match event.
  * @Author:VincentYang

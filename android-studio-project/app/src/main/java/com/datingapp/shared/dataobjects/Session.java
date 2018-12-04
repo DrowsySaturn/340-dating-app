@@ -1,4 +1,4 @@
-package com.datingapp.shared.dataobjects;
+package shared.dataobjects;
 /**
  * This class wraps a session key in a data object so that it can be saved to the database.
  *

@@ -1,4 +1,4 @@
-package com.datingapp.client.androids;
+package client.androids;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -20,7 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.datingapp.client.datingapp.R;
+
 
 public class ProfileActivity extends AppCompatActivity {
 

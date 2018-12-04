@@ -1,4 +1,4 @@
-package com.datingapp.server.servlets;
+package server.servlets;
 /**
  * Creates user from the json included in the incoming http data.
  *

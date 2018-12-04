@@ -1,4 +1,4 @@
-package com.datingapp.eventsinterfaces.eventhandlers;
+package eventsinterfaces.eventhandlers;
 /**
  * This is an instance of SignUp event handler, it stores in the SignUp events.
  * @Author:VincentYang

@@ -1,4 +1,4 @@
-package com.datingapp.server.datapersistence;
+package server.datapersistence;
 /*
  * This class implements the DBInterface for MySQL.
  *

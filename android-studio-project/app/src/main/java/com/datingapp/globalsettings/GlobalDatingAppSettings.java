@@ -1,4 +1,4 @@
-package com.datingapp.globalsettings;
+package globalsettings;
 /**
  * The purpose of this class is to load a global settings object for each type of settings file.
  *

@@ -1,4 +1,4 @@
-package com.datingapp.client.controllers.logincontroller;
+package client.controllers.logincontroller;
 /**
 * The purpose of this class is to control loginInformation log in.
 *

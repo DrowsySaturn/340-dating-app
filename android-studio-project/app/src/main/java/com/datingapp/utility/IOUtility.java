@@ -1,4 +1,4 @@
-package com.datingapp.utility;
+package utility;
 /**
  * The purpose of this class is to help with dealing with standard Java IO.
  *

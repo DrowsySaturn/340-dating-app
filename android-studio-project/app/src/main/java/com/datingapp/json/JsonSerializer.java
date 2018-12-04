@@ -1,4 +1,4 @@
-package com.datingapp.json;
+package json;
 
 public abstract class JsonSerializer {
     /**

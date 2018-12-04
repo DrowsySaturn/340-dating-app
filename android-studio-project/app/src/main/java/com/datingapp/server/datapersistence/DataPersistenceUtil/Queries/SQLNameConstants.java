@@ -1,4 +1,4 @@
-package com.datingapp.server.datapersistence.DataPersistenceUtil.Queries;
+package server.datapersistence.DataPersistenceUtil.Queries;
 /*
  * This class is used to store all the names of SQL tables and columns.
  * @author William Buck

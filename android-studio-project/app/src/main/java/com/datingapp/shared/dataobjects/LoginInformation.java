@@ -1,4 +1,4 @@
-package com.datingapp.shared.dataobjects;
+package shared.dataobjects;
 /**
  * This is sent to the server to check if the login information is valid.
  *

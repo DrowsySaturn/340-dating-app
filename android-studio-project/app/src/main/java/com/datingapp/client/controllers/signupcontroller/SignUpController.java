@@ -1,4 +1,4 @@
-package com.datingapp.client.controllers.signupcontroller;
+package client.controllers.signupcontroller;
 /**
  * This is the controller to control user's sign up.
  * @Author:VincentYang

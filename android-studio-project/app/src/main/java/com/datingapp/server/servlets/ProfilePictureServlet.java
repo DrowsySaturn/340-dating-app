@@ -1,4 +1,4 @@
-package com.datingapp.server.servlets;
+package server.servlets;
 
 import com.datingapp.server.datapersistence.DBTranslator;
 import com.datingapp.server.servlets.fileupload.FileRequest;

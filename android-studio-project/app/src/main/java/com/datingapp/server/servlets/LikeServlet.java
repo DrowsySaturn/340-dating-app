@@ -1,4 +1,4 @@
-package com.datingapp.server.servlets;
+package server.servlets;
 /**
  * This servlet is used for sending likes to other users.
  *

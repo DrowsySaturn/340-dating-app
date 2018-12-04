@@ -1,4 +1,4 @@
-package com.datingapp.globalsettings;
+package globalsettings;
 /**
  * The purpose of this class is to store settings for both client and server.
  *

@@ -1,4 +1,4 @@
-package com.datingapp.server.datapersistence;
+package server.datapersistence;
 /*
  * The purpose of this class is to provide access to the dating app's database. Models will call
  * the CRUD operations from this class, which connects to the database that has been implemented.
