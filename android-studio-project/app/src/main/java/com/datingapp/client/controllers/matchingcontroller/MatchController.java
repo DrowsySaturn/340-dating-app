@@ -34,8 +34,7 @@ public class MatchController {
      * @param _likedProfile
      */
     public static void likeProfile(Profile _userProfile, Profile _likedProfile) {
-        Match match = MatchingGenerator.matching(_userProfile,_likedProfile);
-        MatchEventHandler.getInstance().addEvent(new MatchEvent(match));
+        MatchingGenerator.matching(_userProfile,_likedProfile);
         MatchingProcessor.process();
         //TODO display confirmation of current user liking other user.
     }

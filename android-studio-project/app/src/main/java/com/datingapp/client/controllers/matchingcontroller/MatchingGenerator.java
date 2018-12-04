@@ -8,7 +8,9 @@ package com.datingapp.client.controllers.matchingcontroller;
 import com.datingapp.client.cachelibrary.LoginConfirmationCache;
 import com.datingapp.client.net.DatingNetworkException;
 import com.datingapp.client.net.ServerCommunicator;
+import com.datingapp.eventsinterfaces.eventhandlers.MatchEventHandler;
 import com.datingapp.eventsinterfaces.eventhandlers.ProfileEventHandler;
+import com.datingapp.eventsinterfaces.events.MatchEvent;
 import com.datingapp.eventsinterfaces.events.ProfileEvent;
 import com.datingapp.shared.dataobjects.Match;
 import com.datingapp.shared.dataobjects.Profile;
@@ -28,11 +30,12 @@ public class MatchingGenerator {
      * @param _likedProfile
      * @return match.
      */
-    public static Match matching(Profile _userProfile, Profile _likedProfile) {
+    public static void matching(Profile _userProfile, Profile _likedProfile) {
         LocalDate date = DateUtil.getCurrentDateAndTime();
         boolean matchIsActive = true;
         Match match = new Match(_userProfile,_likedProfile,date,matchIsActive);
-        return match;
+        MatchEvent event = new MatchEvent(match);
+        MatchEventHandler.getInstance().addEvent(event);
     }
 
 

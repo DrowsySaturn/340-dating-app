@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 //import android.*;
 
-import com.database.attempt12.R;
+import com.datingapp.client.attempt12.R;
 
 import java.util.ArrayList;
 

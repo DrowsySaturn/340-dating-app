@@ -56,4 +56,13 @@ public class MatchesCache {
         ServerCommunicator.likeProfile(userProfile.getId(),likedProfile.getId(),userProfile.getName(),sessionKey);
         this.match = null;
     }
+
+
+    /**
+     * This will return the current cached matches.
+     * @return match.
+     */
+    public Match getMatch() {
+        return this.match;
+    }
 }

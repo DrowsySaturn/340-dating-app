@@ -14,6 +14,6 @@ public class SignUpProcessor {
         SignUpEventHandler eventHandler = SignUpEventHandler.getInstance();
         LoginInformation loginInformation = eventHandler.fireEvent();
         System.out.println(loginInformation.toString());
-//        LoginInformationCache.getInstance().recordLoginInformation(loginInformation);
+        LoginInformationCache.getInstance().recordLoginInformation(loginInformation);
     }
 }

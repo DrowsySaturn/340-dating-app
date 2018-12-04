@@ -49,11 +49,9 @@ public class LoginController {
                 } catch (DatingNetworkException e) {
                     e.printStackTrace();
                 }
-                if(personalProfile == null) {
-                    ProfileCache.getInstance().setSelfProfile(personalProfile);
-                }
+                //TODO: Show personal profile.
             } else {
-                //let them know it's an invalid log in.
+                //TODO: Invalid login.
             }
         }
     }
