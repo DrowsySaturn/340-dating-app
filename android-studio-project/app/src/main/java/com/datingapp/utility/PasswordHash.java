@@ -25,6 +25,7 @@ public class PasswordHash {
      */
     private static Charset PASSWORD_CHARSET = StandardCharsets.UTF_8;
 
+
     /**
      * This hashes a given password using the specified algorithm.
      * @param _password This is the password to hash.
@@ -39,6 +40,7 @@ public class PasswordHash {
         String passwordHash = PasswordHash.bytesToHex(passwordHashBytes);
         return passwordHash;
     }
+
 
     /**
      * This hashes a given password.
@@ -57,6 +59,7 @@ public class PasswordHash {
             throw new RuntimeException("Invalid shared setting passwordHashingAlgorithm", ex);
         }
     }
+
 
     /**
      * Converts an array of bytes into a hexadecimal string.

@@ -1,11 +1,20 @@
-package com.datingapp.server.datapersistence.DataPersistenceUtil.Queries;
+package com.datingapp.server.datapersistence.DataPersistenceUtil.queries;
+
+import java.sql.SQLException;
+
 /*
  * This class contains callable sql queries for loading objects to be used by the DB interface DBMySQL
  * @author William Buck
- * @version 11/13/2018
+ * @version 11/27/2018
  */
 public class LoadQuery {
 
+    private SQLNameConstants constantBank;
+
+
+    public LoadQuery(SQLNameConstants _constantBank) throws SQLException {
+        this.constantBank = _constantBank;
+    }
     //load queries for Profile objects
     public static String loadProfileByIdQuery(){
         String sql = "SELECT * FROM " + SQLNameConstants.TABLE_NAME_PROFILE + " WHERE Profile_ID=?";

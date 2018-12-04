@@ -34,6 +34,7 @@ public class IOUtility {
         return IOUtility.readStreamIntoString(_inputStream, IOUtility.DEFAULT_ENCODING);
     }
 
+
     /**
      * Copies an input stream into a string with the specified encoding.
      * @param _inputStream Stream to copy to a string.
@@ -46,6 +47,7 @@ public class IOUtility {
         IOUtility.copyInputToOutputStream(_inputStream, outputStream);
         return new String(outputStream.toByteArray(), _encoding);
     }
+
 
     /**
      * Copies the input stream's data to the specified output stream.

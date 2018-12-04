@@ -1,4 +1,4 @@
-package com.datingapp.server.datapersistence.DataPersistenceUtil.Queries;
+package com.datingapp.server.datapersistence.DataPersistenceUtil.queries;
 
 /*
  * This file serves as the parent class to all files that users will upload to the DB.

@@ -52,4 +52,12 @@ public class LoginVerificationServlet extends HttpServlet {
         out.println(Json.serialize(confirmation));
         out.flush();
     }
+
+    /**
+     * This reroutes post requests to get requests.
+     */
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void doPost(HttpServletRequest _request, HttpServletResponse _response) throws ServletException, IOException {
+        doGet(_request, _response);
+    }
 }

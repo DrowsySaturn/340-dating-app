@@ -1,6 +1,6 @@
 package com.datingapp.shared.dataobjects;
 
-import com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.SQLNameConstants;
+import com.datingapp.server.datapersistence.DataPersistenceUtil.queries.SQLNameConstants;
 import com.datingapp.shared.datapersistence.DatabasePersistenceConstants;
 
 /*

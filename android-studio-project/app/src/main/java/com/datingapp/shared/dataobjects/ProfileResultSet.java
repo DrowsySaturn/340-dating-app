@@ -10,6 +10,10 @@ public class ProfileResultSet {
      */
     Profile[] result;
 
+    public ProfileResultSet(Profile[] _result) {
+        this.result = _result;
+    }
+
     /**
      * This gets the result list from the JSON.
      * @return This returns the array of results.

@@ -13,8 +13,8 @@ import android.support.annotation.RequiresApi;
 import com.datingapp.shared.dataobjects.DataObject;
 import com.datingapp.shared.dataobjects.LoginInformation;
 import com.datingapp.shared.dataobjects.Profile;
-import com.datingapp.shared.datapersistence.LoginConfirmation;
-import com.datingapp.utility.PasswordHash;
+
+import java.io.InputStream;
 
 public class DBTranslator {
 
@@ -39,6 +39,9 @@ public class DBTranslator {
         connector.deleteObject(_obj);
     }
 
+    public static DBInterface getDBMySQL() {
+        return connector;
+    }
     /**
      * This loads a users login information from the database. This is useful for checking a user's
      * password.
@@ -69,6 +72,25 @@ public class DBTranslator {
         return randomProfiles;
     }
 
+    public Profile loadProfileByUsername(String _username) {
+        return new Profile(1, "Test", "Personal message");
+    }
+
+    /**
+     * This loads the profiles a person has matched with.
+     * @param _username This is the username to load matches for.
+     * @return This returns the profiles a person has matched with.
+     */
+    public Profile[] loadMatches(String _username) {
+        // TODO: Load a matches instead of returning a static one.
+        Profile[] matches = new Profile[0];
+        return matches;
+    }
+
+    public Profile loadProfileById(long id) {
+        return new Profile((int)id, "Test", "This is a test message.");
+    }
+
     public void like(long likerProfileId, long likedProfileId, String username, String session) {
         if (isValidSession(username, session)) {
             // TODO: Insert like if the liker is the same as username.
@@ -83,5 +105,14 @@ public class DBTranslator {
     public boolean isValidSession(String _username, String _sessionKey) {
         // TODO: Check if the session associated with this user is valid or has been tampered with.
         return true;
+    }
+
+    /**
+     * Sets a profile picture for a user.
+     * @param _username This is the username to set the profile picture for.
+     * @param _input This is the image to save to the database.
+     */
+    public void setProfilePicture(String _username, InputStream _input) {
+        // TODO: Save profile picture to database.
     }
 }

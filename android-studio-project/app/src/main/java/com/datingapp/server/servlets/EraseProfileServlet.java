@@ -7,7 +7,6 @@ package com.datingapp.server.servlets;
  * @version oct-17-2018
  */
 
-import com.datingapp.json.Json;
 import com.datingapp.server.datapersistence.DBTranslator;
 import com.datingapp.shared.dataobjects.Profile;
 
@@ -20,8 +19,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(value="/api/read/profile")
-public class ProfileServlet extends HttpServlet {
+@WebServlet(value="/api/write/eraseprofile")
+public class EraseProfileServlet extends HttpServlet {
     /**
      * The parameter that will contain the id of the profile.
      */
@@ -36,17 +35,21 @@ public class ProfileServlet extends HttpServlet {
      * @throws IOException Never happens.
      */
     public void doGet(HttpServletRequest _request, HttpServletResponse _response) throws ServletException, IOException {
-        int profileId;
+        long profileId;
         try {
-            profileId = Integer.parseInt(_request.getParameter(REQUEST_PARAMETER));
+            profileId = Long.parseLong(_request.getParameter(REQUEST_PARAMETER));
         } catch (Exception ex) {
             throw new ServletException("Failed to read profile id param",ex);
         }
-        Profile profile = new DBTranslator().loadProfileById(profileId);
-        String json = Json.serialize(profile);
+        DBTranslator dbTranslator = new DBTranslator();
         PrintWriter writer = _response.getWriter();
-        writer.println(json);
-        writer.flush();
+        if (!dbTranslator.isValidSession((String)_request.getAttribute("username"), (String)_request.getAttribute("sessionKey"))) {
+            writer.write("{\"error\":\"Invalid session key.\"}");
+            writer.flush();
+            return;
+        }
+        Profile profile = dbTranslator.loadProfileById(profileId);
+        dbTranslator.deleteObject(profile);
     }
 
     @Override

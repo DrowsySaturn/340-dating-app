@@ -1,4 +1,4 @@
-package com.datingapp.server.datapersistence.DataPersistenceUtil.Queries;
+package com.datingapp.server.datapersistence.DataPersistenceUtil.queries;
 /*
  * This class is used to store all the names of SQL tables and columns.
  * @author William Buck
@@ -11,13 +11,21 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 public class SQLNameConstants {
 
     private static Connection connection;
+
+    /*
+     * Constructor for the class will initialize the connection from the DB class that calls it
+     * and then call initializeConstants()
+     * @param _connection is the connection passed to it by the database
+     */
+    public SQLNameConstants(Connection _connection) throws SQLException {
+        this.connection = _connection;
+        this.initializeConstants();
+    }
 
     //These are the names of data objects in the code.
     public static final String PROFILE = "Profile";
@@ -45,16 +53,6 @@ public class SQLNameConstants {
         this.matchedAttributeList = generateAttributeNames(TABLE_NAME_MATCHED);
         this.matchedAttributeList = generateAttributeNames(TABLE_NAME_PHOTOS);
     }
-
-    /*
-     * Constructor for the class will initialize the connection from the DB class that calls it
-     * and then call initializeConstants()
-     */
-    public SQLNameConstants(Connection _connection) throws SQLException{
-        this.connection = _connection;
-        this.initializeConstants();
-    }
-
 
     /*
      * This method generates an array list of all the attributes in a specified table on the database.

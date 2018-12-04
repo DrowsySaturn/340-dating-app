@@ -10,6 +10,7 @@ package com.datingapp.server.servlets;
 import com.datingapp.json.Json;
 import com.datingapp.server.datapersistence.DBTranslator;
 import com.datingapp.shared.dataobjects.Profile;
+import com.datingapp.utility.IOUtility;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,8 +21,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(value="/api/read/profile")
-public class ProfileServlet extends HttpServlet {
+@WebServlet(value="/api/write/updateprofile")
+public class UpdateProfileServlet extends HttpServlet {
     /**
      * The parameter that will contain the id of the profile.
      */
@@ -42,11 +43,16 @@ public class ProfileServlet extends HttpServlet {
         } catch (Exception ex) {
             throw new ServletException("Failed to read profile id param",ex);
         }
-        Profile profile = new DBTranslator().loadProfileById(profileId);
-        String json = Json.serialize(profile);
+        DBTranslator dbTranslator = new DBTranslator();
         PrintWriter writer = _response.getWriter();
-        writer.println(json);
-        writer.flush();
+        if (!dbTranslator.isValidSession((String)_request.getAttribute("username"), (String)_request.getAttribute("sessionKey"))) {
+            writer.write("{\"error\":\"Invalid session key.\"}");
+            writer.flush();
+            return;
+        }
+        String profileJson = IOUtility.readStreamIntoString(_request.getInputStream());
+        Profile profile = Json.deserialize(profileJson, Profile.class);
+        dbTranslator.updateObject(profile);
     }
 
     @Override
