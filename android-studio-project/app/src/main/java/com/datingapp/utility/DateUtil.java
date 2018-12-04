@@ -3,15 +3,17 @@ package com.datingapp.utility;
  * This utility class returns the current date for use as an SQL date object.
  *
  * @author: William Buck, Vincent Yang
- * @version: oct-04-2018
+ * @version: 12/4/2018
  */
 
 import android.annotation.TargetApi;
 import android.os.Build;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.time.LocalDate;
+import java.sql.ResultSet;
 import java.time.ZoneId;
 
 
@@ -24,9 +26,9 @@ public class DateUtil {
      * This method will generate the date, precise to
      * @return
      */
-    @TargetApi(Build.VERSION_CODES.O)
-    public static LocalDate getCurrentDateAndTime() {
-        LocalDate todayLocalDate = LocalDate.now(ZoneId.of(""));
-        return todayLocalDate;
-    }
+//    @TargetApi(Build.VERSION_CODES.O)
+//    public static LocalDate getCurrentDateAndTime(ResultSet _resultSet) {
+//        Timestamp timestamp = _resultSet.getTimestamp(i);
+//        return todayLocalDate;
+//    }
 }

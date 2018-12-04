@@ -1,6 +1,6 @@
 package com.datingapp.shared.dataobjects;
 
-import com.datingapp.server.datapersistence.DataPersistenceUtil.queries.SQLNameConstants;
+import com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.SQLNameConstants;
 import com.datingapp.shared.datapersistence.DatabasePersistenceConstants;
 
 /*
@@ -13,20 +13,18 @@ public class Match extends DataObject {
 
     private Profile firstProfile;
     private Profile secondProfile;
-    private Object date;
     private boolean isActive;
 
     private String tableName = SQLNameConstants.TABLE_NAME_MATCHED;
 
-    public Match(Profile _firstProfile, Profile _secondProfile, Object _date, boolean _isActive){
-        this(DatabasePersistenceConstants.UNASSIGNED_ID, _firstProfile, _secondProfile, _date, _isActive);
+    public Match(Profile _firstProfile, Profile _secondProfile,  boolean _isActive){
+        this(DatabasePersistenceConstants.UNASSIGNED_ID, _firstProfile, _secondProfile, _isActive);
     }
 
-    public Match(long _id, Profile _firstProfile, Profile _secondProfile, Object _date, boolean _isActive) {
+    public Match(long _id, Profile _firstProfile, Profile _secondProfile, boolean _isActive) {
         this.id = _id;
         this.firstProfile = _firstProfile;
         this.secondProfile = _secondProfile;
-        this.date = _date;
         this.isActive = _isActive;
     }
 
