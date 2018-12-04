@@ -1,4 +1,7 @@
-package shared.dataobjects;
+package com.datingapp.shared.dataobjects;
+
+import com.datingapp.shared.dataobjects.Profile;
+
 /**
  * This class is used to wrap DataObjects in an array.
  * @param <T> This is the type of result to wrap in an array.
