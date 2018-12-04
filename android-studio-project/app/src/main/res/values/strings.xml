@@ -16,6 +16,7 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string-array name="sex">
+        <item>Sex</item>
         <item>Male</item>
         <item>Female</item>
     </string-array>

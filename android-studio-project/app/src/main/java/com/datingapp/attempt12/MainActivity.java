@@ -15,14 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-//import android.*;
-
-<<<<<<< HEAD
-import com.datingapp.client.attempt12.R;
-=======
-import com.database.attempt12.R;
 import com.datingapp.client.controllers.logincontroller.LoginController;
->>>>>>> 567295256ee112e73cd10ab94306f3ac7c9c9c71
+import com.datingapp.client.controllers.profilecontroller.ProfileController;
+import com.datingapp.client.controllers.signupcontroller.SignUpController;
+
 
 import java.util.ArrayList;
 
@@ -44,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
     protected String login = "login";
     protected int SIZE = 20;
     protected LoginController loginController;
-
+    protected SignUpController signUpController;
+    protected ProfileController profileController;
 
 
     protected LinearLayout.LayoutParams vidView = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -111,8 +108,6 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
     }
 
     /**
@@ -161,13 +156,26 @@ public class MainActivity extends AppCompatActivity {
                 ageSubmit.setBackgroundResource(R.color.red);
                 register = false;
             }
-            if(!(sexSubmit.getSelectedItem().toString()=="Sex")){
+            if((sexSubmit.getSelectedItem().toString()=="Sex")){
                 sexSubmit.setBackgroundResource(R.color.red);
                 register = false;
             }
             if(register == true) {
-                
-
+                try {
+                    signUpController.signUp(emailSubmit.toString(), passwordSubmit.toString());
+                    profileController.createProfile(Integer.parseInt(ageSubmit.getText().toString()), nameSubmit.toString(), nameSubmit.toString(),"Test");
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                    findViewById(R.id.editAge).setVisibility(View.INVISIBLE);
+                    getRegister(_view);
+                }
+                try {
+                    loginController.login(emailSubmit.toString(), passwordSubmit.toString());
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                loadMain(_view);
             }
 
 
