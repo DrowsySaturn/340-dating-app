@@ -1,4 +1,4 @@
-package client.androids;
+package com.datingapp.client.androids;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
