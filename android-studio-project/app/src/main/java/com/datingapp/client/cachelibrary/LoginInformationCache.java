@@ -1,5 +1,6 @@
 package com.datingapp.client.cachelibrary;
 /**
+ * This class will cache in the login information.
  * @Author: Vincent Yang
  *
  * @Date: 11/27/2018
@@ -11,6 +12,10 @@ import com.datingapp.shared.dataobjects.LoginInformation;
 import java.util.InputMismatchException;
 
 public class LoginInformationCache {
+    /**
+     * This is a singleton design pattern.
+     */
+    //////////////////////////////////////////////////////////////////////
     private static LoginInformationCache instance = null;
 
 
@@ -24,11 +29,18 @@ public class LoginInformationCache {
         }
         return LoginInformationCache.instance;
     }
+    ////////////////////////////////////////////////////////////////////////
 
-
+    /**
+     * This will cache in the loginInformation.
+     */
     private LoginInformation cachedLoginInformation = null;
 
 
+    /**
+     * This will clear out the cached loginInformation.
+     * @return boolean.
+     */
     public boolean clear() {
         if(this.cachedLoginInformation != null) {
             this.cachedLoginInformation = null;

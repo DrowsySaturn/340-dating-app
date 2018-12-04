@@ -1,4 +1,9 @@
 package com.datingapp.client.cachelibrary;
+/**
+ * This will cache in the match.
+ * @Author:VincentYang
+ * @Date:12/3/2018
+ */
 
 import com.datingapp.client.net.DatingNetworkException;
 import com.datingapp.client.net.ServerCommunicator;
@@ -6,9 +11,11 @@ import com.datingapp.shared.dataobjects.DataObject;
 import com.datingapp.shared.dataobjects.Match;
 import com.datingapp.shared.dataobjects.Profile;
 
-import java.util.ArrayList;
-
 public class MatchesCache {
+    /**
+     * This is a singleton design pattern.
+     */
+    ///////////////////////////////////////////////////////
     private static MatchesCache instance = null;
 
 
@@ -22,6 +29,8 @@ public class MatchesCache {
         }
         return MatchesCache.instance;
     }
+    ///////////////////////////////////////////////////////////
+
 
     /**
      * This will cache the match in the system.
