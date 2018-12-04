@@ -41,6 +41,7 @@ public class DBTranslator {
 
     public static DBInterface getDBMySQL() {
         return connector;
+    }
     /**
      * This loads a users login information from the database. This is useful for checking a user's
      * password.
@@ -69,6 +70,25 @@ public class DBTranslator {
             randomProfiles[i] = new Profile(1, 21, "John Smith", "I like eggs");
         }
         return randomProfiles;
+    }
+
+    public Profile loadProfileByUsername(String _username) {
+        return new Profile(1, "Test", "Personal message");
+    }
+
+    /**
+     * This loads the profiles a person has matched with.
+     * @param _username This is the username to load matches for.
+     * @return This returns the profiles a person has matched with.
+     */
+    public Profile[] loadMatches(String _username) {
+        // TODO: Load a matches instead of returning a static one.
+        Profile[] matches = new Profile[0];
+        return matches;
+    }
+
+    public Profile loadProfileById(long id) {
+        return new Profile((int)id, "Test", "This is a test message.");
     }
 
     public void like(long likerProfileId, long likedProfileId, String username, String session) {

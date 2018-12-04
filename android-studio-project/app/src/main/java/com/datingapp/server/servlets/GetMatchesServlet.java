@@ -8,10 +8,13 @@ package com.datingapp.server.servlets;
 import com.datingapp.json.Json;
 import com.datingapp.server.datapersistence.DBTranslator;
 import com.datingapp.shared.dataobjects.LoginInformation;
+import com.datingapp.shared.dataobjects.ProfileResultSet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.Writer;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +26,16 @@ import javax.servlet.http.HttpServletResponse;
 public class GetMatchesServlet extends HttpServlet {
     public void doPost(HttpServletRequest _request, HttpServletResponse _response) throws IOException {
         String username = (String)_request.getParameter("username");
-        // TODO: Get matches
+        String sessionKey = (String)_request.getParameter("session");
+        DBTranslator translator = new DBTranslator();
+        PrintWriter writer = _response.getWriter();
+        if (!translator.isValidSession(username, sessionKey)) {
+            writer.write("{\"error\": \"Not logged in.\"}");
+            writer.flush();
+            return;
+        }
+        ProfileResultSet profileResultSet = new ProfileResultSet(new DBTranslator().loadMatches(username));
+        writer.write(Json.serialize(profileResultSet));
+        writer.flush();
     }
 }

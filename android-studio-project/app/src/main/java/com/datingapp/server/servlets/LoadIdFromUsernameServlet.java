@@ -10,6 +10,7 @@ package com.datingapp.server.servlets;
 import com.datingapp.json.Json;
 import com.datingapp.server.datapersistence.DBTranslator;
 import com.datingapp.shared.dataobjects.Profile;
+import com.datingapp.utility.IOUtility;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,13 +21,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(value="/api/read/profile")
-public class ProfileServlet extends HttpServlet {
-    /**
-     * The parameter that will contain the id of the profile.
-     */
-    private static final String REQUEST_PARAMETER = "id";
-
+@WebServlet(value="/api/read/idfromusername")
+public class LoadIdFromUsernameServlet extends HttpServlet {
     @Override
     /**
      * Serializes the profile associated with the input id and prints it to the out stream.
@@ -36,17 +32,12 @@ public class ProfileServlet extends HttpServlet {
      * @throws IOException Never happens.
      */
     public void doGet(HttpServletRequest _request, HttpServletResponse _response) throws ServletException, IOException {
-        int profileId;
-        try {
-            profileId = Integer.parseInt(_request.getParameter(REQUEST_PARAMETER));
-        } catch (Exception ex) {
-            throw new ServletException("Failed to read profile id param",ex);
-        }
-        Profile profile = new DBTranslator().loadProfileById(profileId);
-        String json = Json.serialize(profile);
-        PrintWriter writer = _response.getWriter();
-        writer.println(json);
-        writer.flush();
+        String username = (String)_request.getAttribute("username");
+        DBTranslator dbTranslator = new DBTranslator();
+        Profile profile = dbTranslator.loadProfileByUsername(username);
+        PrintWriter printWriter = _response.getWriter();
+        printWriter.write(Long.toString(profile.getId()));
+        printWriter.flush();
     }
 
     @Override
