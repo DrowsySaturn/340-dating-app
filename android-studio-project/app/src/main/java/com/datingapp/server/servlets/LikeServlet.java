@@ -11,10 +11,12 @@ import com.datingapp.server.datapersistence.DBTranslator;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet(value="/api/write/like")
 public class LikeServlet extends HttpServlet {
     /**
      * The HTTP parameter of the user who is liking the other.
