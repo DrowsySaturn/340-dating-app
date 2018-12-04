@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible">
+
+    <VideoView
+        android:id="@+id/videoView1"
+        android:layout_width="397dp"
+        android:layout_height="182dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <VideoView
+        android:id="@+id/videoView2"
+        android:layout_width="160dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingText" />
+
+    <VideoView
+        android:id="@+id/videoView3"
+        android:layout_width="160dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/videoView2"
+        app:layout_constraintTop_toBottomOf="@+id/ratingText" />
+
+    <VideoView
+        android:id="@+id/videoView4"
+        android:layout_width="160dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/videoView2" />
+
+    <VideoView
+        android:id="@+id/videoView5"
+        android:layout_width="160dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toEndOf="@+id/videoView4"
+        app:layout_constraintTop_toBottomOf="@+id/videoView3" />
+
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_width="162dp"
+        android:layout_height="37dp"
+        android:text="@string/name"
+        android:textSize="24sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/videoView1" />
+
+    <TextView
+        android:id="@+id/ageText"
+        android:layout_width="92dp"
+        android:layout_height="35dp"
+        android:text="@string/age"
+        android:textSize="24sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/sexText"
+        app:layout_constraintTop_toBottomOf="@+id/videoView1" />
+
+    <TextView
+        android:id="@+id/ratingText"
+        android:layout_width="68dp"
+        android:layout_height="39dp"
+        android:text="@string/percent"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/ageText"
+        app:layout_constraintTop_toBottomOf="@+id/videoView1" />
+
+    <TextView
+        android:id="@+id/sexText"
+        android:layout_width="54dp"
+        android:layout_height="37dp"
+        android:text="@string/m_f"
+        android:textSize="24sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/nameText"
+        app:layout_constraintTop_toBottomOf="@+id/videoView1" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/newUser"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <EditText
+            android:id="@+id/editAge"
+            android:layout_width="82dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="180dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="@string/age2"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/sex"
+            app:layout_constraintTop_toTopOf="parent"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editName"
+            android:layout_width="164dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="180dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/enter_name"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:autofillHints="" />
+
+        <ImageButton
+            android:id="@+id/addVideoFirst"
+            android:layout_width="77dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="152dp"
+            android:layout_marginLeft="152dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_input_add"
+            />
+
+        <Spinner
+            android:id="@+id/sex"
+            android:layout_width="133dp"
+            android:layout_height="35dp"
+            android:entries="@array/sex"
+            app:layout_constraintStart_toEndOf="@+id/editName"
+            app:layout_constraintTop_toTopOf="@+id/editAge" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/addVideo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp">
+
+        <ImageButton
+            android:id="@+id/addVideo1"
+            android:layout_width="77dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="152dp"
+            android:layout_marginLeft="152dp"
+            android:layout_marginTop="32dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <ImageButton
+            android:id="@+id/addVideo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="68dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginTop="248dp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <ImageButton
+            android:id="@+id/addVideo3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="136dp"
+            android:layout_marginLeft="136dp"
+            android:layout_marginTop="248dp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@+id/addVideo2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <ImageButton
+            android:id="@+id/addVideo4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="68dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginTop="84dp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addVideo2"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <ImageButton
+            android:id="@+id/addVideo5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="136dp"
+            android:layout_marginLeft="136dp"
+            android:layout_marginTop="84dp"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@+id/addVideo4"
+            app:layout_constraintTop_toBottomOf="@+id/addVideo3"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/deleteVideo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="229dp">
+
+        <ImageButton
+            android:id="@+id/deleteVideo1"
+            android:layout_width="77dp"
+            android:layout_height="79dp"
+            android:layout_marginStart="152dp"
+            android:layout_marginLeft="152dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_delete"
+             />
+
+        <ImageButton
+            android:id="@+id/deleteVideo2"
+            android:layout_width="42dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="132dp"
+            android:layout_marginLeft="132dp"
+            android:layout_marginTop="228dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_delete"
+            />
+
+        <ImageButton
+            android:id="@+id/deleteVideo3"
+            android:layout_width="42dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="152dp"
+            android:layout_marginLeft="152dp"
+            android:layout_marginTop="228dp"
+            app:layout_constraintStart_toEndOf="@+id/deleteVideo2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_delete"
+             />
+
+        <ImageButton
+            android:id="@+id/deleteVideo4"
+            android:layout_width="42dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="132dp"
+            android:layout_marginLeft="132dp"
+            android:layout_marginTop="92dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/deleteVideo2"
+            app:srcCompat="@android:drawable/ic_delete"
+            />
+
+        <ImageButton
+            android:id="@+id/deleteVideo5"
+            android:layout_width="42dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="152dp"
+            android:layout_marginLeft="152dp"
+            android:layout_marginTop="92dp"
+            app:layout_constraintStart_toEndOf="@+id/deleteVideo4"
+            app:layout_constraintTop_toBottomOf="@+id/deleteVideo3"
+            app:srcCompat="@android:drawable/ic_delete"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/deleteVideos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_my_calendar"
+         />
+
+    <ImageButton
+        android:id="@+id/returnButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="loadMain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_revert" />
+
+</android.support.constraint.ConstraintLayout>

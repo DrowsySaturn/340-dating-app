@@ -9,18 +9,18 @@ package com.datingapp.server.servlets;
 
 import com.datingapp.json.Json;
 import com.datingapp.server.datapersistence.DBTranslator;
-import com.datingapp.server.datapersistence.DataPersistenceUtil.Queries.SQLNameConstants;
 import com.datingapp.shared.dataobjects.Profile;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet(value="/api/read/profile")
 public class ProfileServlet extends HttpServlet {
     /**
      * The parameter that will contain the id of the profile.
@@ -42,7 +42,7 @@ public class ProfileServlet extends HttpServlet {
         } catch (Exception ex) {
             throw new ServletException("Failed to read profile id param",ex);
         }
-        Profile profile = (Profile)new DBTranslator().readObject(profileId, SQLNameConstants.TABLE_NAME_PROFILE);
+        Profile profile = new DBTranslator().loadProfileById(profileId);
         String json = Json.serialize(profile);
         PrintWriter writer = _response.getWriter();
         writer.println(json);

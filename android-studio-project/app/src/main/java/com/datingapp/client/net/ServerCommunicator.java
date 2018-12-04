@@ -6,12 +6,10 @@ package com.datingapp.client.net;
  * @version nov-20-2018
  */
 
-import com.datingapp.server.Server;
 import com.datingapp.shared.dataobjects.LoginInformation;
 import com.datingapp.shared.dataobjects.Profile;
 import com.datingapp.shared.datapersistence.LoginConfirmation;
 
-import java.io.File;
 import java.io.InputStream;
 
 public class ServerCommunicator {

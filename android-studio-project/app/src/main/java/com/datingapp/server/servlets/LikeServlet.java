@@ -11,10 +11,12 @@ import com.datingapp.server.datapersistence.DBTranslator;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet(value="/api/write/like")
 public class LikeServlet extends HttpServlet {
     /**
      * The HTTP parameter of the user who is liking the other.
@@ -36,6 +38,9 @@ public class LikeServlet extends HttpServlet {
      */
     private static final String HTTP_SESSION_PARAMETER = "session";
 
+    /**
+     * This creates a like when the correct options are passed to the page.
+     */
     public void doGet(HttpServletRequest _request, HttpServletResponse _response) throws IOException {
         long profile1 = Long.parseLong((String)_request.getParameter("profile1"));
         long profile2 = Long.parseLong((String)_request.getParameter("profile2"));
@@ -48,5 +53,11 @@ public class LikeServlet extends HttpServlet {
         writer.close();
     }
 
+    /**
+     * This converts a post request to a get request. This lets a user like another.
+     */
+    public void doPost(HttpServletRequest _request, HttpServletResponse _response) throws IOException {
+        doGet(_request, _response);
+    }
 }
 
