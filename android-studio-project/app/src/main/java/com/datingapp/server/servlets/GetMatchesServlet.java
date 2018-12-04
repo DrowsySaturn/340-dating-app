@@ -19,16 +19,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet(value="/api/write/register")
-public class CreateUserServlet extends HttpServlet {
+@WebServlet(value="/api/read/getmatches")
+public class GetMatchesServlet extends HttpServlet {
     public void doPost(HttpServletRequest _request, HttpServletResponse _response) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(_request.getInputStream()));
-        String line = "";
-        StringBuilder buffer = new StringBuilder();
-        while ((line = reader.readLine()) != null) {
-            buffer.append(line);
-        }
-        LoginInformation information = Json.deserialize(buffer.toString(), LoginInformation.class);
-        new DBTranslator().createObject(information);
+        String username = (String)_request.getParameter("username");
+        // TODO: Get matches
     }
 }

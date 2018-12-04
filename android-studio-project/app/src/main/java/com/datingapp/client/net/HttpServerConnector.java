@@ -6,6 +6,7 @@ package com.datingapp.client.net;
  * @version nov-20-2018
  */
 
+import com.datingapp.json.Json;
 import com.datingapp.shared.dataobjects.LoginInformation;
 import com.datingapp.shared.dataobjects.Profile;
 import com.datingapp.shared.dataobjects.ProfileResultSet;
@@ -180,8 +181,14 @@ public class HttpServerConnector extends GenericServerConnector {
      * @param _password Password associated with the account.
      * @return Information about the login status.
      */
-    public LoginConfirmation validateLogin(String _email, String _password) {
-        // TODO: Validate login
-        throw new UnsupportedOperationException();
+    public LoginConfirmation validateLogin(String _email, String _password) throws DatingNetworkException {
+        try {
+            String loginConfStr = Jsoup.connect(this.HOST + this.WRITE_API_PREFIX + "profilepicture")
+                    .data("username", _email)
+                    .data("password", _password).post().outerHtml();
+            return Json.deserialize(loginConfStr, LoginConfirmation.class);
+        } catch (IOException io) {
+            throw new DatingNetworkException(io);
+        }
     }
 }

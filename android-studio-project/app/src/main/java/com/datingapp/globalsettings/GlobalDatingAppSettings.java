@@ -78,6 +78,7 @@ public class GlobalDatingAppSettings {
      */
     private static <T> T loadSettings(String _fileName, Class<T> _classType) throws IOException {
         InputStream settingsDataStream = GlobalDatingAppSettings.class.getResourceAsStream(_fileName);
+        System.out.println(settingsDataStream);
         String settingsDataString = IOUtility.readStreamIntoString(settingsDataStream);
         return Json.deserialize(settingsDataString, _classType);
     }
