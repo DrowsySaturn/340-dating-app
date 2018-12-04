@@ -26,6 +26,13 @@ public class LoginConfirmationCache {
     private LoginConfirmation session;
 
 
+    public boolean clear() {
+        if(this.session != null) {
+           this.session = null;
+        }
+        return this.session==null;
+    }
+
     /**
      * This will return the LoginConfirmation session
      * @return: LoginConfirmation session

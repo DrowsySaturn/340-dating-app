@@ -28,14 +28,17 @@ public class ProfileCache {
 
 
     private Profile selfProfile = null;
-    private HashMap<String, Profile> matchedProfiles = new HashMap<>();
+
 
     /**
-     * getter is for matchedProfiles
-     * @return matcheProfiles
+     * This will clear up the cached value.
+     * @return boolean.
      */
-    public HashMap<String, Profile> getMatchedProfiles() {
-        return this.matchedProfiles;
+    public boolean clear() {
+        if(this.selfProfile != null) {
+            this.selfProfile = null;
+        }
+        return this.selfProfile == null;
     }
 
 
@@ -45,24 +48,6 @@ public class ProfileCache {
      */
     public Profile getSelfProfile() {
         return this.selfProfile;
-    }
-
-
-    /**
-     * This method will load in all the matches that user has.
-     * @throws DatingNetworkException
-     */
-    public void LoadAllMatches() throws DatingNetworkException {
-        if(this.selfProfile == null) {
-            System.out.println("Lost session something is wrong");
-        } else {
-            LoginConfirmation session = LoginConfirmationCache.getInstance().getSession();
-            Profile[] matches = ServerCommunicator.getMatches(this.selfProfile.getName(), session.getSession().getSessionKey());
-            for(int i = 0; i < matches.length; i++) {
-                matchedProfiles.put(matches[i].getName(), matches[i]);
-            }
-            System.out.println("Matches loaded");
-        }
     }
 
 

@@ -27,6 +27,7 @@ public class CreateProfileProcessor {
         } catch (DatingNetworkException e) {
             e.printStackTrace();
         }
+        System.out.println("Profile created");
         //TODO return confirmation that user has inserted the profile data. Basically a callback function. @ Brandon
     }
 }

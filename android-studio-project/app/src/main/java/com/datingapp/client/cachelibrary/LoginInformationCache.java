@@ -29,6 +29,13 @@ public class LoginInformationCache {
     private LoginInformation cachedLoginInformation = null;
 
 
+    public boolean clear() {
+        if(this.cachedLoginInformation != null) {
+            this.cachedLoginInformation = null;
+        }
+        return this.cachedLoginInformation == null;
+    }
+
     /**
      * This method cache in the
      * @param _dataObject
