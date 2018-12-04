@@ -55,4 +55,13 @@ public class LoginController {
             }
         }
     }
+
+
+    /**
+     * This will let the user know if he or she logs in.
+     * @return boolean.
+     */
+    public static boolean ifUserIsLoggedin() {
+        return LoginConfirmationCache.getInstance().getSession().isSuccess();
+    }
 }

@@ -1,6 +1,7 @@
 package com.datingapp.client.controllers.actionprocessors;
 
 import com.datingapp.client.cachelibrary.LoginInformationCache;
+import com.datingapp.client.net.ServerCommunicator;
 import com.datingapp.eventsinterfaces.eventhandlers.SignUpEventHandler;
 import com.datingapp.shared.dataobjects.LoginInformation;
 
