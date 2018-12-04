@@ -25,7 +25,7 @@ public class SignUpController {
     /**
      * This method will take in user's email and password, sign up for a new user's account
      */
-    public static void signUp(String _email, String _userInputPassword) throws Exception {
+    public static void signUp(String _email, String _userInputPassword) {
         SignUpController.loginInformation = new LoginInformation(_email, _userInputPassword);
         SignUpEvent event = new SignUpEvent(SignUpController.loginInformation);
         SignUpEventHandler.getInstance().addEvent(event);

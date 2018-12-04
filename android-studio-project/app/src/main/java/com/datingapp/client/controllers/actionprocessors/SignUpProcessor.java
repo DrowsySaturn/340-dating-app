@@ -13,6 +13,7 @@ public class SignUpProcessor {
     public static void process() {
         SignUpEventHandler eventHandler = SignUpEventHandler.getInstance();
         LoginInformation loginInformation = eventHandler.fireEvent();
-        LoginInformationCache.getInstance().recordLoginInformation(loginInformation);
+        System.out.println(loginInformation.toString());
+//        LoginInformationCache.getInstance().recordLoginInformation(loginInformation);
     }
 }
