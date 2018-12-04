@@ -10,13 +10,30 @@ import com.datingapp.server.datapersistence.DataPersistenceUtil.queries.SQLNameC
 import com.datingapp.shared.datapersistence.DatabasePersistenceConstants;
 
 public class Profile extends DataObject {
-
+    /**
+     * This is the age of the profile.
+     */
     private int age;
+
+
+    /**
+     * This is the name of the person in this profile.
+     */
     private String name;
+
+
+    /**
+     * This is the personal message of the profile.
+     */
     private String personalMessage;
 
+
+    /**
+     * This is the table name to load profiles from.
+     */
     private String tableName = SQLNameConstants.TABLE_NAME_PROFILE;
 
+    
     /**
      * Constructs a new Profile. Will be inserted into database instead of updated because of -1 id.
      * When saved the id will be updated.
@@ -37,10 +54,6 @@ public class Profile extends DataObject {
         this.age = _age;
         this.name = _name;
         this.personalMessage = _personalMessage;
-    }
-
-    public Profile(DataObject _obj){
-
     }
 
     //getters
