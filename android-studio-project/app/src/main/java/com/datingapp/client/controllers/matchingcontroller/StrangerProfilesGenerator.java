@@ -8,6 +8,10 @@ package com.datingapp.client.controllers.matchingcontroller;
 import com.datingapp.client.cachelibrary.LoginConfirmationCache;
 import com.datingapp.client.net.DatingNetworkException;
 import com.datingapp.client.net.ServerCommunicator;
+import com.datingapp.eventsinterfaces.eventhandlers.MatchEventHandler;
+import com.datingapp.eventsinterfaces.eventhandlers.ProfileEventHandler;
+import com.datingapp.eventsinterfaces.events.Event;
+import com.datingapp.eventsinterfaces.events.ProfileEvent;
 import com.datingapp.shared.dataobjects.Profile;
 
 import java.util.ArrayList;
@@ -21,7 +25,6 @@ public class StrangerProfilesGenerator {
      */
     public static ArrayList<Profile> generateRandomProfiles(String _email, String _sexuality) {
         Profile currentProfile = null;
-        ArrayList<Profile> randomProfiles = new ArrayList<>();
         Profile[] randomProfilesArray = null;
         String sessionKey = LoginConfirmationCache.getInstance().getSessionKey();
         try {
@@ -31,12 +34,11 @@ public class StrangerProfilesGenerator {
             e.printStackTrace();
         }
         if(currentProfile != null && randomProfilesArray != null) {
-            for(int i = 0; i < randomProfilesArray.length; i++) {
-                randomProfiles.add(randomProfilesArray[i]);
+            for (int i = 0; i < randomProfilesArray.length; i++) {
+                ProfileEvent event = new ProfileEvent(randomProfilesArray[i]);
+                ProfileEventHandler.getInstance().addEvent(event);
             }
-            return randomProfiles;
-        } else {
-            return randomProfiles;
         }
+        return ProfileEventHandler.getInstance().fireAllEvents();
     }
 }

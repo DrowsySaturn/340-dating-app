@@ -7,7 +7,11 @@ package com.datingapp.json;
  */
 
 public class Json {
+    /**
+     * This is the JsonSerializer to use for serializing and deserializing.
+     */
     private static JsonSerializer serializer = new GsonSerializer();
+
 
     /**
      * Serializes an object.
@@ -17,6 +21,7 @@ public class Json {
     public static String serialize(Object _obj) {
         return serializer.serialize(_obj);
     }
+
 
     /**
      * Deserializes an object.

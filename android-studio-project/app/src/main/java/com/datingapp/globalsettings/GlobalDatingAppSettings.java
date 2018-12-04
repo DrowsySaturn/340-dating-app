@@ -18,24 +18,49 @@ public class GlobalDatingAppSettings {
      */
     private static final String SHARED_SETTINGS_FILE = "shared.json";
 
+
     /**
      * The name of the file containing server settings.
      */
     private static final String SERVER_SETTINGS_FILE = "server.json";
 
-    private static final String LANGUAGE_SETTINGS_FILE = "language.json";
 
     /**
-     * Shared settings instance.
+     * This is the file that contains language settings.
+     */
+    private static final String LANGUAGE_SETTINGS_FILE = "language.json";
+
+
+    /**
+     * This is the shared settings instance.
      */
     private static SharedSettings sharedSettings = null;
 
+
     /**
-     * Server settings instance.
+     * This is the server settings instance.
      */
     private static ServerSettings serverSettings = null;
 
+
+    /**
+     * This is the language settings instance to use.
+     */
     private static LanguageSettings languageSettings = null;
+
+
+    /**
+     * This gets the global language settings object.
+     * @return A language settings object.
+     * @throws IOException This throws an IO exception when it was unable to load language settings.
+     */
+    public static LanguageSettings getLanguageSettings() throws IOException {
+        if (GlobalDatingAppSettings.languageSettings == null) {
+            GlobalDatingAppSettings.languageSettings = GlobalDatingAppSettings.loadSettings(LANGUAGE_SETTINGS_FILE, LanguageSettings.class);
+        }
+        return GlobalDatingAppSettings.languageSettings;
+    }
+
 
     /**
      * Gets the shared settings object.
@@ -49,12 +74,6 @@ public class GlobalDatingAppSettings {
         return GlobalDatingAppSettings.sharedSettings;
     }
 
-    public static LanguageSettings getLanguageSettings() throws IOException {
-        if (GlobalDatingAppSettings.languageSettings == null) {
-            GlobalDatingAppSettings.languageSettings = GlobalDatingAppSettings.loadSettings(LANGUAGE_SETTINGS_FILE, LanguageSettings.class);
-        }
-        return GlobalDatingAppSettings.languageSettings;
-    }
 
     /**
      * Gets the server settings object.
@@ -67,6 +86,7 @@ public class GlobalDatingAppSettings {
         }
         return GlobalDatingAppSettings.serverSettings;
     }
+
 
     /**
      * Loads any of the settings files.

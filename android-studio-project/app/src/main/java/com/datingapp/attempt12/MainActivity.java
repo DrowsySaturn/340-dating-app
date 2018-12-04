@@ -15,9 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-//import android.*;
+import com.datingapp.client.controllers.logincontroller.LoginController;
+import com.datingapp.client.controllers.profilecontroller.ProfileController;
+import com.datingapp.client.controllers.signupcontroller.SignUpController;
 
-import com.database.attempt12.R;
 
 import java.util.ArrayList;
 
@@ -38,16 +39,19 @@ public class MainActivity extends AppCompatActivity {
     protected HorizontalScrollView lineSpace;
     protected String login = "login";
     protected int SIZE = 20;
-
+    protected LoginController loginController;
+    protected SignUpController signUpController;
+    protected ProfileController profileController;
 
 
     protected LinearLayout.LayoutParams vidView = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
     /**
-     * 11/20/2018
+     ** @param _savedInstanceState
+     *
+     *  11/20/2018
      * When Application is opened loads the main menu.
      *
-     * @param _savedInstanceState
      */
     protected void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
@@ -99,8 +103,11 @@ public class MainActivity extends AppCompatActivity {
     public void getLogin(View _view){
         emailSubmit = findViewById(R.id.editEmail);
         passwordSubmit = findViewById(R.id.editPassword);
-
-
+        try {
+            loginController.login(emailSubmit.toString(), passwordSubmit.toString());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -124,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
             //findViewById(R.id.loginButton).setOnClickListener(this::loadProfile);
             button = findViewById(R.id.loginButton);
             button.setText("cancel");
+            button.setOnClickListener(this::loadProfile);
         }
         else {
             boolean register = true;
@@ -133,23 +141,41 @@ public class MainActivity extends AppCompatActivity {
             ageSubmit = findViewById(R.id.editAge);
             sexSubmit = findViewById(R.id.sexSpinner);
             if (emailSubmit.getText().length() < 1) {
-                emailSubmit.setBackgroundColor(R.color.red);
+                emailSubmit.setBackgroundResource(R.color.red);
                 register = false;
             }
             if (passwordSubmit.getText().length() < 1) {
-                passwordSubmit.setBackgroundColor(R.color.red);
+                passwordSubmit.setBackgroundResource(R.color.red);
                 register = false;
             }
             if (nameSubmit.getText().length() < 1) {
-                nameSubmit.setBackgroundColor(R.color.red);
+                nameSubmit.setBackgroundResource(R.color.red);
                 register = false;
             }
             if (ageSubmit.getText().length() < 1) {
-                ageSubmit.setBackgroundColor(R.color.red);
+                ageSubmit.setBackgroundResource(R.color.red);
+                register = false;
+            }
+            if((sexSubmit.getSelectedItem().toString()=="Sex")){
+                sexSubmit.setBackgroundResource(R.color.red);
                 register = false;
             }
             if(register == true) {
-
+                try {
+                    signUpController.signUp(emailSubmit.toString(), passwordSubmit.toString());
+                    profileController.createProfile(Integer.parseInt(ageSubmit.getText().toString()), nameSubmit.toString(), nameSubmit.toString(),"Test");
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                    findViewById(R.id.editAge).setVisibility(View.INVISIBLE);
+                    getRegister(_view);
+                }
+                try {
+                    loginController.login(emailSubmit.toString(), passwordSubmit.toString());
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                loadMain(_view);
             }
 
 
@@ -163,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
      **/
     public void loadMain(View _view){
         setContentView(R.layout.main_menu);
-        if(!(login == "login")) {
+        if((login == "login")) {
             findViewById(R.id.SearchButton).setBackgroundColor(getResources().getColor(R.color.grey));
             findViewById(R.id.SearchButton).setClickable(false);
             findViewById(R.id.MatchButton).setClickable(false);
