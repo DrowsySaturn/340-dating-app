@@ -1,4 +1,4 @@
-package client.cachelibrary;
+package com.datingapp.client.cachelibrary;
 
 import com.datingapp.shared.dataobjects.Match;
 import com.datingapp.shared.dataobjects.Profile;

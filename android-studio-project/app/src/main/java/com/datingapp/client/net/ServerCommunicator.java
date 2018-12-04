@@ -1,4 +1,4 @@
-package client.net;
+package com.datingapp.client.net;
 /**
  * This class facilitates communication with the server for the client.
  *

@@ -1,4 +1,4 @@
-package client.controllers.matchingcontroller;
+package com.datingapp.client.controllers.matchingcontroller;
 /**
  * @Author: Vincent Yang
  *

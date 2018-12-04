@@ -1,4 +1,4 @@
-package shared.dataobjects;
+package com.datingapp.shared.dataobjects;
 /*
  * This is a generic data object
  * @author William Buck

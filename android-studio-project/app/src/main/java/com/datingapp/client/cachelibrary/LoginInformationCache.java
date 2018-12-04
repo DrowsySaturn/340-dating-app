@@ -1,4 +1,4 @@
-package client.cachelibrary;
+package com.datingapp.client.cachelibrary;
 /**
  * @Author: Vincent Yang
  *

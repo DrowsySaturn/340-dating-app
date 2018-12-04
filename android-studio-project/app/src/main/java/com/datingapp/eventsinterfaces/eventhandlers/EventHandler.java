@@ -1,4 +1,4 @@
-package eventsinterfaces.eventhandlers;
+package com.datingapp.eventsinterfaces.eventhandlers;
 /**
  * This is an interface to handle the event type objects.
  * @Author:VincentYang

@@ -1,4 +1,4 @@
-package utility;
+package com.datingapp.utility;
 /**
  * The purpose of this class is to provide password hashing.
  *

@@ -1,4 +1,4 @@
-package shared.dataobjects;
+package com.datingapp.shared.dataobjects;
 /*
  * The purpose of this class is to hold relevant information about a user's profile.
  *

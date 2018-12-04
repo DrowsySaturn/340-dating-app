@@ -1,4 +1,4 @@
-package json;
+package com.datingapp.json;
 
 import com.google.gson.Gson;
 

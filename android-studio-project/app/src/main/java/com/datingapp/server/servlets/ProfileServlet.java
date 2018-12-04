@@ -1,4 +1,4 @@
-package server.servlets;
+package com.datingapp.server.servlets;
 /*
  * The purpose of this class is to allow profiles to be retrieved via http requests. A parameter
  * "id" with the value that is the id of the profile is expected in the request.

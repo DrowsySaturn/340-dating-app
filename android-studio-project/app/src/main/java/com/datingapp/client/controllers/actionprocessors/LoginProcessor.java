@@ -1,4 +1,4 @@
-package client.controllers.actionprocessors;
+package com.datingapp.client.controllers.actionprocessors;
 
 import com.datingapp.eventsinterfaces.eventhandlers.LoginEventHandler;
 

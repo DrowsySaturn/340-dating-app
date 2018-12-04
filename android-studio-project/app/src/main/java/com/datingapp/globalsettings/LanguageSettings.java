@@ -1,4 +1,4 @@
-package globalsettings;
+package com.datingapp.globalsettings;
 /**
  * This class contains language data loaded from json files.
  *

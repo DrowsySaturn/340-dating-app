@@ -1,4 +1,4 @@
-package eventsinterfaces.eventhandlers;
+package com.datingapp.eventsinterfaces.eventhandlers;
 /**
  * This is an instance of profile event handler, it stores in the profile events.
  * @Author:VincentYang

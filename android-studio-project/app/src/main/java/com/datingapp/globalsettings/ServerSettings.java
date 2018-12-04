@@ -1,4 +1,4 @@
-package globalsettings;
+package com.datingapp.globalsettings;
 /**
  * The purpose of this class is to contain server settings loaded from a json file.
  *

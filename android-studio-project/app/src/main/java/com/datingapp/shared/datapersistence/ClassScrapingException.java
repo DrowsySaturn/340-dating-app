@@ -1,4 +1,4 @@
-package shared.datapersistence;
+package com.datingapp.shared.datapersistence;
 /**
  * This class is a subclass of RuntimeException used for errors when "scraping" classes.
  *

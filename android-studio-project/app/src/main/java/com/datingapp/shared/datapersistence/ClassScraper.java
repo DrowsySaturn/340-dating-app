@@ -1,4 +1,4 @@
-package shared.datapersistence;
+package com.datingapp.shared.datapersistence;
 /*
  * This class "scapes" private fields from other classes. This is typically used for serialization
  * or data persistence.

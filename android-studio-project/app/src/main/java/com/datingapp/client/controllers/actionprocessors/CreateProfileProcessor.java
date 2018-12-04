@@ -1,4 +1,4 @@
-package client.controllers.actionprocessors;
+package com.datingapp.client.controllers.actionprocessors;
 /**
  * This class will create the profile
  * Author: Vincent Yang

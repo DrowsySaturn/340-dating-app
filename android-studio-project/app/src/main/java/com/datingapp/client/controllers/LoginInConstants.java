@@ -1,4 +1,4 @@
-package client.controllers;
+package com.datingapp.client.controllers;
 
 public class LoginInConstants {
     public final static boolean IS_ACTIVE = true;

@@ -1,4 +1,4 @@
-package client.controllers.logincontroller;
+package com.datingapp.client.controllers.logincontroller;
 /**
  * This class utility ServerCommunication to validate the user's login.
  * @Author:VincentYang

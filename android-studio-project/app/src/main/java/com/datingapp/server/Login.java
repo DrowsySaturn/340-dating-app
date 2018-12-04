@@ -1,4 +1,4 @@
-package server;
+package com.datingapp.server;
 /**
  * This class is used for logging into the server. It lets a user attempt to login returning
  * a region specific language message on failure. If the password is correct, a session key

@@ -1,4 +1,4 @@
-package utility;
+package com.datingapp.utility;
 /*
  * This utility class returns the current date for use as an SQL date object.
  *

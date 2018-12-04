@@ -1,4 +1,4 @@
-package server;
+package com.datingapp.server;
 /*
  * The purpose of this class is to startup the server.
  *

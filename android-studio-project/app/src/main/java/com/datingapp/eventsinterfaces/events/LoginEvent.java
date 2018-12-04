@@ -1,4 +1,4 @@
-package eventsinterfaces.events;
+package com.datingapp.eventsinterfaces.events;
 /**
  * This class is an instance of a login event.
  * @Author:VincentYang

@@ -1,4 +1,4 @@
-package eventsinterfaces.events;
+package com.datingapp.eventsinterfaces.events;
 
 /**
  * This interface is provided for event type classes that implements it.

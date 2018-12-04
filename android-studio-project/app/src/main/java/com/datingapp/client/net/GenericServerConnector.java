@@ -1,4 +1,4 @@
-package client.net;
+package com.datingapp.client.net;
 /**
  * The purpose of the ServerConnector is to download or upload JSON with the intent of communicating
  * with the database or the server. All communication with the server goes through this object.

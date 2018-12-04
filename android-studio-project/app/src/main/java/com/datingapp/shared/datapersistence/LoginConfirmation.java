@@ -1,4 +1,4 @@
-package shared.datapersistence;
+package com.datingapp.shared.datapersistence;
 /**
  * This class is used for responding to a client's login attempt. Included is the success status,
  * the error message, and the session key.

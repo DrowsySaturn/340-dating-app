@@ -1,4 +1,4 @@
-package client.controllers.matchingcontroller;
+package com.datingapp.client.controllers.matchingcontroller;
 /**
  * This is a static class that will generate an array list of random profiles.
  * @Author:VincentYang

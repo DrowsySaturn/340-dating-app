@@ -1,4 +1,4 @@
-package server.datapersistence.DataPersistenceUtil.Queries;
+package com.datingapp.server.datapersistence.DataPersistenceUtil.Queries;
 /*
  * This class contains callable sql queries for loading objects to be used by the DB interface DBMySQL
  * @author William Buck

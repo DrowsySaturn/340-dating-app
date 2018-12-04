@@ -1,4 +1,4 @@
-package eventsinterfaces.eventhandlers;
+package com.datingapp.eventsinterfaces.eventhandlers;
 /**
  * This is an instance of match event handler, it stores in the match events.
  * @Author:Vincent

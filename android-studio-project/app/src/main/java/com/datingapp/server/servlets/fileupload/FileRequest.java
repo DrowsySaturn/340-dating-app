@@ -1,4 +1,4 @@
-package server.servlets.fileupload;
+package com.datingapp.server.servlets.fileupload;
 /**
  * The purpose of this class is to handle file uploading for http servlets.
  *

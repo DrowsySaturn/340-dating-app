@@ -1,4 +1,4 @@
-package client.controllers.profilecontroller;
+package com.datingapp.client.controllers.profilecontroller;
 /**
  * This class handles the job of generating new profiles.
  * @Author:Vincent

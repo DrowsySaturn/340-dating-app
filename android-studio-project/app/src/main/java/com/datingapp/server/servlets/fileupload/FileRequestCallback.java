@@ -1,4 +1,4 @@
-package server.servlets.fileupload;
+package com.datingapp.server.servlets.fileupload;
 
 import java.io.IOException;
 import java.io.InputStream;
