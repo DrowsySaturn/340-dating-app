@@ -1,8 +1,10 @@
 package com.datingapp.server.servlets;
 /**
- * Creates user from the json included in the incoming http data.
+ * This gets the list of profiles of people the person has matched with. It returns it to the
+ * client application.
  *
  * @author Jonathan Cooper
+ * @version dec-4-2018
  */
 
 import com.datingapp.json.Json;
@@ -24,6 +26,16 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(value="/api/read/getmatches")
 public class GetMatchesServlet extends HttpServlet {
+    /**
+     * This causes get requests to be ignored.
+     */
+    public void doGet(HttpServletRequest _request, HttpServletResponse _response) throws IOException {
+        // Do nothing to ignore the GET requests.
+    }
+
+    /**
+     * This is invoked on POST request. Attempts to get matches associated with a user.
+     */
     public void doPost(HttpServletRequest _request, HttpServletResponse _response) throws IOException {
         String username = (String)_request.getParameter("username");
         String sessionKey = (String)_request.getParameter("session");

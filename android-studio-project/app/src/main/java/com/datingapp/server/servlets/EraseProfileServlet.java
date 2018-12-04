@@ -7,10 +7,8 @@ package com.datingapp.server.servlets;
  * @version oct-17-2018
  */
 
-import com.datingapp.json.Json;
 import com.datingapp.server.datapersistence.DBTranslator;
 import com.datingapp.shared.dataobjects.Profile;
-import com.datingapp.utility.IOUtility;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,7 +37,7 @@ public class EraseProfileServlet extends HttpServlet {
     public void doGet(HttpServletRequest _request, HttpServletResponse _response) throws ServletException, IOException {
         long profileId;
         try {
-            profileId = Integer.parseInt(_request.getParameter(REQUEST_PARAMETER));
+            profileId = Long.parseLong(_request.getParameter(REQUEST_PARAMETER));
         } catch (Exception ex) {
             throw new ServletException("Failed to read profile id param",ex);
         }

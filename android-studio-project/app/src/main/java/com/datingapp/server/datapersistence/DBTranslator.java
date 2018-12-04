@@ -14,6 +14,8 @@ import com.datingapp.shared.dataobjects.DataObject;
 import com.datingapp.shared.dataobjects.LoginInformation;
 import com.datingapp.shared.dataobjects.Profile;
 
+import java.io.InputStream;
+
 public class DBTranslator {
 
     private static final DBInterface connector = new DBMySQL();
@@ -103,5 +105,14 @@ public class DBTranslator {
     public boolean isValidSession(String _username, String _sessionKey) {
         // TODO: Check if the session associated with this user is valid or has been tampered with.
         return true;
+    }
+
+    /**
+     * Sets a profile picture for a user.
+     * @param _username This is the username to set the profile picture for.
+     * @param _input This is the image to save to the database.
+     */
+    public void setProfilePicture(String _username, InputStream _input) {
+        // TODO: Save profile picture to database.
     }
 }

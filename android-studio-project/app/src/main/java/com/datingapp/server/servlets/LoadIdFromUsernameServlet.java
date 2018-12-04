@@ -1,7 +1,6 @@
 package com.datingapp.server.servlets;
 /*
- * The purpose of this class is to allow profiles to be retrieved via http requests. A parameter
- * "id" with the value that is the id of the profile is expected in the request.
+ * The purpose of this class is to get ids from a user's username.
  *
  * @author Jonathan Cooper
  * @version oct-17-2018
