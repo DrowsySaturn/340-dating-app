@@ -30,6 +30,17 @@ public class ProfileCache {
     private Profile selfProfile = null;
 
 
+    /**
+     * This will clear up the cached value.
+     * @return boolean.
+     */
+    public boolean clear() {
+        if(this.selfProfile != null) {
+            this.selfProfile = null;
+        }
+        return this.selfProfile == null;
+    }
+
 
     /**
      * Getter for self profile

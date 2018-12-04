@@ -15,10 +15,6 @@ import com.datingapp.eventsinterfaces.events.SignUpEvent;
 import com.datingapp.shared.dataobjects.LoginInformation;
 
 public class SignUpController {
-    /**
-     * This holds an static reference of login information.
-     */
-    private static LoginInformation loginInformation = null;
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -26,8 +22,8 @@ public class SignUpController {
      * This method will take in user's email and password, sign up for a new user's account
      */
     public static void signUp(String _email, String _userInputPassword) {
-        SignUpController.loginInformation = new LoginInformation(_email, _userInputPassword);
-        SignUpEvent event = new SignUpEvent(SignUpController.loginInformation);
+        LoginInformation loginInformation = new LoginInformation(_email, _userInputPassword);
+        SignUpEvent event = new SignUpEvent(loginInformation);
         SignUpEventHandler.getInstance().addEvent(event);
         SignUpProcessor.process();
         //TODO go to the create profile page.

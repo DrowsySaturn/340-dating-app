@@ -30,6 +30,18 @@ public class MatchesCache {
 
 
     /**
+     * This method clears up the cached value.
+     * @return boolean.
+     */
+    public boolean clear() {
+        if(this.match != null) {
+            this.match = null;
+        }
+        return this.match == null;
+    }
+
+
+    /**
      * This will take in the Match object, and process the information to the SQL data base.
      * @param _dataObject
      * @throws DatingNetworkException
