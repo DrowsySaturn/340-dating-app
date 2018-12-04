@@ -62,6 +62,9 @@ public class LoginController {
      * @return boolean.
      */
     public static boolean ifUserIsLoggedin() {
+        if(LoginConfirmationCache.getInstance().getSession() == null) {
+            return false;
+        }
         return LoginConfirmationCache.getInstance().getSession().isSuccess();
     }
 }
