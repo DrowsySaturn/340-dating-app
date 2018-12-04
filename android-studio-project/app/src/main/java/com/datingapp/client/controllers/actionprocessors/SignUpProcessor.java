@@ -14,6 +14,5 @@ public class SignUpProcessor {
         SignUpEventHandler eventHandler = SignUpEventHandler.getInstance();
         LoginInformation loginInformation = eventHandler.fireEvent();
         LoginInformationCache.getInstance().recordLoginInformation(loginInformation);
-        //TODO go to the create profile page
     }
 }

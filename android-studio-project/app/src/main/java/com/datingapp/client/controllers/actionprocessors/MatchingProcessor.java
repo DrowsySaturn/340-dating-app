@@ -10,7 +10,7 @@ import com.datingapp.eventsinterfaces.eventhandlers.MatchEventHandler;
 import com.datingapp.shared.dataobjects.Match;
 
 
-public class MatchProcessor {
+public class MatchingProcessor {
 
 
     /**

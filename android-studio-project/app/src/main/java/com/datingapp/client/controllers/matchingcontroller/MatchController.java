@@ -5,14 +5,12 @@ package com.datingapp.client.controllers.matchingcontroller;
  * @Date:11/26/2018
  */
 
-import com.datingapp.client.cachelibrary.LoginConfirmationCache;
-import com.datingapp.client.net.DatingNetworkException;
-import com.datingapp.client.net.ServerCommunicator;
+
+import com.datingapp.client.controllers.actionprocessors.MatchingProcessor;
 import com.datingapp.eventsinterfaces.eventhandlers.MatchEventHandler;
 import com.datingapp.eventsinterfaces.events.MatchEvent;
 import com.datingapp.shared.dataobjects.Match;
 import com.datingapp.shared.dataobjects.Profile;
-import com.datingapp.shared.datapersistence.LoginConfirmation;
 
 import java.util.ArrayList;
 
@@ -30,9 +28,24 @@ public class MatchController {
     }
 
 
+    /**
+     * This will pair up with the person who likes another person.
+     * @param _userProfile
+     * @param _likedProfile
+     */
     public static void likeProfile(Profile _userProfile, Profile _likedProfile) {
-        Match match = GenerateMatch.matching(_userProfile,_likedProfile);
+        Match match = MatchingGenerator.matching(_userProfile,_likedProfile);
         MatchEventHandler.getInstance().addEvent(new MatchEvent(match));
+        MatchingProcessor.process();
+        //TODO display confirmation of current user liking other user.
+    }
 
+
+    /**
+     * This will return
+     * @return
+     */
+    public static ArrayList<Profile> getMatches() {
+        return MatchingGenerator.getMatches();
     }
 }

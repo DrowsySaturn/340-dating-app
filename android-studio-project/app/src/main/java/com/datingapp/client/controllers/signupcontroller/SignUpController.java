@@ -30,5 +30,6 @@ public class SignUpController {
         SignUpEvent event = new SignUpEvent(SignUpController.loginInformation);
         SignUpEventHandler.getInstance().addEvent(event);
         SignUpProcessor.process();
+        //TODO go to the create profile page.
     }
 }
